@@ -1,0 +1,44 @@
+.startupWindow {
+    font-family: standard2;
+    background-color: #00a;
+    border: 1px solid black;
+    width: 60rem;
+    padding: 1rem;
+    font-size: 18px;
+    color: white;
+}
+
+.headGrid {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+}
+
+.headCard {
+    border: 2px solid #aaa;
+    padding: .2rem;
+    width: 6rem;
+}
+
+.subGrid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.gridCell {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #aaa;
+    padding: .2rem;
+    width: 5rem;
+    margin: .2rem;
+}
+
+.gridCell:hover {
+    background-color: black;
+    color: white
+}
