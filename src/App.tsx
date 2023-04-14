@@ -3,10 +3,14 @@ import { useState } from 'react'
 import './App.css'
 import Startup from './components/startup'
 import ModalWindow from './components/modal'
+import { useSelector, useDispatch } from 'react-redux'
+import { decrement, increment } from './components/counterSlice'
+
 
 function App() {
 
-  const [count, setCount] = useState(0)
+  const count = useSelector((state) => state.counter.value)
+  const dispatch = useDispatch()
   const [isOpen, setIsOpen] = useState(true);
 
     const handleCloseModal = () => {
@@ -30,7 +34,7 @@ function App() {
         children="dd" />
 
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
+        <button onClick={() => dispatch(increment())}>
           count is {count}
         </button>
         
