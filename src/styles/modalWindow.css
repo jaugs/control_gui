@@ -16,6 +16,10 @@
   .modal-window.open {
     opacity: 1;
   }
+
+  .modal-window.close {
+    display: none;
+  }
   
   .modal-window-header {
     display: flex;

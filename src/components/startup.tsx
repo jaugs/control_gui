@@ -1,14 +1,16 @@
-import { useState } from 'react'
 //import reactLogo from './assets/react.svg'
 import '../styles/startup.css'
+import { useAppDispatch, useAppSelector } from '../app/hooks'
+import { open, close } from './modalSlice';
 
-interface startupProps {
-    openModal: () => void;
-  }
 
-const Startup: React.FC<startupProps> = ({openModal}) => {
 
-  const [count, setCount] = useState(0)
+const Startup: React.FC = () => {
+
+  const isOpen = useAppSelector((state) => state.modal.isOpen)
+  const dispatch = useAppDispatch()
+
+
 
   return (
     <div className="startupWindow">
@@ -17,11 +19,14 @@ const Startup: React.FC<startupProps> = ({openModal}) => {
 
         <section className='mainGrid'>
             <div className='headGrid'>
-                <div className='headCard' onClick={openModal}>STARTUP AB(0)</div>
+                <div className='headCard'>STARTUP AB(0)</div>
                 <div className='headCard'>STARTUP CN/D</div>
             </div>
             <div className='subGrid'>
-                <div className='gridCell'>Security Main</div>
+                <div 
+                  className='gridCell'
+                  onClick={() => dispatch(open())}>Security Main
+                </div>
                 <div className='gridCell'>Monitor Main</div>
                 <div className='gridCell'>Command Main</div>
                 <div className='gridCell'>Electrical Main</div>

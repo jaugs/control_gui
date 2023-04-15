@@ -3,35 +3,26 @@ import { useState } from 'react'
 import './App.css'
 import Startup from './components/startup'
 import ModalWindow from './components/modal'
-import { useSelector, useDispatch } from 'react-redux'
+import { useAppDispatch, useAppSelector } from './app/hooks'
 import { decrement, increment } from './components/counterSlice'
 
 
 function App() {
 
-  const count = useSelector((state) => state.counter.value)
-  const dispatch = useDispatch()
-  const [isOpen, setIsOpen] = useState(true);
+  const count = useAppSelector((state) => state.counter.value)
+  const dispatch = useAppDispatch()
 
-    const handleCloseModal = () => {
-      console.log('Modal closed');
-    };
-    
-    const openModal = () => {
-      setIsOpen(true)
-    }
+   
 
   return (
     <div className="App">
       
       
-      <Startup openModal={openModal}/>
+      <Startup />
       <ModalWindow 
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
         title="my modal2" 
-        onClose={handleCloseModal} 
-        children="dd" />
+        children="dd" 
+      />
 
       <div className="card">
         <button onClick={() => dispatch(increment())}>

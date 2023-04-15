@@ -1,30 +1,27 @@
-import { SetStateAction, useState } from 'react';
 import '../styles/modalWindow.css';
+import { useAppDispatch, useAppSelector } from '../app/hooks'
+import { open, close } from './modalSlice';
+
 
 interface ModalWindowProps {
-  isOpen: boolean;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   title: string;
-  onClose: () => void;
   children: React.ReactNode;
 }
 
-const ModalWindow: React.FC<ModalWindowProps> = ({isOpen, setIsOpen, title, onClose, children }) => {
+const ModalWindow: React.FC<ModalWindowProps> = ({title, children}) => {
 
+  const isOpen = useAppSelector((state) => state.modal.isOpen)
+  const dispatch = useAppDispatch()
 
-  const handleClose = () => {
-    setIsOpen(false);
-    onClose();
-  };
 
   return (
-    <div className={`modal-window ${isOpen ? 'open' : ''}`}>
+    <div className={`modal-window ${isOpen ? 'open' : 'close'}`}>
       <div className="modal-window-header">
         <div className="modal-window-title">{title}</div>
         <div className="modal-window-buttons">
           <button className="modal-window-minimize"></button>
           <button className="modal-window-maximize"></button>
-          <button className="modal-window-close" onClick={handleClose}></button>
+          <button className="modal-window-close" onClick={() => dispatch(close())}></button>
         </div>
       </div>
       <div className="modal-window-content">{children}</div>

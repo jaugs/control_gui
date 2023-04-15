@@ -1,0 +1,40 @@
+import { PayloadAction, createSlice } from '@reduxjs/toolkit'
+import type { RootState } from '../app/store'
+
+
+// Define a type for the slice state
+interface ModalState {
+  isOpen: boolean
+}
+
+// Define the initial state using that type
+const initialState: ModalState = {
+  isOpen: false,
+}
+
+export const modalSlice = createSlice({
+  name: 'modal',
+  // `createSlice` will infer the state type from the `initialState` argument
+  initialState,
+  reducers: {
+    open: (state) => {
+      state.isOpen = true
+    },
+    close: (state) => {
+      state.isOpen = false
+    },
+    // Use the PayloadAction type to declare the contents of `action.payload`
+    // incrementByAmount: (state, action: PayloadAction<number>) => {
+    //   state.value += action.payload
+    // },
+  },
+})
+
+
+// Action creators are generated for each case reducer function
+export const { open, close } = modalSlice.actions
+
+// Other code such as selectors can use the imported `RootState` type
+export const selectModal = (state: RootState) => state.modal
+
+export default modalSlice.reducer
