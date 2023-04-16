@@ -14,6 +14,11 @@
   -webkit-text-size-adjust: 100%;
 }
 
+body {
+  display: block;
+  margin: 0;
+}
+
 @font-face {
   font-family: standard;
   src: local('MxPlus_IBM_VGA8x16'),

@@ -1,0 +1,21 @@
+import logo from '../assets/logo2.svg'
+import '../styles/statusBar.css'
+
+const Statusbar: React.FC = () => {
+    return (
+        <header className='statusBar'>
+            <div className='logoContainer'>
+                <img className='logo' src={logo}></img>
+            </div>
+            <div className='userContainer'>Operator: User1</div>
+            <div className='statusContainer'>
+                <svg className='statusColor' viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="50" />
+                </svg>
+                <button>System Status</button>
+            </div>
+    </header>
+    )
+}
+
+export default Statusbar

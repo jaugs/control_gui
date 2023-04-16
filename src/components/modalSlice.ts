@@ -9,7 +9,7 @@ interface ModalState {
 
 // Define the initial state using that type
 const initialState: ModalState = {
-  isOpen: false,
+  isOpen: true,
 }
 
 export const modalSlice = createSlice({

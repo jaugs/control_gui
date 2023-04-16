@@ -3,8 +3,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #fff;
-    border: 1px solid #000;
+    background-color: #0055AA;
+    border: 1px solid #fff;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     z-index: 999;
     opacity: 0;
@@ -26,7 +26,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 8px;
-    background-color: #000;
+    background-color: #000022;
     color: #fff;
   }
   
