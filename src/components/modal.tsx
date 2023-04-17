@@ -19,9 +19,8 @@ const ModalWindow: React.FC<ModalWindowProps> = ({title, children}) => {
       <div className="modal-window-header">
         <div className="modal-window-title">{title}</div>
         <div className="modal-window-buttons">
-          <button className="modal-window-minimize"></button>
-          <button className="modal-window-maximize"></button>
-          <button className="modal-window-close" onClick={() => dispatch(close())}></button>
+          <button className="modal-window-minimize">-</button>
+          <button className="modal-window-close" onClick={() => dispatch(close())}>X</button>
         </div>
       </div>
       <div className="modal-window-content">{children}</div>

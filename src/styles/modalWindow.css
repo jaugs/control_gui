@@ -1,16 +1,21 @@
 .modal-window {
+    font-family: standard2;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #0055AA;
     border: 1px solid #fff;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     z-index: 999;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
     width: 400px;
     height: 300px;
+    box-shadow: -2px -2px #e0dede, -2px 0 #e0dede, 0 -2px #e0dede, 
+                -4px -4px white, -4px 0 white, 0 -4px white, 2px 2px #818181, 
+                0 2px #818181, 2px 0 #818181, 2px -2px #e0dede, -2px 2px #818181, 
+                -4px 2px white, -4px 4px black, 4px 4px black, 4px 0 black, 
+                0 4px black, 2px -4px white, 4px -4px black;
   }
   
   .modal-window.open {
@@ -22,31 +27,36 @@
   }
   
   .modal-window-header {
+    cursor:grab;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px;
-    background-color: #000022;
-    color: #fff;
+    padding: 5px;
+    background-color: #0b0035;
+    color: #ffffff;
+    border-bottom: 2px solid #e0dede;
   }
   
   .modal-window-title {
-    font-weight: bold;
+    padding-left: 5px;
+    font-size: 18px;
   }
   
   .modal-window-buttons {
-    background-color: blue;
     display: flex;
     justify-content: flex-end;
-    gap: 4px;
-    color: red;
+    gap: 5px;
   }
   
   .modal-window-buttons button {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 30;
+    font-weight: 900;
     border: none;
     width: 20px;
     height: 20px;
-    color: #fff;
+    background-color: #e0dede;
+    color: #0b0035;
     font-size: 12px;
     line-height: 1;
     padding: 0;
@@ -55,7 +65,7 @@
   }
   
   .modal-window-buttons button:hover {
-    background-color: #333;
+    background-color: #818181;
   }
   
   .modal-window-content {

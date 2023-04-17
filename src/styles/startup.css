@@ -1,11 +1,16 @@
 .startupWindow {
     font-family: standard2;
-    background-color: #00a;
+    background-color: #000099;
     border: 1px solid black;
     width: 60rem;
     padding: 1rem;
     font-size: 18px;
-    color: white;
+    color: #ffffff;
+    box-shadow: -2px -2px #e0dede, -2px 0 #e0dede, 0 -2px #e0dede, 
+                -4px -4px white, -4px 0 white, 0 -4px white, 2px 2px #818181, 
+                0 2px #818181, 2px 0 #818181, 2px -2px #e0dede, -2px 2px #818181, 
+                -4px 2px white, -4px 4px black, 4px 4px black, 4px 0 black, 
+                0 4px black, 2px -4px white, 4px -4px black;
 }
 
 .headGrid {
@@ -14,12 +19,14 @@
     align-items: center;
     justify-content: center;
     gap: 5rem;
+    padding-bottom: 10px;
 }
 
 .headCard {
     border: 2px solid #aaa;
     padding: .2rem;
-    width: 6rem;
+    width: 5rem;
+    cursor: pointer;
 }
 
 .subGrid {
@@ -38,7 +45,7 @@
     margin: .2rem;
 }
 
-.gridCell:hover {
+.gridCell:hover, .headCard:hover {
     background-color: black;
     color: white
 }
