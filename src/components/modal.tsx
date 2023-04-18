@@ -5,10 +5,10 @@ import { open, close } from './modalSlice';
 
 interface ModalWindowProps {
   title: string;
-  children: React.ReactNode;
+  contents: React.ReactNode;
 }
 
-const ModalWindow: React.FC<ModalWindowProps> = ({title, children}) => {
+const ModalWindow: React.FC<ModalWindowProps> = ({title, contents}) => {
 
   const isOpen = useAppSelector((state) => state.modal.isOpen)
   const dispatch = useAppDispatch()
@@ -23,7 +23,7 @@ const ModalWindow: React.FC<ModalWindowProps> = ({title, children}) => {
           <button className="modal-window-close" onClick={() => dispatch(close())}>X</button>
         </div>
       </div>
-      <div className="modal-window-content">{children}</div>
+      <div className="modal-window-content">{contents}</div>
     </div>
   );
 };
