@@ -11,6 +11,10 @@
                 0 2px #818181, 2px 0 #818181, 2px -2px #e0dede, -2px 2px #818181, 
                 -4px 2px white, -4px 4px black, 4px 4px black, 4px 0 black, 
                 0 4px black, 2px -4px white, 4px -4px black;
+    -moz-user-select:none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .headGrid {
@@ -43,6 +47,10 @@
     padding: .2rem;
     width: 5rem;
     margin: .2rem;
+    -moz-user-select:none; /* firefox */
+   -webkit-user-select: none; /* Safari */
+   -ms-user-select: none; /* IE */
+   user-select: none; /* Standard syntax */
 }
 
 .gridCell:hover, .headCard:hover {

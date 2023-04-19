@@ -6,8 +6,8 @@ import Statusbar from './components/statusBar'
 import { useAppDispatch, useAppSelector } from './app/hooks'
 import { decrement, increment } from './components/counterSlice'
 import Box from './components/box'
-import Container from './components/container'
-
+import Workspace from './components/container'
+import CommWindow from './components/comms'
 
 function App() {
 
@@ -17,7 +17,7 @@ function App() {
   const dispatch = useAppDispatch()
   
   const [isDragging, setIsDragging] = useState(false);
-  const [position, setPosition] = useState({ x: 100, y: 100 });
+  const [position, setPosition] = useState({ x: 300, y: 300 });
 
   const handleBoxDragStart = () => {
     setIsDragging(true);
@@ -28,7 +28,7 @@ function App() {
   };
 
   const handleContainerDrop = (event: React.DragEvent<HTMLDivElement>) => {
-    setPosition({ x: event.clientX - 50, y: event.clientY - 50 });
+    setPosition({ x: event.clientX - 50, y: event.clientY - 100 });
   };
 
   const handleContainerDragOver = (event: React.DragEvent<HTMLDivElement>) => {
@@ -39,36 +39,24 @@ function App() {
 
   return (
 
-
     <div className="container">
       
-
     <Statusbar />
 
-
-      <div className='workspace'>
-
-      <Container onDrop={handleContainerDrop} onDragOver={handleContainerDragOver}>
-      <Box
+    <Workspace onDrop={handleContainerDrop} onDragOver={handleContainerDragOver}>
+      <ModalWindow 
+        title="my modal2" 
+        contents="dd" 
         x={position.x}
         y={position.y}
         onDragStart={handleBoxDragStart}
         onDragEnd={handleBoxDragEnd}
       />
-    </Container>
+      <Startup />
+    </Workspace>
       
-            <ModalWindow 
-              title="my modal2" 
-              contents="dd" 
-            />
-      
-       
-        <Startup />
-      </div>
-      <div className='commContainer'>
-        <p>Active Comms:</p>
-        <p>Contact</p>
-        <p>Transmit</p>
+    <div className='commContainer'>
+        <CommWindow />
       </div>
       
 
