@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from '../app/hooks'
 import { open, close } from './modalSlice';
 import map from '../assets/nublarresized.png'
 
-interface ModalWindowProps {
+interface MapWindowProps {
   title: string;
   contents: React.ReactNode;
   x: number;
@@ -12,7 +12,7 @@ interface ModalWindowProps {
   onDragEnd: () => void;
 }
 
-const ModalWindow: React.FC<ModalWindowProps> = ({title, contents, x, y, onDragStart, onDragEnd}) => {
+const ModalWindow: React.FC<MapWindowProps> = ({title, contents, x, y, onDragStart, onDragEnd}) => {
 
   const isOpen = useAppSelector((state) => state.modal.isOpen)
   const dispatch = useAppDispatch()
@@ -20,7 +20,7 @@ const ModalWindow: React.FC<ModalWindowProps> = ({title, contents, x, y, onDragS
 
   return (
     <div 
-      className={`modal-window ${isOpen ? 'open' : 'close'}`}
+      className={`map-window ${isOpen ? 'open' : 'close'}`}
       draggable
       style={{
         position: 'absolute',
