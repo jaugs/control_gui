@@ -19,8 +19,12 @@ const Startup: React.FC = () => {
 
         <section className='mainGrid'>
             <div className='headGrid'>
-                <div className='headCard'>STARTUP AB(0)</div>
-                <div className='headCard'>STARTUP CN/D</div>
+                <div className='AB0'>
+                  <div className='headCard1'>STARTUP AB(0)</div>
+                </div>
+                <div className='CND'>
+                  <div className='headCard2'>STARTUP CN/D</div>
+                </div>
             </div>
             <div className='subGrid'>
                 <div 
@@ -35,11 +39,11 @@ const Startup: React.FC = () => {
                 <div className='gridCell'>Zoolog Main</div>
 
                 <div className='gridCell'>SetGrids DNL</div>
-                <div className='gridCell'>View VBB</div>
+                <div className='gridCell'>View<br></br>VBB</div>
                 <div className='gridCell'>Access TNL</div>
                 <div className='gridCell'>Heating Cooling</div>
                 <div className='gridCell'>Door Fold Interface</div>
-                <div className='gridCell'>SAAG- Rnd</div>
+                <div className='gridCell'>SAAG-<br></br> Rnd</div>
                 <div className='gridCell'>Repair Storage</div>
 
                 <div className='gridCell'>Critical Locks</div>

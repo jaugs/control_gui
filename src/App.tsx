@@ -44,6 +44,9 @@ function App() {
     <Statusbar />
 
     <Workspace onDrop={handleContainerDrop} onDragOver={handleContainerDragOver}>
+      <div className='mainProgram'>
+        <Startup />
+      </div>
       <ModalWindow 
         title="my modal2" 
         contents="dd" 
@@ -52,7 +55,8 @@ function App() {
         onDragStart={handleBoxDragStart}
         onDragEnd={handleBoxDragEnd}
       />
-      <Startup />
+      
+      
     </Workspace>
       
     <div className='commContainer'>

@@ -1,36 +1,82 @@
 .startupWindow {
-    font-family: standard2;
-    background-color: #000099;
-    border: 1px solid black;
-    width: 60rem;
-    padding: 1rem;
-    font-size: 18px;
-    color: #ffffff;
-    box-shadow: -2px -2px #e0dede, -2px 0 #e0dede, 0 -2px #e0dede, 
-                -4px -4px white, -4px 0 white, 0 -4px white, 2px 2px #818181, 
-                0 2px #818181, 2px 0 #818181, 2px -2px #e0dede, -2px 2px #818181, 
-                -4px 2px white, -4px 4px black, 4px 4px black, 4px 0 black, 
-                0 4px black, 2px -4px white, 4px -4px black;
-    -moz-user-select:none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    
+    font-size: 20px;
+}
+
+.startupWindow header {
+    border: 2px solid #aaa;
+    padding: .3rem;
+}
+
+.gridCell, .headCard1, .headCard2 {
+    box-sizing: border-box;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #aaa;
+    padding-left: .3rem;
+    padding-right: .3rem;
+    width: 6rem;
+    height: 4rem;
+    margin: .2rem;
 }
 
 .headGrid {
+    margin-top: .5rem;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
-    gap: 5rem;
-    padding-bottom: 10px;
+    justify-content: space-around;
+    
+    padding-bottom: 5px;
 }
 
-.headCard {
-    border: 2px solid #aaa;
-    padding: .2rem;
-    width: 5rem;
-    cursor: pointer;
+.AB0 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px dotted #aaa;
+    width: 19.5rem;
+    margin-right: 2px;
+}
+
+.headCard1 {
+    margin-left: 107px;
+    margin-bottom: 5px;
+}
+
+.headCard2 {
+    margin-bottom: 5px;
+}
+
+.CND {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px dotted #aaa;
+    width: 13rem;
+    margin-right: 2px;
+}
+
+.headCard1::before, .headCard2::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 3px;
+    height: .65rem;
+    background-color: #aaa;
+    transform: translateY(105%);
+}
+
+.AB0::before {
+    font-size: 9px;
+    content: '..........................................................';
+    position: absolute;
+    top: 100px;
+    width: 180px;
+    transform: translateX(105%);
 }
 
 .subGrid {
@@ -38,22 +84,17 @@
     grid-template-columns: repeat(7, 1fr);
 }
 
-.gridCell {
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid #aaa;
-    padding: .2rem;
-    width: 5rem;
-    margin: .2rem;
-    -moz-user-select:none; /* firefox */
-   -webkit-user-select: none; /* Safari */
-   -ms-user-select: none; /* IE */
-   user-select: none; /* Standard syntax */
-}
-
-.gridCell:hover, .headCard:hover {
+.gridCell:hover, .headCard1:hover, .headCard2:hover {
     background-color: black;
     color: white
+}
+
+.gridCell::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 3px;
+    height: .6rem;
+    background-color: #aaa;
+    transform: translateY(-105%);
 }
