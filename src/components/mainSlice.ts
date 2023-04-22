@@ -20,7 +20,7 @@ export const mainSlice = createSlice({
  
     // Use the PayloadAction type to declare the contents of `action.payload`
     changeScreen: (state, action: PayloadAction<string>) => {
-      state.screen += action.payload
+      state.screen = action.payload
     },
   },
 })
@@ -30,6 +30,6 @@ export const mainSlice = createSlice({
 export const { changeScreen } = mainSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
-export const currentScreen = (state: RootState) => state.main.screen
+export const selectScreen = (state: RootState) => state.main.screen
 
 export default mainSlice.reducer
