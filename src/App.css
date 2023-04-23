@@ -27,6 +27,7 @@
   font-family: standard2;
     background-color: #000099;
     width: 45rem;
+    min-height: 27rem;
     padding: 1rem;
     color: #ffffff;
     box-shadow: -2px -2px #e0dede, -2px 0 #e0dede, 0 -2px #e0dede, 

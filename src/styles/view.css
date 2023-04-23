@@ -1,4 +1,136 @@
 .viewGrid {
     font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
+.viewGrid header {
+    border: 2px solid #aaa;
+    padding: .1rem;
+    width: 30.4rem;
+    margin-bottom: 7px;
+    cursor: pointer;
+}
+
+.headViewGrid {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 10rem;
+}
+
+.headview1 {
+    margin-right: 6px;
+    margin-bottom: 6px;
+}
+
+.headview2 {
+    margin-left: 6px;
+    margin-bottom: 6px;
+}
+
+.headview1, .headview2, .viewBoxLeft, .viewBoxRight, .viewBoxRightSingle, .largeBox {
+    box-sizing: border-box;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #aaa;
+    padding-left: .3rem;
+    padding-right: .3rem;
+    width: 10rem;
+    height: 4rem;
+}
+
+.headview1:hover, .headview2:hover, .viewBoxLeft:hover, .viewBoxRight:hover, .viewBoxRightSingle:hover, .largeBox:hover, .smallBox:hover, .smallBoxLeft:hover, .viewGrid header:hover {
+    background-color: black;
+    color: white
+}
+
+.smallBox, .smallBoxLeft {
+    box-sizing: border-box;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #aaa;
+    padding-left: .4rem;
+    padding-right: .4rem;
+    width: 4.81rem;
+    height: 4rem;
+    margin: 3px;
+}
+
+.subViewGrid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.centerView {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 10.4rem;
+    flex-wrap: wrap;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.leftView, .rightView {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:5px;
+    margin-top: 3px;
+}
+
+.headview1::before, .headview2::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 3px;
+    height: .6rem;
+    background-color: #aaa;
+    transform: translateY(110%);
+}
+
+.viewBoxLeft::before {
+    content: '';
+    position: absolute;
+    height: 3px;
+    background-color: #aaa;
+    top: 50;
+    left: 155px;
+    width: 8px;
+    transform: translateX(10%); 
+}
+
+.viewBoxRight::before {
+    content: '';
+    position: absolute;
+    height: 3px;
+    background-color: #aaa;
+    top: 50;
+    left: 0px;
+    width: 10px;
+    transform: translateX(-100%); 
+}
+
+.smallBoxLeft::before {
+    content: '';
+    position: absolute;
+    height: 3px;
+    background-color: #aaa;
+    top: 70;
+    left: 64px;
+    width: 8px;
+    transform: translateX(115%);
 }

@@ -10,6 +10,8 @@ import Box from './components/box'
 import Workspace from './components/container'
 import CommWindow from './components/comms'
 import ViewScreen from './components/viewScreen'
+import CommonInterface from './components/commonInterface'
+import SetGrids from './components/setGrids'
 
 function App() {
 
@@ -58,6 +60,10 @@ function App() {
               return <Startup />
             case 'view':
               return <ViewScreen />
+            case 'common':
+              return <CommonInterface />
+            case 'grid':
+              return <SetGrids />
             default:
               return null
           }

@@ -1,0 +1,129 @@
+.CommonInterfaceGrid {
+    font-size: 20px;
+}
+
+.CommonInterfaceGrid header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.commonTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 2px solid #aaa;
+    padding: .3rem;
+    width: 6rem;
+    height: 3rem;
+}
+
+.commonGrid {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.commonCell, .advise {
+    box-sizing: border-box;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #aaa;
+    padding-left: .3rem;
+    padding-right: .3rem;
+    width: 5rem;
+    height: 3.5rem;
+    margin: 3px;
+}
+
+.commonCell:hover, .advise:hover, .commonTitle:hover {
+    background-color: black;
+    color: white
+}
+
+.commonFirstGrid, .commonSecondGrid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 20rem;
+}
+
+.commonSecondGrid {
+    margin-left: 6px;
+}
+
+.commonCell::before, .advise::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 3px;
+    height: .6rem;
+    background-color: #aaa;
+    transform: translateY(-105%);
+}
+
+.borderLine1::before {
+    font-size: 9px;
+    content: '......................................................................';
+    position: absolute;
+    top: 91px;
+    left: 38px;
+    width: 20px;
+    transform: translateX(90%);
+}
+
+.borderLine2::before {
+    font-size: 9px;
+    content: '...............................................';
+    position: absolute;
+    top: 91px;
+    width: 120px;
+    transform: translateX(72%);
+}
+
+.commonDiv1::before {
+    writing-mode: vertical-rl;
+    font-size: 9px;
+    content: '..............';
+    position: absolute;
+    top: 51psx;
+    left: 8px;
+    width: 120px;
+    transform: translateX(20%);
+}
+
+.commonDiv2::before {
+    writing-mode: vertical-rl;
+    font-size: 9px;
+    content: '..............';
+    position: absolute;
+    top: 51psx;
+    left: 318px;
+    width: 120px;
+    transform: translateX(100%);
+}
+
+.commonTitle::before {
+    font-size: 9px;
+    content: '.................................';
+    position: absolute;
+    top: 45px;
+    width: 120px;
+    transform: translateX(94%);
+}
+
+.CommonInterfaceGrid header::before {
+    font-size: 9px;
+    content: '................................................';
+    position: absolute;
+    top: 45px;
+    left: 29px;
+    width: 120px;
+    transform: translateX(94%);
+}

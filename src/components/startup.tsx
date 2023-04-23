@@ -38,7 +38,7 @@ const Startup: React.FC = () => {
                 <div className='gridCell'>Master Main</div>
                 <div className='gridCell'>Zoolog Main</div>
 
-                <div className='gridCell'>SetGrids DNL</div>
+                <div className='gridCell' onClick={() => dispatch(changeScreen('grid'))}>SetGrids DNL</div>
                 <div className='gridCell' onClick={() => dispatch(changeScreen('view'))}>View<br></br>VBB</div>
                 <div className='gridCell'>Access TNL</div>
                 <div className='gridCell'>Heating Cooling</div>
@@ -51,7 +51,7 @@ const Startup: React.FC = () => {
                 <div className='gridCell'>Reset Revert</div>
                 <div className='gridCell'>Emergncy Illumin</div>
                 <div className='gridCell'>GAS/VLD Main II</div>
-                <div className='gridCell'>Common Interface</div>
+                <div className='gridCell' onClick={() => dispatch(changeScreen('common'))}>Common Interface</div>
                 <div className='gridCell'>Status Main</div>
 
                 <div className='gridCell'>Control Passthru</div>
