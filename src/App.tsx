@@ -82,7 +82,6 @@ function App() {
         onDragEnd={handleBoxDragEnd}
       />
       
-      
     </Workspace>
       
     <div className='commContainer'>

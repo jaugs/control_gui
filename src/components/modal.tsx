@@ -1,6 +1,6 @@
 import '../styles/modalWindow.css';
 import { useAppDispatch, useAppSelector } from '../app/hooks'
-import { open, close } from './modalSlice';
+import { open1, close1 } from './modalSlice';
 import map from '../assets/nublarresized.png'
 
 interface ModalWindowProps {
@@ -14,7 +14,7 @@ interface ModalWindowProps {
 
 const ModalWindow: React.FC<ModalWindowProps> = ({title, contents, x, y, onDragStart, onDragEnd}) => {
 
-  const isOpen = useAppSelector((state) => state.modal.isOpen)
+  const isOpen = useAppSelector((state) => state.modal.isOpen1)
   const dispatch = useAppDispatch()
 
 
@@ -36,7 +36,7 @@ const ModalWindow: React.FC<ModalWindowProps> = ({title, contents, x, y, onDragS
           <div className="modal-window-title">{title}</div>
           <div className="modal-window-buttons">
             <button className="modal-window-minimize">-</button>
-            <button className="modal-window-close" onClick={() => dispatch(close())}>X</button>
+            <button className="modal-window-close" onClick={() => dispatch(close1())}>X</button>
           </div>
       </div>
       <div className="modal-window-content">

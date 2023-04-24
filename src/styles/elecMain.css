@@ -5,7 +5,7 @@
     align-items: center;
 }
 
-.elecGrid, .elecContainer header, .mainElecBox, .smallElecBox {
+.elecGrid, .elecContainer header, .mainElecBox, .smallElecBox, .smallElecDash {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -14,12 +14,15 @@
 }
 
 .elecContainer header {
+    cursor: pointer;
     border: 2px solid #aaa;
     padding: .3rem;
-    width: 30rem;
+    width: 23rem;
+    margin-bottom: 10px;
 }
 
 .mainElecBox {
+    cursor: pointer;
     border: 2px solid #aaa;
     padding: 2px;
     width:  120px;
@@ -28,10 +31,25 @@
 }
 
 .smallElecBox {
+    cursor: pointer;
     border: 2px solid #aaa;
     padding: 2px;
     width: 120px;
     height: 18px;
+}
+
+.smallElecDash {
+    cursor: pointer;
+    border: 2px solid #aaa;
+    border-bottom: 1px dashed #aaa;
+    padding: 2px;
+    width: 120px;
+    height: 18px;
+}
+
+#sg8 {
+    border-top: 1px dashed #aaa;
+    border-bottom: 2px solid #aaa;
 }
 
 .mainElecRow, .secondElecRow, .thirdElecRow, .forthElecRow, .fifthElecRow {
@@ -74,10 +92,15 @@
     margin-bottom: 8px;
 }
 
+.mainElecBox:hover, .smallElecDash:hover, .smallElecBox:hover, .elecContainer header:hover {
+    background-color: black;
+    color: white
+}
+
 #main1::before, #main2::before, #main3::before, #main4::before  {
     content: '';
     position: absolute;
-    top: 110px;
+    top: 120px;
     width: 4px;
     height: 15px;
     background-color: #aaa;
@@ -87,7 +110,7 @@
 .m1line::before {
     content: '';
     position: absolute;
-    top: 93px;
+    top: 103px;
     width: 20px;
     height: 4px;
     background-color: #aaa;
@@ -97,7 +120,7 @@
 .mainElecRow::before {
     content: '';
     position: absolute;
-    top: 93px;
+    top: 103px;
     left: 240px;
     width: 13px;
     height: 4px;
@@ -108,7 +131,7 @@
 .elecGrid::before {
     content: '';
     position: absolute;
-    top: 93px;
+    top: 103px;
     left: 525px;
     width: 13px;
     height: 4px;
@@ -119,7 +142,7 @@
 .hline2::before {
     content: '';
     position: absolute;
-    top: 78px;
+    top: 88px;
     left: 525px;
     width: 13px;
     height: 4px;
@@ -130,7 +153,7 @@
 .hline3::before {
     content: '';
     position: absolute;
-    top: 109px;
+    top: 119px;
     left: 525px;
     width: 13px;
     height: 4px;
@@ -141,7 +164,7 @@
 #second1::before {
     content: '';
     position: absolute;
-    top: 191px;
+    top: 201px;
     left: 164px;
     width: 4px;
     height: 8px;
@@ -152,7 +175,7 @@
 #second2::before {
     content: '';
     position: absolute;
-    top: 191px;
+    top: 201px;
     left: 296px;
     width: 4px;
     height: 8px;
@@ -163,8 +186,8 @@
 #second3::before {
     content: '';
     position: absolute;
-    top: 222px;
-    left: 180px;
+    top: 232px;
+    left: 166px;
     width: 4px;
     height: 8px;
     background-color: #aaa;
@@ -174,10 +197,296 @@
 #second4::before {
     content: '';
     position: absolute;
-    top: 191px;
+    top: 201px;
     left: 582px;
     width: 4px;
     height: 8px;
     background-color: #aaa;
     transform: translateX(92%);
+}
+
+.thirdElecRow::before{
+    content: '';
+    position: absolute;
+    top: 232px;
+    left: 149px;
+    width: 4px;
+    height: 8px;
+    background-color: #aaa;
+    transform: translateX(92%);
+}
+
+#third1::before {
+    content: '';
+    position: absolute;
+    top: 325px;
+    left: 103px;
+    width: 4px;
+    height: 8px;
+    background-color: #aaa;
+    transform: translateX(92%);
+}
+
+#third2::before {
+    content: '';
+    position: absolute;
+    top: 355px;
+    left: 103px;
+    width: 4px;
+    height: 8px;
+    background-color: #aaa;
+    transform: translateX(92%);
+}
+
+.t1line::before {
+    content: '';
+    position: absolute;
+    top: 232px;
+    left: 582px;
+    width: 4px;
+    height: 8px;
+    background-color: #aaa;
+    transform: translateX(92%);
+}
+
+.t2line::before {
+    content: '';
+    position: absolute;
+    top: 296px;
+    left: 643px;
+    width: 8px;
+    height: 4px;
+    background-color: #aaa;
+    transform: translateX(92%);
+}
+
+.forthElecRow::before {
+    content: '';
+    position: absolute;
+    top: 296px;
+    left: 654px;
+    width: 4px;
+    height: 144px;
+    background-color: #aaa;
+    transform: translateX(92%);
+}
+
+.f1line::before {
+    content: '';
+    position: absolute;
+    top: 106px;
+    left: 373px;
+    width: 4px;
+    height: 258px;
+    background-color: #aaa;
+    transform: translateX(92%);
+}
+
+#fl1::before {
+    content: '';
+    position: absolute;
+    top: 386px;
+    left: 103px;
+    width: 4px;
+    height: 8px;
+    background-color: #aaa;
+    transform: translateX(92%)
+}
+
+#fl2::before {
+    content: '';
+    position: absolute;
+    top: 282px;
+    left: 352px;
+    width: 13px;
+    height: 4px;
+    background-color: #aaa;
+    transform: translateX(92%)
+}
+
+#fl3::before {
+    content: '';
+    position: absolute;
+    top: 309px;
+    left: 357px;
+    width: 8px;
+    height: 4px;
+    background-color: #aaa;
+    transform: translateX(92%)
+}
+
+#fl4::before {
+    content: '';
+    position: absolute;
+    top: 325px;
+    left: 293px;
+    width: 4px;
+    height: 8px;
+    background-color: #aaa;
+    transform: translateX(92%)
+}
+
+.fifthElecRow::before  {
+    content: '';
+    position: absolute;
+    top: 355px;
+    left: 293px;
+    width: 4px;
+    height: 8px;
+    background-color: #aaa;
+    transform: translateX(92%)
+}
+
+.subGrid1::before {
+    content: '';
+    position: absolute;
+    top: 373px;
+    left: 217px;
+    width: 12px;
+    height: 4px;
+    background-color: #aaa;
+    transform: translateX(92%) 
+}
+
+.subGrid2::before {
+    content: '';
+    position: absolute;
+    top: 440px;
+    left: 217px;
+    width: 12px;
+    height: 4px;
+    background-color: #aaa;
+    transform: translateX(92%) 
+}
+
+.subGrid3::before {
+    content: '';
+    position: absolute;
+    top: 418px;
+    left: 214px;
+    width: 4px;
+    height: 8px;
+    background-color: #aaa;
+    transform: translateX(92%) 
+}
+
+#sg1::before {
+    content: '';
+    position: absolute;
+    top: 324px;
+    left: 444px;
+    width: 4px;
+    height: 8px;
+    background-color: #aaa;
+    transform: translateX(92%) 
+}
+
+#sg2::before {
+    content: '';
+    position: absolute;
+    top: 385px;
+    left: 444px;
+    width: 4px;
+    height: 8px;
+    background-color: #aaa;
+    transform: translateX(92%) 
+}
+
+#sg3::before {
+    content: '';
+    position: absolute;
+    top: 324px;
+    left: 530px;
+    width: 4px;
+    height: 8px;
+    background-color: #aaa;
+    transform: translateX(92%) 
+}
+
+#sg4::before {
+    content: '';
+    position: absolute;
+    top: 356px;
+    left: 530px;
+    width: 4px;
+    height: 8px;
+    background-color: #aaa;
+    transform: translateX(92%) 
+}
+
+#sg5::before {
+    content: '';
+    position: absolute;
+    top: 343px;
+    left: 503px;
+    width: 12px;
+    height: 4px;
+    background-color: #aaa;
+    transform: translateX(92%) 
+}
+
+#sg6::before {
+    content: '';
+    position: absolute;
+    top: 371px;
+    left: 503px;
+    width: 12px;
+    height: 4px;
+    background-color: #aaa;
+    transform: translateX(92%) 
+}
+
+#sg7::before {
+    content: '';
+    position: absolute;
+    top: 360px;
+    left: 367px;
+    width: 11px;
+    height: 4px;
+    background-color: #aaa;
+    transform: translateX(92%) 
+}
+
+#sg8::before {
+    content: '';
+    position: absolute;
+    top: 403px;
+    left: 641px;
+    width: 10px;
+    height: 4px;
+    background-color: #aaa;
+    transform: translateX(92%) 
+}
+
+#sg9::before {
+    content: '';
+    position: absolute;
+    top: 436px;
+    left: 641px;
+    width: 10px;
+    height: 4px;
+    background-color: #aaa;
+    transform: translateX(92%) 
+}
+
+#sg10::before {
+    content: '';
+    position: absolute;
+    top: 418px;
+    left: 236px;
+    width: 2px;
+    height: 6px;
+    background-color: #aaa;
+    transform: translateX(92%) 
+}
+
+#sg11::before {
+    content: '';
+    position: absolute;
+    top: 418px;
+    left: 362px;
+    width: 2px;
+    height: 6px;
+    background-color: #aaa;
+    transform: translateX(92%) 
 }

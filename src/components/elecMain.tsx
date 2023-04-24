@@ -55,39 +55,90 @@ const ElectricalMain: React.FC = () => {
                 </div>
             </div>
             <div className='thirdElecRow'>
-                <div className='smallElecBox'>A01-A011</div>
-                <div className='smallElecBox'>Temp CVD</div>
+                <div 
+                    className='smallElecBox'
+                    id='third1'>A01-A011
+                </div>
+                <div 
+                    className='smallElecBox'
+                    id='third2'>Temp CVD
+                </div>
                 <div className='t1line'></div>
                 <div className='smallElecBox'>B01-B11</div>
                 <div className='smallElecBox'>Security (0)</div>
                 <div className='smallElecBox'>A21-A211</div>
                 <div className='smallElecBox'>Perm CVD (0)</div>
-                <div className='t1line'></div>
+                <div className='t2line'></div>
                 <div className='smallElecBox'>B021-B0211</div>
                 <div className='smallElecBox'>Security (1)</div>
             </div>
             <div className='forthElecRow'>
-                <div className='mainElecBox'>Sec B1-B9</div>
-                <div className='mainElecBox'>Main Grid P</div>
+                <div 
+                    className='mainElecBox'
+                    id='fl1'>Sec B1-B9
+                </div>
+                <div 
+                    className='mainElecBox'
+                    id='fl2'>Main Grid P
+                </div>
                 <div className='f1line'></div>
-                <div className='mainElecBox'>Sec A1-A9</div>
-                <div className='mainElecBox'>Main Grid M</div>
+                <div 
+                    className='mainElecBox'
+                    id='fl3'>Sec A1-A9
+                </div>
+                <div 
+                    className='mainElecBox'
+                    id='fl4'>Main Grid M
+                </div>
             </div>
             <div className='fifthElecRow'>
                 <div className='subGrid1'>
-                    <div className='smallElecBox'>CSX (89A)</div>
-                    <div className='smallElecBox'>Main Set 1</div>
-                    <div className='smallElecBox'>CSX (1031)</div>
-                    <div className='smallElecBox'>Main Set ATL</div>
-                    <div className='smallElecBox'>RSX (55-99)</div>
-                    <div className='smallElecBox'>Grid V-VX</div>
-                    <div className='smallElecBox'>Aux Pwr (4)</div>
-                    <div className='smallElecBox'>Reset Grids</div>
+                    <div 
+                        className='smallElecBox'
+                        id='sg1'>CSX (89A)
+                    </div>
+                    <div 
+                        className='smallElecBox'
+                        id='sg2'>Main Set 1
+                    </div>
+                    <div 
+                        className='smallElecBox'
+                        id='sg3'>CSX (1031)
+                    </div>
+                    <div 
+                        className='smallElecBox'
+                        id='sg4'>Main Set ATL
+                    </div>
+                    <div 
+                        className='smallElecBox'
+                        id='sg5'>RSX (55-99)
+                    </div>
+                    <div 
+                        className='smallElecDash'
+                        id='sg6'>Grid V-VX
+                    </div>
+                    <div 
+                        className='smallElecBox'
+                        id='sg7'>Aux Pwr (4)
+                    </div>
+                    <div 
+                        className='smallElecDash'
+                        id='sg8'>Reset Grids
+                    </div>
                 </div>
                 <div className='subGrid2'>
-                    <div className='mainElecBox'>Core (Aux)</div>
-                    <div className='smallElecBox'>Security (N)</div>
-                    <div className='smallElecBox'>Not in Use</div>
+                    <div 
+                        className='mainElecBox'
+                        id='sg9'>Core (Aux)
+                    </div>
+                    <div 
+                        className='smallElecBox'
+                        id='sg10'>Security (N)
+                    </div>
+                    <div 
+                        className='smallElecBox'
+                        id='sg11'>Not in Use
+                    </div>
                 </div>
                 <div className='subGrid3'>
                     <div className='smallElecBox'>Aux Grid O/O</div>

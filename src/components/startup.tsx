@@ -1,13 +1,13 @@
 //import reactLogo from './assets/react.svg'
 import '../styles/startup.css'
 import { useAppDispatch, useAppSelector } from '../app/hooks'
-import { open, close } from './modalSlice';
+import { open1, close1 } from './modalSlice';
 import { changeScreen } from './mainSlice';
 
 const Startup: React.FC = () => {
 
   const screen = useAppSelector((state) => state.main.screen)
-  const isOpen = useAppSelector((state) => state.modal.isOpen)
+  const isOpen = useAppSelector((state) => state.modal.isOpen1)
   const dispatch = useAppDispatch()
 
 
@@ -29,7 +29,7 @@ const Startup: React.FC = () => {
             <div className='subGrid'>
                 <div 
                   className='gridCell'
-                  onClick={() => dispatch(open())}>Security Main
+                  onClick={() => dispatch(open1())}>Security Main
                 </div>
                 <div className='gridCell'>Monitor Main</div>
                 <div className='gridCell'>Command Main</div>
