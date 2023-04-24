@@ -9,8 +9,6 @@ const SetGrids: React.FC = () => {
   const isOpen = useAppSelector((state) => state.modal.isOpen)
   const dispatch = useAppDispatch()
 
-
-
   return (
     <div className="gridContainer">
 
@@ -87,10 +85,7 @@ const SetGrids: React.FC = () => {
             <div className='s3colRow'>E5</div>
             <div className='s3colRow'>G6</div>
         </div>
-            
-            
         </section>      
-
     </div>
   )
 }

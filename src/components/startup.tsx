@@ -33,7 +33,7 @@ const Startup: React.FC = () => {
                 </div>
                 <div className='gridCell'>Monitor Main</div>
                 <div className='gridCell'>Command Main</div>
-                <div className='gridCell'>Electrical Main</div>
+                <div className='gridCell' onClick={() => dispatch(changeScreen('electrical'))}>Electrical Main</div>
                 <div className='gridCell'>Hydraulic Main</div>
                 <div className='gridCell'>Master Main</div>
                 <div className='gridCell'>Zoolog Main</div>

@@ -12,6 +12,7 @@ import CommWindow from './components/comms'
 import ViewScreen from './components/viewScreen'
 import CommonInterface from './components/commonInterface'
 import SetGrids from './components/setGrids'
+import ElectricalMain from './components/elecMain'
 
 function App() {
 
@@ -64,6 +65,8 @@ function App() {
               return <CommonInterface />
             case 'grid':
               return <SetGrids />
+            case 'electrical':
+              return <ElectricalMain />
             default:
               return null
           }
