@@ -18,6 +18,10 @@
                 0 4px black, 2px -4px white, 4px -4px black;
   }
   
+  .content {
+    background-color: red;
+  }
+
   .modal-window.open {
     opacity: 1;
   }

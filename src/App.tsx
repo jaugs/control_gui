@@ -13,6 +13,7 @@ import ViewScreen from './components/viewScreen'
 import CommonInterface from './components/commonInterface'
 import SetGrids from './components/setGrids'
 import ElectricalMain from './components/elecMain'
+import { ModalWindow1 } from './components/popUp'
 
 function App() {
 
@@ -46,14 +47,14 @@ function App() {
   };
 
  
-
+// onDrop={handleContainerDrop} onDragOver={handleContainerDragOver}
   return (
 
     <div className="container">
     <button onClick={handleClick}>rgregreg</button>
     <Statusbar />
 
-    <Workspace onDrop={handleContainerDrop} onDragOver={handleContainerDragOver}>
+    <Workspace>
       <div className='mainProgram'>
         {(() => {
           switch(screen) {
@@ -82,6 +83,7 @@ function App() {
         onDragEnd={handleBoxDragEnd}
       />
       
+        <ModalWindow1 title='gsdasdfg' contents={<div>dfdddfd</div>} />
     </Workspace>
       
     <div className='commContainer'>
