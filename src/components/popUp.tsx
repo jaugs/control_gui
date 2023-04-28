@@ -1,4 +1,4 @@
-import '../styles/modalWindow.css';
+import '../styles/popUp.css';
 import { useAppDispatch, useAppSelector } from '../app/hooks'
 import { open1, close1, startDragging1, stopDragging1, setPosition1 } from './modalSlice';
 
@@ -7,7 +7,7 @@ interface ModalWindowProps {
   contents: React.ReactNode;
 }
 
-const ModalWindow1: React.FC<ModalWindowProps> = ({title, contents}) => {
+const Popup: React.FC<ModalWindowProps> = ({title, contents}) => {
 
   const isOpen = useAppSelector((state) => state.modal.isOpen1)
   const coords = useAppSelector((state) => state.modal.coord1)
@@ -27,20 +27,18 @@ const ModalWindow1: React.FC<ModalWindowProps> = ({title, contents}) => {
       }}
       >
       <div 
-        className="modal-window-header"
+        className="popupHeader"
         onDragStart={(event) => dispatch(startDragging1())}
         onDragEnd={() => dispatch(stopDragging1())}>
-          <div className="modal-window-title">{title}</div>
-          <div className="modal-window-buttons">
-            <button className="modal-window-minimize">-</button>
-            <button className="modal-window-close" onClick={() => dispatch(close1())}>X</button>
-          </div>
+         
+            <button className="popupClose" onClick={() => dispatch(close1())}>&times;</button>
+        
       </div>
-      <div className="content">
+      <div className="popupContent">
         {contents}
       </div>
     </div>
   );
 };
 
-export { ModalWindow1 }
+export { Popup }

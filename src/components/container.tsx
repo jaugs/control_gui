@@ -17,7 +17,7 @@ const Workspace: React.FC<WorkspaceProps> = ({children}) => {
 
   const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault();
-    let coords = {x : (event.clientX - 70), y: (event.clientY - 100)}
+    let coords = {x : (event.clientX - 350), y: (event.clientY - 100)}
     dispatch(handleContainerDrop1({coords}))
   }
 

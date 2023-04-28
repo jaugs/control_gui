@@ -13,7 +13,7 @@ import ViewScreen from './components/viewScreen'
 import CommonInterface from './components/commonInterface'
 import SetGrids from './components/setGrids'
 import ElectricalMain from './components/elecMain'
-import { ModalWindow1 } from './components/popUp'
+import { Popup } from './components/popUp'
 
 function App() {
 
@@ -83,7 +83,7 @@ function App() {
         onDragEnd={handleBoxDragEnd}
       />
       
-        <ModalWindow1 title='gsdasdfg' contents={<div>dfdddfd</div>} />
+        <Popup title='gsdasdfg' contents={<div>dfdddfd</div>} />
     </Workspace>
       
     <div className='commContainer'>
