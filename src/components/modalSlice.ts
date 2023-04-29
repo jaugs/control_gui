@@ -4,6 +4,7 @@ import type { RootState } from '../app/store'
 
 // Define a type for the slice state
 interface ModalState {
+  currentPopup: number,
   isOpen1: boolean,
   isOpen2: boolean,
   isOpen3: boolean,
@@ -14,17 +15,18 @@ interface ModalState {
   IsDragging4: boolean,
   coord1: {x: number,
            y: number},
-  coord2: {x: Number,
-           y: Number},
-  coord3: {x: Number,
-           y: Number},
-  coord4: {x: Number,
-           y: Number},
+  coord2: {x: number,
+           y: number},
+  coord3: {x: number,
+           y: number},
+  coord4: {x: number,
+           y: number},
   
 }
 
 // Define the initial state using that type
 const initialState: ModalState = {
+  currentPopup: 0,
   isOpen1: false,
   isOpen2: false,
   isOpen3: false,
@@ -33,12 +35,12 @@ const initialState: ModalState = {
   IsDragging2: false,
   IsDragging3: false,
   IsDragging4: false,
-  coord1: {x: 300, y: 300},
+  coord1: {x: 400, y: 300},
   coord2: {x: 300, y: 300},
   coord3: {x: 300, y: 300},
   coord4: {x: 300, y: 300},
-
 }
+
 
 export const modalSlice = createSlice({
   name: 'modal',
@@ -75,22 +77,53 @@ export const modalSlice = createSlice({
     stopDragging1: (state) => {
       state.IsDragging1 = false
     },
-    setPosition1: (state) => {
-      state.coord1.x = (state.coord1.x + 10),
-      state.coord1.y = (state.coord1.y + 30)
+    startDragging2: (state) => {
+      state.IsDragging2 = true
+    },
+    stopDragging2: (state) => {
+      state.IsDragging2 = false
+    },
+    startDragging3: (state) => {
+      state.IsDragging3 = true
+    },
+    stopDragging3: (state) => {
+      state.IsDragging3 = false
+    },
+    startDragging4: (state) => {
+      state.IsDragging4 = true
+    },
+    stopDragging4: (state) => {
+      state.IsDragging4 = false
     },
     handleContainerDrop1: (state, action: PayloadAction<{coords: {x: number, y: number}}>) => {
         state.coord1 = {x: action.payload.coords.x,
                         y: action.payload.coords.y}
-    }
-   
+    },
+    handleContainerDrop2: (state, action: PayloadAction<{coords: {x: number, y: number}}>) => {
+      state.coord2 = {x: action.payload.coords.x,
+                      y: action.payload.coords.y}
+    },
+    handleContainerDrop3: (state, action: PayloadAction<{coords: {x: number, y: number}}>) => {
+      state.coord3 = {x: action.payload.coords.x,
+                      y: action.payload.coords.y}
+    },
+    handleContainerDrop4: (state, action: PayloadAction<{coords: {x: number, y: number}}>) => {
+      state.coord4 = {x: action.payload.coords.x,
+                      y: action.payload.coords.y}
+    },
+    currentPopup: (state, action: PayloadAction<number>) => {
+      state.currentPopup = action.payload
+    },
+    
   },
 })
 
 
 // Action creators are generated for each case reducer function
 export const { open1, close1, open2, close2, open3, close3, open4, close4, 
-  startDragging1, stopDragging1, setPosition1, handleContainerDrop1 } = modalSlice.actions
+  startDragging1, stopDragging1, startDragging2, stopDragging2, 
+  startDragging3, stopDragging3, startDragging4, stopDragging4, 
+  handleContainerDrop1, handleContainerDrop2, handleContainerDrop3, handleContainerDrop4, currentPopup } = modalSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectModal = (state: RootState) => state.modal

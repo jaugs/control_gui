@@ -22,7 +22,13 @@ function App() {
   
   const count = useAppSelector((state) => state.counter.value)
   const dispatch = useAppDispatch()
-  
+  const open1 = useAppSelector((state) => state.modal.isOpen1)
+  const open2 = useAppSelector((state) => state.modal.isOpen2)
+  const open3 = useAppSelector((state) => state.modal.isOpen3)
+  const open4 = useAppSelector((state) => state.modal.isOpen4)
+
+
+
   const [isDragging, setIsDragging] = useState(false);
   const [position, setPosition] = useState({ x: 300, y: 300 });
 
@@ -74,16 +80,19 @@ function App() {
         })()}
           
       </div>
-      <ModalWindow 
+      {/* <ModalWindow 
         title="my modal2" 
         contents="dd" 
         x={position.x}
         y={position.y}
         onDragStart={handleBoxDragStart}
         onDragEnd={handleBoxDragEnd}
-      />
+      /> */}
+        {open1 ? (<Popup contents={<div></div>} version='1'/>) : null }
+        {open2 ? (<Popup contents={<div></div>} version='2'/>) : null }
+        {open3 ? (<Popup contents={<div></div>} version='3'/>) : null }
+        {open4 ? (<Popup contents={<div></div>} version='4'/>) : null }
       
-        <Popup title='gsdasdfg' contents={<div>dfdddfd</div>} />
     </Workspace>
       
     <div className='commContainer'>
