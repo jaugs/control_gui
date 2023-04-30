@@ -14,6 +14,7 @@ import CommonInterface from './components/commonInterface'
 import SetGrids from './components/setGrids'
 import ElectricalMain from './components/elecMain'
 import { Popup } from './components/popUp'
+import { FindMessage } from './components/messages'
 
 function App() {
 
@@ -51,6 +52,7 @@ function App() {
   const handleContainerDragOver = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault();
   };
+  const popupMessage = useAppSelector((state) => state.modal.getPopupContents)
 
  
 // onDrop={handleContainerDrop} onDragOver={handleContainerDragOver}
@@ -88,7 +90,7 @@ function App() {
         onDragStart={handleBoxDragStart}
         onDragEnd={handleBoxDragEnd}
       /> */}
-        {open1 ? (<Popup contents={<div></div>} version='1'/>) : null }
+       
         {open2 ? (<Popup contents={<div></div>} version='2'/>) : null }
         {open3 ? (<Popup contents={<div></div>} version='3'/>) : null }
         {open4 ? (<Popup contents={<div></div>} version='4'/>) : null }

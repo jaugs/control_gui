@@ -2,12 +2,14 @@ import { configureStore } from '@reduxjs/toolkit'
 import { counterSlice } from '../components/counterSlice'
 import { modalSlice } from '../components/modalSlice'
 import { mainSlice } from '../components/mainSlice'
+import  {popupSlice} from '../components/popupSlice'
 
 const store = configureStore({
   reducer: {
     counter: counterSlice.reducer,
     modal: modalSlice.reducer,
     main: mainSlice.reducer,
+    popup: popupSlice.reducer,
   },
 })
 

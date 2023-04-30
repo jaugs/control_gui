@@ -1,5 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import type { RootState } from '../app/store'
+import { ReactComponentElement } from 'react'
 
 
 // Define a type for the slice state
@@ -21,6 +22,7 @@ interface ModalState {
            y: number},
   coord4: {x: number,
            y: number},
+  getPopupContents: string,
   
 }
 
@@ -39,6 +41,7 @@ const initialState: ModalState = {
   coord2: {x: 300, y: 300},
   coord3: {x: 300, y: 300},
   coord4: {x: 300, y: 300},
+  getPopupContents: '',
 }
 
 
@@ -114,7 +117,9 @@ export const modalSlice = createSlice({
     currentPopup: (state, action: PayloadAction<number>) => {
       state.currentPopup = action.payload
     },
-    
+    getPopupContents: (state, action: PayloadAction<string>) => {
+      state.getPopupContents = action.payload
+    },
   },
 })
 

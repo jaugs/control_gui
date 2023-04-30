@@ -2,13 +2,18 @@ import '../styles/popUp.css';
 import { useAppDispatch, useAppSelector } from '../app/hooks'
 import { close1, close2, close3, close4, startDragging1, stopDragging1, startDragging2, stopDragging2, 
           startDragging3, stopDragging3, startDragging4, stopDragging4, currentPopup} from './modalSlice';
+import { FindMessage } from './messages';
+import { ReactNode } from 'react';
 
 interface ModalWindowProps {
-  contents: React.ReactNode
   version: string
+  contents: ReactNode
 }
 
-const Popup: React.FC<ModalWindowProps> = ({contents, version}) => {
+const Popup: React.FC<ModalWindowProps> = ({version, contents}) => {
+
+
+
 
   const number = useAppSelector((state) => state.modal.currentPopup)
   const isOpen1 = useAppSelector((state) => state.modal.isOpen1)

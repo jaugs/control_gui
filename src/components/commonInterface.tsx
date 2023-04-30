@@ -3,11 +3,14 @@ import { useAppDispatch, useAppSelector } from '../app/hooks'
 //import { open1, close } from './modalSlice';
 import { changeScreen } from './mainSlice';
 import { Popup } from './popUp';
-import { InfoMessage, FindMessage } from './messages'
-import { version } from 'react';
+import { FindMessage, InfoMessage } from './messages'
+import { useState, version } from 'react';
 import { open1, open2, open3, open4, currentPopup } from './modalSlice';
 
 const CommonInterface: React.FC = () => {
+
+
+
 
   const isOpen1 = useAppSelector((state) => state.modal.isOpen1)
   const isOpen2 = useAppSelector((state) => state.modal.isOpen2)
@@ -31,11 +34,14 @@ const CommonInterface: React.FC = () => {
 }
 
 
-  const getPopup = (command: string) => {
-    if (command == 'FIND') {
-      let num = getFreePopup()
-      dispatch(currentPopup(num))
 
+
+
+
+
+  const getPopup = (command: string) => {
+    let num = getFreePopup()
+      dispatch(currentPopup(num))
       if (num == 1) {
         dispatch(open1())
         } else if (num == 2) {
@@ -45,7 +51,7 @@ const CommonInterface: React.FC = () => {
         } else if (num == 4) {
           dispatch(open4())
         }
-
+    if (command == 'FIND') {
     } else return null
   }
 
@@ -90,7 +96,7 @@ const CommonInterface: React.FC = () => {
                 <div className='commonCell'></div>
             </div>
         </section>      
-
+       
     </div>
   )
 }
