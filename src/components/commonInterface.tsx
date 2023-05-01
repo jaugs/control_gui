@@ -1,58 +1,22 @@
 import '../styles/commonInterface.css'
 import { useAppDispatch, useAppSelector } from '../app/hooks'
-//import { open1, close } from './modalSlice';
 import { changeScreen } from './mainSlice';
 import { Popup } from './popUp';
-import { FindMessage, InfoMessage } from './messages'
-import { useState, version } from 'react';
-import { open1, open2, open3, open4, currentPopup } from './modalSlice';
+import Messages from './messages'
+import { changeCoords, changeOpen, changeContent } from './popupSlice';
+
 
 const CommonInterface: React.FC = () => {
 
+  const popUpArr = useAppSelector((state) => state.popup.PopupArr)
 
-
-
-  const isOpen1 = useAppSelector((state) => state.modal.isOpen1)
-  const isOpen2 = useAppSelector((state) => state.modal.isOpen2)
-  const isOpen3 = useAppSelector((state) => state.modal.isOpen3)
-  const isOpen4 = useAppSelector((state) => state.modal.isOpen4)
-  const screen = useAppSelector((state) => state.main.screen)
-  //const isOpen = useAppSelector((state) => state.modal.isOpen)
   const dispatch = useAppDispatch()
 
-  const getFreePopup = () => {
-   
-    if (!isOpen1) {
-        return 1
-    } else if (!isOpen2) {
-        return 2
-    } else if (!isOpen3) {
-        return 3
-    } else if (!isOpen4) {
-        return 4
-    } else return 0
-}
-
-
-
-
-
-
-
-  const getPopup = (command: string) => {
-    let num = getFreePopup()
-      dispatch(currentPopup(num))
-      if (num == 1) {
-        dispatch(open1())
-        } else if (num == 2) {
-          dispatch(open2())
-        } else if (num == 3) {
-          dispatch(open3())
-        } else if (num == 4) {
-          dispatch(open4())
-        }
-    if (command == 'FIND') {
-    } else return null
+  const getPopup = (word: string) => {
+    if (!popUpArr[0].isOpen) {
+      dispatch(changeOpen(0))
+      dispatch(changeContent({contents: word, index: 0}))
+    }
   }
 
   return (
@@ -95,7 +59,13 @@ const CommonInterface: React.FC = () => {
                 <div className='commonCell'>TRIAL</div>
                 <div className='commonCell'></div>
             </div>
-        </section>      
+        </section>
+        
+          {popUpArr.map((item, index) => {
+           return <Popup version={index} key={index} contents={<Messages contents = {item.contents}/>}></Popup>
+          })}
+          
+        
        
     </div>
   )

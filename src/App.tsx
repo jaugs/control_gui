@@ -90,10 +90,10 @@ function App() {
         onDragStart={handleBoxDragStart}
         onDragEnd={handleBoxDragEnd}
       /> */}
-       
+{/*        
         {open2 ? (<Popup contents={<div></div>} version='2'/>) : null }
         {open3 ? (<Popup contents={<div></div>} version='3'/>) : null }
-        {open4 ? (<Popup contents={<div></div>} version='4'/>) : null }
+        {open4 ? (<Popup contents={<div></div>} version='4'/>) : null } */}
       
     </Workspace>
       
