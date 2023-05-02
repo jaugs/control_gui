@@ -13,8 +13,6 @@ import ViewScreen from './components/viewScreen'
 import CommonInterface from './components/commonInterface'
 import SetGrids from './components/setGrids'
 import ElectricalMain from './components/elecMain'
-import { Popup } from './components/popUp'
-import { FindMessage } from './components/messages'
 
 function App() {
 
@@ -23,10 +21,7 @@ function App() {
   
   const count = useAppSelector((state) => state.counter.value)
   const dispatch = useAppDispatch()
-  const open1 = useAppSelector((state) => state.modal.isOpen1)
-  const open2 = useAppSelector((state) => state.modal.isOpen2)
-  const open3 = useAppSelector((state) => state.modal.isOpen3)
-  const open4 = useAppSelector((state) => state.modal.isOpen4)
+
 
 
 

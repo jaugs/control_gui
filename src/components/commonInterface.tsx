@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from '../app/hooks'
 import { changeScreen } from './mainSlice';
 import { Popup } from './popUp';
 import Messages from './messages'
-import { changeCoords, changeOpen, changeContent } from './popupSlice';
+import { changeCoords, changeOpen, changeContent, newPopup } from './popupSlice';
 
 
 const CommonInterface: React.FC = () => {
@@ -13,11 +13,21 @@ const CommonInterface: React.FC = () => {
   const dispatch = useAppDispatch()
 
   const getPopup = (word: string) => {
-    if (!popUpArr[0].isOpen) {
-      dispatch(changeOpen(0))
-      dispatch(changeContent({contents: word, index: 0}))
+    //const testOpen = (element: ) => {element.isOpen === false}
+    let num = popUpArr.findIndex((item) => {return !item.isOpen})
+    console.log(num)
+    if (num === -1) {
+      dispatch(newPopup({isOpen: true, coords: {x:50, y:50}, isDragging: false, contents: word}))
+    } else {
+    dispatch(changeOpen(num))
+    dispatch(changeContent({contents: word, index: num}))
     }
   }
+  //   if (!popUpArr[0].isOpen) {
+  //     dispatch(changeOpen(0))
+  //     dispatch(changeContent({contents: word, index: 0}))
+  //   }
+  // }
 
   return (
     <div className="CommonInterfaceGrid">
@@ -46,7 +56,7 @@ const CommonInterface: React.FC = () => {
                 <div className='commonCell'>GO BACK</div>
             </div>
             <div className='commonSecondGrid'>
-                <div className='commonCell'>INFO</div>
+                <div className='commonCell' onClick={() => getPopup('INFO')}>INFO</div>
                 <div className='commonCell'>SYSTEMS</div>
                 <div className='commonCell'>CONNOTE</div>
                 <div className='commonCell'>MONITOR</div>
@@ -62,8 +72,20 @@ const CommonInterface: React.FC = () => {
         </section>
         
           {popUpArr.map((item, index) => {
-           return <Popup version={index} key={index} contents={<Messages contents = {item.contents}/>}></Popup>
-          })}
+            return (item.isOpen ? 
+              <Popup 
+                version={index} 
+                key={index} 
+                contents={
+                  <Messages 
+                    contents={item.contents}/>} 
+              /> 
+              : null)
+            })}
+        
+
+
+
           
         
        

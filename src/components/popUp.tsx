@@ -13,10 +13,16 @@ const Popup: React.FC<ModalWindowProps> = ({version, contents}) => {
 
   const dispatch = useAppDispatch()
   const popUp = useAppSelector((state) => state.popup.PopupArr[version])
+
+  const dragStart = (event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault
+    
+  }
   
   return (
     <div
-      className= "popUp"
+      className= {popUp.isDragging ? 'draggable' : 'popUp'}
+      id={`popup${version}`}
       draggable
       style={{
         position: 'absolute',
@@ -24,8 +30,8 @@ const Popup: React.FC<ModalWindowProps> = ({version, contents}) => {
         left: popUp.coords.x,
         cursor: 'move',
       }}
-      onDragStart={() => dispatch(changeDragging(version))}
-      onDragEnd={() => dispatch(changeDragging(version))}
+      //onDragStart={() => dispatch(changeDragging(version))}
+      onDragEnd={(event) => dragStart(event)}
       >
         <div className="popupHeader"> 
           <button className="popupClose" onClick={() => dispatch(changeOpen(version))}>&times;</button>
