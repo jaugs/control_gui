@@ -1,21 +1,18 @@
 import '../styles/commonInterface.css'
 import { useAppDispatch, useAppSelector } from '../app/hooks'
 import { changeScreen } from './mainSlice';
-import { Popup } from './popUp';
-import Messages from './messages'
-import { changeCoords, changeOpen, changeContent, newPopup } from './popupSlice';
-
+import { changeOpen, changeContent, newPopup } from './popupSlice';
 
 const CommonInterface: React.FC = () => {
 
   const popUpArr = useAppSelector((state) => state.popup.PopupArr)
-
   const dispatch = useAppDispatch()
 
   const getPopup = (word: string) => {
-    //const testOpen = (element: ) => {element.isOpen === false}
     let num = popUpArr.findIndex((item) => {return !item.isOpen})
-    console.log(num)
+    if (popUpArr.length > 5 && num === -1 ) {
+      return
+    }
     if (num === -1) {
       dispatch(newPopup({isOpen: true, coords: {x:50, y:50}, isDragging: false, contents: word}))
     } else {
@@ -23,11 +20,6 @@ const CommonInterface: React.FC = () => {
     dispatch(changeContent({contents: word, index: num}))
     }
   }
-  //   if (!popUpArr[0].isOpen) {
-  //     dispatch(changeOpen(0))
-  //     dispatch(changeContent({contents: word, index: 0}))
-  //   }
-  // }
 
   return (
     <div className="CommonInterfaceGrid">
@@ -41,54 +33,36 @@ const CommonInterface: React.FC = () => {
         <div className='borderLine1'></div>
         <div className='borderLine2'></div>
         <section className='commonGrid'>
-            <div className='advise'>ADVISE</div>
+            <div className='advise' onClick={() => getPopup('ADVISE')}>ADVISE</div>
             <div className='commonFirstGrid'>
-                <div className='commonCell'>ESTIMTE</div>
-                <div className='commonCell'>ORDER</div>
-                <div className='commonCell'>REVIVE</div>
+                <div className='commonCell' onClick={() => getPopup('ESTIMATE')}>ESTIMTE</div>
+                <div className='commonCell' onClick={() => getPopup('ORDER')}>ORDER</div>
+                <div className='commonCell' onClick={() => getPopup('REVIVE')}>REVIVE</div>
                 <div className='commonCell' onClick={() => getPopup('FIND')}>FIND</div>
-                <div className='commonCell'>PRMTRS</div>
-                <div className='commonCell'>SEARCH</div>
-                <div className='commonCell'>GOAHEAD</div>
-                <div className='commonCell'>REPEAT</div>
-                <div className='commonCell'>REPORT</div>
-                <div className='commonCell'>COLLATE</div>
-                <div className='commonCell'>GO BACK</div>
+                <div className='commonCell' onClick={() => getPopup('PARAMETERS')}>PRMTRS</div>
+                <div className='commonCell' onClick={() => getPopup('SEARCH')}>SEARCH</div>
+                <div className='commonCell' onClick={() => getPopup('GOAHEAD')}>GOAHEAD</div>
+                <div className='commonCell' onClick={() => getPopup('REPEAT')}>REPEAT</div>
+                <div className='commonCell' onClick={() => getPopup('REPORT')}>REPORT</div>
+                <div className='commonCell' onClick={() => getPopup('COLLATE')}>COLLATE</div>
+                <div className='commonCell' onClick={() => getPopup('GOBACK')}>GO BACK</div>
             </div>
             <div className='commonSecondGrid'>
                 <div className='commonCell' onClick={() => getPopup('INFO')}>INFO</div>
-                <div className='commonCell'>SYSTEMS</div>
-                <div className='commonCell'>CONNOTE</div>
-                <div className='commonCell'>MONITOR</div>
-                <div className='commonCell'>TEST</div>
-                <div className='commonCell'>DELAY</div>
-                <div className='commonCell'>OPTIONS</div>
-                <div className='commonCell'>TRACK</div>
-                <div className='commonCell'>DELETE</div>
+                <div className='commonCell' onClick={() => getPopup('SYSTEMS')}>SYSTEMS</div>
+                <div className='commonCell' onClick={() => getPopup('CONNOTE')}>CONNOTE</div>
+                <div className='commonCell' onClick={() => getPopup('MONITOR')}>MONITOR</div>
+                <div className='commonCell' onClick={() => getPopup('TEST')}>TEST</div>
+                <div className='commonCell' onClick={() => getPopup('DELAY')}>DELAY</div>
+                <div className='commonCell' onClick={() => getPopup('OPTIONS')}>OPTIONS</div>
+                <div className='commonCell' onClick={() => getPopup('TRACK')}>TRACK</div>
+                <div className='commonCell' onClick={() => getPopup('DELETE')}>DELETE</div>
                 <div className='commonCell'></div>
-                <div className='commonCell'>TRIAL</div>
+                <div className='commonCell' onClick={() => getPopup('TRIAL')}>TRIAL</div>
                 <div className='commonCell'></div>
             </div>
         </section>
         
-          {popUpArr.map((item, index) => {
-            return (item.isOpen ? 
-              <Popup 
-                version={index} 
-                key={index} 
-                contents={
-                  <Messages 
-                    contents={item.contents}/>} 
-              /> 
-              : null)
-            })}
-        
-
-
-
-          
-        
-       
     </div>
   )
 }

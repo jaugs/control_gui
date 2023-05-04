@@ -16,12 +16,12 @@ const Popup: React.FC<ModalWindowProps> = ({version, contents}) => {
 
   const dragStart = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault
-    
+    dispatch(changeDragging(version))
   }
   
   return (
     <div
-      className= {popUp.isDragging ? 'draggable' : 'popUp'}
+      className= 'popUp'
       id={`popup${version}`}
       draggable
       style={{
@@ -30,7 +30,7 @@ const Popup: React.FC<ModalWindowProps> = ({version, contents}) => {
         left: popUp.coords.x,
         cursor: 'move',
       }}
-      //onDragStart={() => dispatch(changeDragging(version))}
+      onDragStart={() => dispatch(changeDragging(version))}
       onDragEnd={(event) => dragStart(event)}
       >
         <div className="popupHeader"> 

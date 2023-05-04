@@ -63,17 +63,11 @@ export const popupSlice = createSlice({
         return item.contents = action.payload.contents
        })
    },
-    
-    
     newPopup: (state, action: PayloadAction<{isOpen: boolean, coords: {x: number, y: number}, isDragging: boolean, contents: string}>) => {
-    
       state.PopupArr.push(action.payload)
     },
 
-    // Use the PayloadAction type to declare the contents of `action.payload`
-//    incrementByAmount: (state, action: PayloadAction<number>) => {
-//        state.value += action.payload
-//     },
+ 
   },
 })
 

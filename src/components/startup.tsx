@@ -1,16 +1,26 @@
 //import reactLogo from './assets/react.svg'
 import '../styles/startup.css'
 import { useAppDispatch, useAppSelector } from '../app/hooks'
-import { open1, close1 } from './modalSlice';
 import { changeScreen } from './mainSlice';
+import { newPopup, changeOpen, changeContent } from './popupSlice'
 
 const Startup: React.FC = () => {
 
-  const screen = useAppSelector((state) => state.main.screen)
-  const isOpen = useAppSelector((state) => state.modal.isOpen1)
+  const popUpArr = useAppSelector((state) => state.popup.PopupArr)
   const dispatch = useAppDispatch()
 
-
+  const getPopup = (word: string) => {
+    let num = popUpArr.findIndex((item) => {return !item.isOpen})
+    if (popUpArr.length > 5 && num === -1 ) {
+      return
+    }
+    if (num === -1) {
+      dispatch(newPopup({isOpen: true, coords: {x:50, y:50}, isDragging: false, contents: word}))
+    } else {
+    dispatch(changeOpen(num))
+    dispatch(changeContent({contents: word, index: num}))
+    }
+  }
 
   return (
     <div className="startupWindow">
@@ -29,7 +39,7 @@ const Startup: React.FC = () => {
             <div className='subGrid'>
                 <div 
                   className='gridCell'
-                  onClick={() => dispatch(open1())}>Security Main
+                  >Security Main
                 </div>
                 <div className='gridCell'>Monitor Main</div>
                 <div className='gridCell'>Command Main</div>
@@ -40,7 +50,7 @@ const Startup: React.FC = () => {
 
                 <div className='gridCell' onClick={() => dispatch(changeScreen('grid'))}>SetGrids DNL</div>
                 <div className='gridCell' onClick={() => dispatch(changeScreen('view'))}>View<br></br>VBB</div>
-                <div className='gridCell'>Access TNL</div>
+                <div className='gridCell' onClick={() => getPopup('ACCESS')}>Access TNL</div>
                 <div className='gridCell'>Heating Cooling</div>
                 <div className='gridCell'>Door Fold Interface</div>
                 <div className='gridCell'>SAAG-<br></br> Rnd</div>
@@ -48,7 +58,7 @@ const Startup: React.FC = () => {
 
                 <div className='gridCell'>Critical Locks</div>
                 <div className='gridCell'>TeleCom VBB</div>
-                <div className='gridCell'>Reset Revert</div>
+                <div className='gridCell' onClick={() => getPopup('RESET')}>Reset Revert</div>
                 <div className='gridCell'>Emergncy Illumin</div>
                 <div className='gridCell'>GAS/VLD Main II</div>
                 <div className='gridCell' onClick={() => dispatch(changeScreen('common'))}>Common Interface</div>
