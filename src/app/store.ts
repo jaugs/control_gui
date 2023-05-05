@@ -3,6 +3,7 @@ import { counterSlice } from '../components/counterSlice'
 import { modalSlice } from '../components/modalSlice'
 import { mainSlice } from '../components/mainSlice'
 import  {popupSlice} from '../components/popupSlice'
+import {mapSlice} from '../components/mapSlice'
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     modal: modalSlice.reducer,
     main: mainSlice.reducer,
     popup: popupSlice.reducer,
+    map: mapSlice.reducer,
   },
 })
 

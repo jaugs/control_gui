@@ -14,7 +14,7 @@ const Popup: React.FC<ModalWindowProps> = ({version, contents}) => {
   const dispatch = useAppDispatch()
   const popUp = useAppSelector((state) => state.popup.PopupArr[version])
 
-  const dragStart = (event: React.DragEvent<HTMLDivElement>) => {
+  const dragEnd = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault
     dispatch(changeDragging(version))
   }
@@ -31,15 +31,12 @@ const Popup: React.FC<ModalWindowProps> = ({version, contents}) => {
         cursor: 'move',
       }}
       onDragStart={() => dispatch(changeDragging(version))}
-      onDragEnd={(event) => dragStart(event)}
+      onDragEnd={(event) => dragEnd(event)}
       >
         <div className="popupHeader"> 
           <button className="popupClose" onClick={() => dispatch(changeOpen(version))}>&times;</button>
-        
         </div>
-        <div className="popupContent">
         {contents}
-        </div>
     </div>
   );
 };

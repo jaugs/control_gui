@@ -10,13 +10,13 @@ const Messages: React.FC<MessageProps> = ({contents}) => {
   
     switch (contents) {
         case 'INFO':
-            return <div className="messageContainer">
-                        <div className='messageHeader'>Jurassic Park Common User Interface <br></br> Version 1.1b24</div>
-                        <div className="messageContent">
-                            <div className="messageItem">Developed by Integrated Computer Systems, Inc. Cambridge Mass</div>
-                            <div className="messageItem">Project Supervisor: Dennis Nedry</div>
-                            <div className="messageItem">Chief Programmer: Mike Backes</div>
-                            <div className="messageItem">&copy; Jurassic Park Inc. All Rights Reserved</div>
+            return <div className="infoContainer">
+                        <div className='infoHeader'>Jurassic Park Common User Interface <br></br> Version 1.1b24</div>
+                        <div className="infoContent">
+                            <div className="infoItem">Developed by Integrated Computer Systems, Inc. Cambridge Mass</div>
+                            <div className="infoItem">Project Supervisor: Dennis Nedry</div>
+                            <div className="infoItem">Chief Programmer: Mike Backes</div>
+                            <div className="infoItem">&copy; Jurassic Park Inc. All Rights Reserved</div>
                         </div>
                     </div>
         case 'FIND':

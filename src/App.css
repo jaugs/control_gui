@@ -16,7 +16,12 @@
 }
 
 .workspace {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
   background-image: url(./assets/background1.png);
+  gap: 50px;
   max-width: 1280px;
   height: 48rem;
   max-height: 48rem;
@@ -27,6 +32,7 @@
   font-family: standard2;
     background-color: #000099;
     width: 45rem;
+    max-height: 27rem;
     min-height: 27rem;
     padding: 1rem;
     color: #ffffff;
@@ -39,4 +45,8 @@
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+#img-mapper {
+  height: 50rem;
 }

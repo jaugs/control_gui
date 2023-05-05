@@ -12,10 +12,13 @@ import SetGrids from './components/setGrids'
 import ElectricalMain from './components/elecMain'
 import { Popup } from './components/popUp'
 import Messages from './components/messages'
+import MapWindow from './components/map'
 
 function App() {
 
   const screen = useAppSelector(selectScreen)
+  const map = useAppSelector((state) => state.map)
+
   const dispatch = useAppDispatch()
   const popUpArr = useAppSelector((state) => state.popup.PopupArr)
 
@@ -43,6 +46,7 @@ function App() {
           }
         })()}   
       </div>
+      {map.isOpen ? <MapWindow title='title'/> : null}
     </Workspace>
     
     {popUpArr.map((item, index) => {
@@ -56,6 +60,7 @@ function App() {
               /> 
               : null)
             })}
+    
     <div className='commContainer'>
         <CommWindow />
       </div>

@@ -3,6 +3,7 @@ import '../styles/startup.css'
 import { useAppDispatch, useAppSelector } from '../app/hooks'
 import { changeScreen } from './mainSlice';
 import { newPopup, changeOpen, changeContent } from './popupSlice'
+import { toggleMap } from './mapSlice';
 
 const Startup: React.FC = () => {
 
@@ -41,7 +42,7 @@ const Startup: React.FC = () => {
                   className='gridCell'
                   >Security Main
                 </div>
-                <div className='gridCell'>Monitor Main</div>
+                <div className='gridCell' onClick={() => dispatch(toggleMap())}>Monitor Main</div>
                 <div className='gridCell'>Command Main</div>
                 <div className='gridCell' onClick={() => dispatch(changeScreen('electrical'))}>Electrical Main</div>
                 <div className='gridCell'>Hydraulic Main</div>

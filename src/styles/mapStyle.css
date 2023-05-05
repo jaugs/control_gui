@@ -1,5 +1,18 @@
-.popUp {
+.map {
+    height: 50rem;
+  }
+.fence{
     z-index: 1;
+    width: 8.6rem;
+    position: relative;
+}
+
+
+.mapContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: #0055AA;
+    color: #ffff;
     font-size: 18px;
     font-family: standard2;
     box-shadow: -2px -2px #e0dede, -2px 0 #e0dede, 0 -2px #e0dede, 
@@ -9,11 +22,7 @@
                 0 4px black, 2px -4px white, 4px -4px black;
 }
 
-.closePopup {
-    display: none;
-}
-
-.popupHeader {
+.mapHeader {
     background-color: #e0dede;
     color: black;
     height: 10px;
@@ -24,7 +33,14 @@
     border-bottom: 2px solid black;
 }
 
-.popupClose {
+.mapButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.mapClose, .mapMinimize {
     font-size: 16px;
     font-weight: 700;
     display: flex;
@@ -38,48 +54,6 @@
 }
 
 
-.popupClose:active {
+.mapClose:active, .mapMinimize:active {
     border: 1px solid black;
-}
-
-.messageContainer, .infoContainer {
-    min-height: 10rem;
-    background-color: #0055AA;
-    color: #ffff;
-    padding: 5px;
-}
-
-.messageContainer {
-    width: 24rem;
-}
-
-.infoContainer {
-    width: 30rem;
-}
-
-.infoHeader {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 15px;
-    font-size: 20px;
-}
-
-.messageHeader {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding-bottom: 15px;
-    font-size: 20px;
-}
-
-.messageContent {
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 5px;
 }
