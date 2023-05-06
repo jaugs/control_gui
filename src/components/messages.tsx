@@ -222,6 +222,40 @@ const Messages: React.FC<MessageProps> = ({contents}) => {
                             <div className="messageItem">MAKE YOUR SELECTION FROM THE MAIN SCREEN</div>
                         </div>
                     </div>
+        case 'STANDARDPARAMS':
+            return <div className="messageContainer">
+                        <div className="messageContent">
+                            <div className="messageItem">STANDARD PARAMETERS</div>
+                            <div className="messageGrid">
+                                <div className="grid1">
+                                    <div className="messageCell">Park Grids</div>
+                                    <div className="messageCell1">B4-C6</div>
+                                    <div className="messageCell">Zoological Grids</div>
+                                    <div className="messageCell1">BB-07</div>
+                                    <div className="messageCell">Lodge Grids</div>
+                                    <div className="messageCell1">F4-D4</div>
+                                    <div className="messageCell">Main Grids</div>
+                                    <div className="messageCell1">C4-G7</div>
+                                    <div className="messageCell">Utility Grids</div>
+                                    <div className="messageCell1">AH-B5</div>
+                                </div>
+                                <div className="grid2">
+                                    <div className="messageCell">Outer Grids</div>
+                                    <div className="messageCell1">C2-D2</div>
+                                    <div className="messageCell">Pen Grids</div>
+                                    <div className="messageCell1">R4-R4</div>
+                                    <div className="messageCell">Maint Grids</div>
+                                    <div className="messageCell1">E5-L6</div>
+                                    <div className="messageCell">Sensor Grids</div>
+                                    <div className="messageCell1">D5-G4</div>
+                                    <div className="messageCell">Core Grids</div>
+                                    <div className="messageCell1">A1-C1</div>
+                              </div>
+                            </div>
+                            <div className="messageItem">Circuit Integrity Not Tested</div>
+                            <div className="messageItem">Security Grids Remain Automatic</div>
+                        </div>
+                    </div>
             default:
                 return <div>Error: Contents not Found.</div>
         }}

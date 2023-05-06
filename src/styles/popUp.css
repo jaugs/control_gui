@@ -83,3 +83,24 @@
     align-items: flex-start;
     gap: 5px;
 }
+
+.messageGrid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.grid1, .grid2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: end
+}
+
+.messageCell {
+    width: 120px;
+}
+
+.messageCell1 {
+    width: 50px;
+}

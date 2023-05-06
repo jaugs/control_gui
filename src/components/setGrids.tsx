@@ -1,13 +1,25 @@
 import '../styles/setGrids.css'
 import { useAppDispatch, useAppSelector } from '../app/hooks'
-import { open, close } from './modalSlice';
 import { changeScreen } from './mainSlice';
+import { newPopup, changeOpen, changeContent } from './popupSlice';
 
 const SetGrids: React.FC = () => {
 
-  const screen = useAppSelector((state) => state.main.screen)
-  const isOpen = useAppSelector((state) => state.modal.isOpen)
+  const popUpArr = useAppSelector((state) => state.popup.PopupArr)
   const dispatch = useAppDispatch()
+
+  const getPopup = (word: string) => {
+    let num = popUpArr.findIndex((item) => {return !item.isOpen})
+    if (popUpArr.length > 5 && num === -1 ) {
+      return
+    }
+    if (num === -1) {
+      dispatch(newPopup({isOpen: true, coords: {x:50, y:50}, isDragging: false, contents: word}))
+    } else {
+    dispatch(changeOpen(num))
+    dispatch(changeContent({contents: word, index: num}))
+    }
+  }
 
   return (
     <div className="gridContainer">
@@ -16,7 +28,7 @@ const SetGrids: React.FC = () => {
         <section className='DNLGrid'>
         <div className='s1col'>
             <div className='s2col'>CUSTOM PARAMETERS</div>
-            <div className='s2col'>STANDARD PARAMETERS</div>
+            <div className='s2col' onClick={() => getPopup('STANDARDPARAMS')}>STANDARD PARAMETERS</div>
         </div>
         <div className='s2col'>ELECTRICAL SECONDARY (H)</div>
         <div className='s3col'>
@@ -62,7 +74,7 @@ const SetGrids: React.FC = () => {
         </div>
         <div className='s3col'>
             <div className='s3colRowLong'>MAIN GRID LEVEL</div>
-            <div className='s3colRow'>P4</div>
+            <div className='s3colRow'>F4</div>
             <div className='s3colRow'>R8</div>
             <div className='s3colRow'>P4</div>
             <div className='s3colRow'>E5</div>

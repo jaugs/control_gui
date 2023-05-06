@@ -54,7 +54,7 @@ const Startup: React.FC = () => {
                 <div className='gridCell' onClick={() => getPopup('ACCESS')}>Access TNL</div>
                 <div className='gridCell'>Heating Cooling</div>
                 <div className='gridCell'>Door Fold Interface</div>
-                <div className='gridCell'>SAAG-<br></br> Rnd</div>
+                <div className='gridCell' onClick={() => dispatch(changeScreen('saag'))}>SAAG-<br></br> Rnd</div>
                 <div className='gridCell'>Repair Storage</div>
 
                 <div className='gridCell'>Critical Locks</div>

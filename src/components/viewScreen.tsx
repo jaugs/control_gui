@@ -1,12 +1,10 @@
 import '../styles/view.css'
 import { useAppDispatch, useAppSelector } from '../app/hooks'
-import { open, close } from './modalSlice';
 import { changeScreen } from './mainSlice';
 
 const ViewScreen: React.FC = () => {
 
   const screen = useAppSelector((state) => state.main.screen)
-  const isOpen = useAppSelector((state) => state.modal.isOpen)
   const dispatch = useAppDispatch()
 
 

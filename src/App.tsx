@@ -7,6 +7,7 @@ import { changeScreen, selectScreen } from './components/mainSlice'
 import Workspace from './components/container'
 import CommWindow from './components/comms'
 import ViewScreen from './components/viewScreen'
+import Saagrnd from './components/saag'
 import CommonInterface from './components/commonInterface'
 import SetGrids from './components/setGrids'
 import ElectricalMain from './components/elecMain'
@@ -41,6 +42,8 @@ function App() {
               return <SetGrids />
             case 'electrical':
               return <ElectricalMain />
+            case 'saag':
+              return <Saagrnd />
             default:
               return null
           }

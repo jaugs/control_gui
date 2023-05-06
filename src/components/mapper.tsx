@@ -1,5 +1,5 @@
 import React, { useRef, Fragment } from 'react';
-import map from '../assets/nublarresized.png'
+import map from '../assets/nublarv2.png'
 import mapdata from './mapAreas.json'
 
 import ImageMapper from 'react-img-mapper';
@@ -42,7 +42,7 @@ const Mapper = (props:fenceprops) => {
         active={true} 
         stayHighlighted={true} 
         src={URL} map={MAP} 
-        parentWidth={400} 
+        parentWidth={290} 
         lineWidth={5} 
         fillColor='#00000000' 
         responsive={true}
