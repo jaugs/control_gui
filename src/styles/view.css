@@ -120,8 +120,8 @@
     background-color: #aaa;
     top: 50;
     left: 0px;
-    width: 10px;
-    transform: translateX(-100%); 
+    width: 9px;
+    transform: translateX(-99%); 
 }
 
 .smallBoxLeft::before {

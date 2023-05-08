@@ -73,7 +73,7 @@
     content: '......................................................................';
     position: absolute;
     top: 91px;
-    left: 38px;
+    left: 47px;
     width: 20px;
     transform: translateX(90%);
 }
@@ -84,7 +84,7 @@
     position: absolute;
     top: 91px;
     width: 120px;
-    transform: translateX(72%);
+    transform: translateX(73%);
 }
 
 .commonDiv1::before {
@@ -93,7 +93,7 @@
     content: '..............';
     position: absolute;
     top: 51psx;
-    left: 8px;
+    left: 18px;
     width: 120px;
     transform: translateX(20%);
 }
@@ -104,7 +104,7 @@
     content: '..............';
     position: absolute;
     top: 51psx;
-    left: 319px;
+    left: 334px;
     width: 120px;
     transform: translateX(100%);
 }
@@ -115,15 +115,15 @@
     position: absolute;
     top: 45px;
     width: 120px;
-    transform: translateX(94%);
+    transform: translateX(95%);
 }
 
 .CommonInterfaceGrid header::before {
     font-size: 9px;
-    content: '................................................';
+    content: '..................................................';
     position: absolute;
     top: 45px;
-    left: 29px;
+    left:38px;
     width: 120px;
     transform: translateX(94%);
 }

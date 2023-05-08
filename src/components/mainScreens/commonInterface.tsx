@@ -1,7 +1,7 @@
-import '../styles/commonInterface.css'
-import { useAppDispatch, useAppSelector } from '../app/hooks'
-import { changeScreen } from './mainSlice';
-import { changeOpen, changeContent, newPopup } from './popupSlice';
+import '../../styles/commonInterface.css'
+import { useAppDispatch, useAppSelector } from '../../app/hooks'
+import { changeScreen } from '../mainSlice';
+import { changeOpen, changeContent, newPopup } from '../popupSlice';
 
 const CommonInterface: React.FC = () => {
 

@@ -104,3 +104,16 @@
 .messageCell1 {
     width: 50px;
 }
+
+.messageInput {
+    font-family: standard2;
+    font-size: 18px;
+}
+
+.messageInput:focus {
+    outline: none
+}
+
+.messageSubmit {
+    display: none;
+}

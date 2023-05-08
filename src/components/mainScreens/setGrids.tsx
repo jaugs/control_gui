@@ -1,7 +1,7 @@
-import '../styles/setGrids.css'
-import { useAppDispatch, useAppSelector } from '../app/hooks'
-import { changeScreen } from './mainSlice';
-import { newPopup, changeOpen, changeContent } from './popupSlice';
+import '../../styles/setGrids.css'
+import { useAppDispatch, useAppSelector } from '../../app/hooks'
+import { changeScreen } from '../mainSlice';
+import { newPopup, changeOpen, changeContent } from '../popupSlice';
 
 const SetGrids: React.FC = () => {
 

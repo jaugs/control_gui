@@ -1,5 +1,3 @@
-import { useContext } from "react";
-import { PopupContext } from "./popupContext";
 
 
 interface MessageProps {
@@ -8,6 +6,10 @@ interface MessageProps {
 
 const Messages: React.FC<MessageProps> = ({contents}) => {
   
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+    }
+
     switch (contents) {
         case 'INFO':
             return <div className="infoContainer">
@@ -256,7 +258,30 @@ const Messages: React.FC<MessageProps> = ({contents}) => {
                             <div className="messageItem">Security Grids Remain Automatic</div>
                         </div>
                     </div>
-            default:
+        case 'AUTHENTICATE':
+            return <div className="messageContainer">
+                        <div className='messageHeader'>SECURE ADMINISTRATION AUTHENTICATION GATEWAY</div>
+                        <div className="messageContent">
+                            <div className="messageItem">AUTHETICATE CREDENTIALS:</div>
+                            <div className="messageItem">USERNAME:</div>
+                            <form onSubmit={(event) => handleSubmit(event)} name="authForm">
+                            <input type="text" className="messageInput"></input>
+                            <div className="messageItem">PASSWORD</div>
+                            <input type="password" className="messageInput"></input>
+                            <input className="messageSubmit" type="submit"></input>
+                            </form>
+                        </div>
+                    </div>
+        case 'AUTHERROR':
+            return <div className="messageContainer">
+                        <div className='messageHeader'>SECURE ADMINISTRATION AUTHENTICATION GATEWAY</div>
+                        <div className="messageContent">
+                            <div className="messageItem">ERROR: ACCESS DENIED</div>
+                            <div className="messageItem">You Do Not Have Authorization To View The Selected Module</div>
+                            <div className="messageItem">Authenticate Identity or Return To Main Screen (err: 403b)</div>
+                        </div>
+                    </div>
+        default:
                 return <div>Error: Contents not Found.</div>
         }}
 

@@ -38,7 +38,7 @@
     align-items: center;
     justify-content: center;
     border-bottom: 2px dotted #aaa;
-    width: 19.5rem;
+    width: 19.4rem;
     margin-right: 2px;
 }
 
@@ -57,7 +57,7 @@
     justify-content: center;
     border-bottom: 2px dotted #aaa;
     width: 13rem;
-    margin-right: 2px;
+    margin-right: 0px;
 }
 
 .headCard1::before, .headCard2::before {
@@ -72,7 +72,7 @@
 
 .AB0::before {
     font-size: 9px;
-    content: '..........................................................';
+    content: '.........................................................';
     position: absolute;
     top: 100px;
     width: 180px;
