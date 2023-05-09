@@ -57,7 +57,7 @@
     justify-content: center;
     border-bottom: 2px dotted #aaa;
     width: 13rem;
-    margin-right: 0px;
+    margin-right: 1px;
 }
 
 .headCard1::before, .headCard2::before {

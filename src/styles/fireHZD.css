@@ -1,0 +1,80 @@
+.fireContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 5px;
+}
+
+.fireHeader {
+    font-size: 26px;
+    box-sizing: border-box;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #aaa;
+    width: 350px;
+    height: 55px;
+    margin-bottom: 25px;
+}
+
+.fireGrid {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    gap: 20px;
+}
+
+.fireCell {
+        box-sizing: border-box;
+        position: relative;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid #aaa;
+        width: 135px;
+        height: 35px;
+        font-size: 18px;
+}
+
+.fireCell1 {
+    font-size: 22px;
+    box-sizing: border-box;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #aaa;
+    width: 155px;
+    height: 55px;
+
+}
+
+.fireSection1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 590px;
+}
+
+.fireSection2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.fireCell1:hover, .fireCell:hover, .fireHeader:hover {
+    background-color: black;
+    color: white
+}

@@ -14,6 +14,9 @@ import ElectricalMain from './components/mainScreens/elecMain'
 import { Popup } from './components/popUp'
 import Messages from './components/messages'
 import MapWindow from './components/map'
+import GasVLD from './components/mainScreens/gasVLD'
+import FireHZD from './components/mainScreens/fireHZD'
+import Hydraulics from './components/mainScreens/hydraulics'
 
 function App() {
 
@@ -44,6 +47,12 @@ function App() {
               return <ElectricalMain />
             case 'saag':
               return <Saagrnd />
+            case 'gas':
+              return <GasVLD />
+            case 'hazard':
+              return <FireHZD />
+            case 'hydraulics':
+              return <Hydraulics />
             default:
               return null
           }

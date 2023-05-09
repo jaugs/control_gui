@@ -38,14 +38,11 @@ const Startup: React.FC = () => {
                 </div>
             </div>
             <div className='subGrid'>
-                <div 
-                  className='gridCell'
-                  >Security Main
-                </div>
+                <div className='gridCell'>Security Main</div>
                 <div className='gridCell' onClick={() => dispatch(toggleMap())}>Monitor Main</div>
                 <div className='gridCell'>Command Main</div>
                 <div className='gridCell' onClick={() => dispatch(changeScreen('electrical'))}>Electrical Main</div>
-                <div className='gridCell'>Hydraulic Main</div>
+                <div className='gridCell' onClick={() => dispatch(changeScreen('hydraulics'))}>Hydraulic Main</div>
                 <div className='gridCell'>Master Main</div>
                 <div className='gridCell'>Zoolog Main</div>
 
@@ -61,7 +58,7 @@ const Startup: React.FC = () => {
                 <div className='gridCell'>TeleCom VBB</div>
                 <div className='gridCell' onClick={() => getPopup('RESET')}>Reset Revert</div>
                 <div className='gridCell'>Emergncy Illumin</div>
-                <div className='gridCell'>GAS/VLD Main II</div>
+                <div className='gridCell' onClick={() => dispatch(changeScreen('gas'))}>GAS/VLD Main II</div>
                 <div className='gridCell' onClick={() => dispatch(changeScreen('common'))}>Common Interface</div>
                 <div className='gridCell'>Status Main</div>
 
@@ -69,7 +66,7 @@ const Startup: React.FC = () => {
                 <div className='gridCell'>TeleCom RSD</div>
                 <div className='gridCell'>Template Main</div>
                 <div className='gridCell'>FNCC Params</div>
-                <div className='gridCell'>Explosion Fire Hzd</div>
+                <div className='gridCell' onClick={() => dispatch(changeScreen('hazard'))}>Explosion Fire Hzd</div>
                 <div className='gridCell'>Schematic Main</div>
                 <div className='gridCell'>Safety/ Health</div>
             </div>
