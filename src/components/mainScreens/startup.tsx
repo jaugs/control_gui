@@ -49,8 +49,8 @@ const Startup: React.FC = () => {
                 <div className='gridCell' onClick={() => dispatch(changeScreen('grid'))}>SetGrids DNL</div>
                 <div className='gridCell' onClick={() => dispatch(changeScreen('view'))}>View<br></br>VBB</div>
                 <div className='gridCell' onClick={() => getPopup('ACCESS')}>Access TNL</div>
-                <div className='gridCell'>Heating Cooling</div>
-                <div className='gridCell'>Door Fold Interface</div>
+                <div className='gridCell' onClick={() => dispatch(changeScreen('heating'))}>Heating Cooling</div>
+                <div className='gridCell' onClick={() => dispatch(changeScreen('doorfold'))}>Door Fold Interface</div>
                 <div className='gridCell' onClick={() => dispatch(changeScreen('saag'))}>SAAG-<br></br> Rnd</div>
                 <div className='gridCell'>Repair Storage</div>
 

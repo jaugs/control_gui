@@ -1,0 +1,54 @@
+.heatContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.heatHeader {
+    font-size: 22px;
+    box-sizing: border-box;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #aaa;
+    width: 360px;
+    height: 40px;
+    margin-bottom: 15px;
+    padding-top: 3px;
+}
+
+.heatCell1 {
+    box-sizing: border-box;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #aaa;
+    width: 110px;
+    height: 33px;
+    font-size: 18px;
+    padding-top: 3px;
+}
+
+.heatCell {
+    box-sizing: border-box;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #aaa;
+    width: 55px;
+    height: 33px;
+    padding-top: 2px;
+    font-size: 18px;
+}
+
+.heatHeader:hover, .heatCell1:hover, .heatCell:hover, .heatTitle:hover {
+    background-color: black;
+    color: white
+}

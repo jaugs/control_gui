@@ -17,6 +17,8 @@ import MapWindow from './components/map'
 import GasVLD from './components/mainScreens/gasVLD'
 import FireHZD from './components/mainScreens/fireHZD'
 import Hydraulics from './components/mainScreens/hydraulics'
+import Heating from './components/mainScreens/heating'
+import DoorFold from './components/mainScreens/doorFold'
 
 function App() {
 
@@ -53,6 +55,10 @@ function App() {
               return <FireHZD />
             case 'hydraulics':
               return <Hydraulics />
+            case 'heating':
+              return <Heating />
+            case 'doorfold':
+              return <DoorFold />
             default:
               return null
           }

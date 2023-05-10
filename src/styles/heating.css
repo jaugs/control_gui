@@ -1,0 +1,112 @@
+.heatContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.heatHeader {
+    font-size: 22px;
+    box-sizing: border-box;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #aaa;
+    width: 360px;
+    height: 40px;
+    margin-bottom: 15px;
+    padding-top: 3px;
+}
+
+.heatCell1 {
+    box-sizing: border-box;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #aaa;
+    width: 110px;
+    height: 33px;
+    font-size: 18px;
+    padding-top: 3px;
+}
+
+.heatCell {
+    box-sizing: border-box;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #aaa;
+    width: 55px;
+    height: 33px;
+    padding-top: 2px;
+    font-size: 18px;
+}
+
+.heatHeader:hover, .heatCell1:hover, .heatCell:hover, .heatTitle:hover {
+    background-color: black;
+    color: white
+}
+
+.heatGrid2, .heatSection3 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px
+}
+
+.heatSection1, .heatSection2 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 300px;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+   
+}
+
+.heatSection3 {
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+.heatParams {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 45px;
+    margin-bottom: 10px;
+}
+
+.heatTitle {
+    box-sizing: border-box;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #aaa;
+    width: 150px;
+    height: 33px;
+    font-size: 18px;
+}
+
+.heatCell::before {
+    content: '';
+    position: absolute;
+    top: 13px;
+    left: 2px;
+    width: 8px;
+    height: 4px;
+    background-color: #aaa;
+    transform: translateX(-130%);
+}
+
