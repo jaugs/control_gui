@@ -1,6 +1,6 @@
 import '../../styles/view.css'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
-import { changeScreen } from '../mainSlice';
+import { changeScreen } from '../slices/mainSlice';
 
 const ViewScreen: React.FC = () => {
 

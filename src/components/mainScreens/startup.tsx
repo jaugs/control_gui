@@ -1,9 +1,9 @@
 //import reactLogo from './assets/react.svg'
 import '../../styles/startup.css'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
-import { changeScreen } from '../mainSlice';
-import { newPopup, changeOpen, changeContent } from '../popupSlice'
-import { toggleMap } from '../mapSlice';
+import { changeScreen } from '../slices/mainSlice';
+import { newPopup, changeOpen, changeContent } from '../slices/popupSlice'
+import { toggleMap } from '../slices/mapSlice';
 
 const Startup: React.FC = () => {
 

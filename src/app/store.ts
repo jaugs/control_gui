@@ -1,13 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { counterSlice } from '../components/counterSlice'
-import { modalSlice } from '../components/modalSlice'
-import { mainSlice } from '../components/mainSlice'
-import  {popupSlice} from '../components/popupSlice'
-import {mapSlice} from '../components/mapSlice'
+import { modalSlice } from '../components/slices/modalSlice'
+import { mainSlice } from '../components/slices/mainSlice'
+import  {popupSlice} from '../components/slices/popupSlice'
+import {mapSlice} from '../components/slices/mapSlice'
+import {interfaceSlice} from '../components/slices/interfaceSlice'
 
 const store = configureStore({
   reducer: {
-    counter: counterSlice.reducer,
+    interface: interfaceSlice.reducer,
     modal: modalSlice.reducer,
     main: mainSlice.reducer,
     popup: popupSlice.reducer,

@@ -1,7 +1,7 @@
 import { ReactNode, useEffect, useRef, useState } from "react";
 import React from "react";
 import { useAppDispatch, useAppSelector } from '../app/hooks'
-import { changeCoords } from "./popupSlice";
+import { changeCoords } from "./slices/popupSlice";
 
 type WorkspaceProps = {
   children?: ReactNode;

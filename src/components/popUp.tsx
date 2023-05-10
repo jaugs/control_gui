@@ -1,6 +1,6 @@
 import '../styles/popUp.css';
 import { useAppDispatch, useAppSelector } from '../app/hooks'
-import { changeOpen, changeCoords, changeDragging } from './popupSlice';
+import { changeOpen, changeCoords, changeDragging } from './slices/popupSlice';
 import { ReactNode } from 'react';
 
 interface ModalWindowProps {

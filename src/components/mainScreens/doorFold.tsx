@@ -1,7 +1,7 @@
 import '../../styles/doorfold.css'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
-import { changeScreen } from '../mainSlice';
-import { changeOpen, changeContent, newPopup } from '../popupSlice';
+import { changeScreen } from '../slices/mainSlice';
+import { changeOpen, changeContent, newPopup } from '../slices/popupSlice';
 
 const DoorFold: React.FC = () => {
 
@@ -22,10 +22,10 @@ const DoorFold: React.FC = () => {
   } 
 
   return (
-    <div className="heatContainer">
+    <div className="doorContainer">
 
-        <header className='heatHeader'  onClick={() => dispatch(changeScreen('startup'))}> 
-            <div className='heatheaderTitle'>HEATING/COOLING CONTROL MODULE</div>
+        <header className='doorHeader'  onClick={() => dispatch(changeScreen('startup'))}> 
+            <div className='doorheaderTitle'>DOOR FOLD INTERFACE</div>
         </header>
         <div className='heatParams'>
             <div className='heatTitle'>CUSTOM PARAMETERS</div>
@@ -34,43 +34,29 @@ const DoorFold: React.FC = () => {
         <section className='heatGrid'>
             <div className='heatGrid2'>
                 <div className='heatSection1'>
-                    <div className='heatCell1'>LODGE LOWER</div>
+                    <div className='heatCell1'>AUTOMATIC TIMEOUT</div>
+                    <div className='heatCell'>SET</div>
+                    <div className='heatCell'>SHUTDOWN</div>
+                    <div className='heatCell1'>ACCESS CODES</div>
                     <div className='heatCell'>SET</div>
                     <div className='heatCell'>MODE</div>
                     <div className='heatCell'>RESET</div>
-                    <div className='heatCell1'>LODGE UPPER</div>
+                    <div className='heatCell1'>ACCESS PROFILES</div>
                     <div className='heatCell'>SET</div>
-                    <div className='heatCell'>MODE</div>
-                    <div className='heatCell'>RESET</div>
-                    <div className='heatCell1'>VC MAIN</div>
+                    <div className='heatCell'>CREATE</div>
+                    <div className='heatCell'>DELETE</div>
+                    <div className='heatCell1'>BADGE CODES</div>
                     <div className='heatCell'>SET</div>
-                    <div className='heatCell'>MODE</div>
-                    <div className='heatCell'>RESET</div>
-                    <div className='heatCell1'>VC AUX</div>
-                    <div className='heatCell'>SET</div>
-                    <div className='heatCell'>MODE</div>
-                    <div className='heatCell'>RESET</div>
-                    <div className='heatCell1'>LAB MAIN</div>
-                    <div className='heatCell'>SET</div>
-                    <div className='heatCell'>MODE</div>
-                    <div className='heatCell'>RESET</div>
-                    <div className='heatCell1'>CRYO MAIN</div>
-                    <div className='heatCell'>SET</div>
-                    <div className='heatCell'>MODE</div>
-                    <div className='heatCell'>RESET</div>
-                    <div className='heatCell1'>CRYO AUX</div>
-                    <div className='heatCell'>SET</div>
-                    <div className='heatCell'>MODE</div>
-                    <div className='heatCell'>RESET</div>
+                    <div className='heatCell'>CREATE</div>
+                    <div className='heatCell'>DELETE</div>
+                    <div className='heatCell1'>LODGE ACCESS</div>
+                    <div className='heatCell'>ENCODER</div>
+                    <div className='heatCell1'>BIOMETRICS</div>
+                    
                 </div>
                
             </div>
-            <div className='heatSection3'>
-                <div className='heatCell1'>FAN CONTROL</div>
-                <div className='heatCell1'>POWER SAVE</div>
-                <div className='heatCell1'>LOGS</div>
-                <div className='heatCell1'>SHUT DOWN</div>
-            </div>
+          
             
         </section>
     </div>

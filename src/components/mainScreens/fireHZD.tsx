@@ -1,7 +1,7 @@
 import '../../styles/fireHZD.css'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
-import { changeScreen } from '../mainSlice';
-import { changeOpen, changeContent, newPopup } from '../popupSlice';
+import { changeScreen } from '../slices/mainSlice';
+import { changeOpen, changeContent, newPopup } from '../slices/popupSlice';
 
 const FireHZD: React.FC = () => {
 

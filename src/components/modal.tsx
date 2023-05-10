@@ -1,6 +1,6 @@
 import '../styles/modalWindow.css';
 import { useAppDispatch, useAppSelector } from '../app/hooks'
-import { open1, close1 } from './modalSlice';
+import { open1, close1 } from './slices/modalSlice';
 import map from '../assets/nublarresized.png'
 
 interface ModalWindowProps {

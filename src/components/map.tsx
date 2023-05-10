@@ -1,7 +1,7 @@
 import '../styles/mapStyle.css';
 import { useAppDispatch, useAppSelector } from '../app/hooks'
 import map from '../assets/nublarresized.png'
-import { toggleMap } from './mapSlice';
+import { toggleMap } from './slices/mapSlice';
 import fence from '../assets/lodgefenceV2.png'
 import Mapper from './mapper';
 import { useState } from 'react';
