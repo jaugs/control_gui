@@ -1,0 +1,57 @@
+.cuiWindow {
+    position: absolute;
+    width: 800px;
+    min-height: 500px;
+    left: 180px;
+    top: 270px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    box-shadow: -2px -2px #e0dede, -2px 0 #e0dede, 0 -2px #e0dede, 
+                -4px -4px white, -4px 0 white, 0 -4px white, 2px 2px #818181, 
+                0 2px #818181, 2px 0 #818181, 2px -2px #e0dede, -2px 2px #818181, 
+                -4px 2px white, -4px 4px black, 4px 4px black, 4px 0 black, 
+                0 4px black, 2px -4px white, 4px -4px black;
+}
+
+.cuiHeader {
+    height: 50px;
+    background-color: #555755;
+    border-bottom: 1px solid #e0dede;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.cuiSection {
+    border-top: 1px solid black;
+}
+
+.cuiButton {
+    cursor: pointer;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: #A4A4A4;
+    color: white;
+    font-weight: 800;
+    font-size: 26px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    box-shadow: -2px -2px #e0dede, -2px 0 #e0dede, 0 -2px #e0dede, 
+                -4px -4px white, -4px 0 white, 0 -4px white, 2px 2px #818181, 
+                0 2px #818181, 2px 0 #818181, 2px -2px #e0dede, -2px 2px #818181, 
+                -4px 2px white, -4px 4px black, 4px 4px black, 4px 0 black, 
+                0 4px black, 2px -4px white, 4px -4px black;
+}
+
+
+.cuiButton:active {
+    box-shadow: -2px -2px #818181, -2px 0 #818181, 0 -2px #818181, -4px -4px black, 
+    -4px 0 black, 0 -4px black, 2px 2px #e0dede, 0 2px #e0dede, 2px 0 #e0dede,  
+    2px -2px #818181, -2px 2px #e0dede, -4px 2px black, -4px 4px white, 
+    4px 4px white, 4px 0 white, 0 4px white, 2px -4px black, 4px -4px white;
+}

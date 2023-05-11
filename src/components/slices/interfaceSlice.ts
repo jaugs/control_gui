@@ -25,7 +25,7 @@ export const interfaceSlice = createSlice({
     name: 'interface',
     initialState,
     reducers: {
-        toggleMap: (state) => {
+        toggleCui: (state) => {
             state.isOpen = !state.isOpen
          },
 
@@ -34,7 +34,7 @@ export const interfaceSlice = createSlice({
     }
 });
 
-export const { toggleMap,  } = interfaceSlice.actions
+export const { toggleCui,  } = interfaceSlice.actions
 
 export const selectInterface = (state: RootState) => state.interface
 

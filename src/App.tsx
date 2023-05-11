@@ -19,12 +19,13 @@ import FireHZD from './components/mainScreens/fireHZD'
 import Hydraulics from './components/mainScreens/hydraulics'
 import Heating from './components/mainScreens/heating'
 import DoorFold from './components/mainScreens/doorFold'
+import Cui from './components/cui'
 
 function App() {
 
   const screen = useAppSelector(selectScreen)
   const map = useAppSelector((state) => state.map)
-
+  const cuiInterface = useAppSelector((state) => state.interface)
   const dispatch = useAppDispatch()
   const popUpArr = useAppSelector((state) => state.popup.PopupArr)
 
@@ -65,6 +66,7 @@ function App() {
         })()}   
       </div>
       {map.isOpen ? <MapWindow title='title'/> : null}
+      {cuiInterface.isOpen ? <Cui /> : null}
     </Workspace>
     
     {popUpArr.map((item, index) => {
@@ -78,6 +80,7 @@ function App() {
               /> 
               : null)
             })}
+    
     
     <div className='commContainer'>
         <CommWindow />

@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import { changeScreen } from '../slices/mainSlice';
 import { newPopup, changeOpen, changeContent } from '../slices/popupSlice'
 import { toggleMap } from '../slices/mapSlice';
+import { toggleCui } from '../slices/interfaceSlice';
 
 const Startup: React.FC = () => {
 
@@ -43,7 +44,7 @@ const Startup: React.FC = () => {
                 <div className='gridCell'>Command Main</div>
                 <div className='gridCell' onClick={() => dispatch(changeScreen('electrical'))}>Electrical Main</div>
                 <div className='gridCell' onClick={() => dispatch(changeScreen('hydraulics'))}>Hydraulic Main</div>
-                <div className='gridCell'>Master Main</div>
+                <div className='gridCell' onClick={() => dispatch(toggleCui())}>Master Main</div>
                 <div className='gridCell'>Zoolog Main</div>
 
                 <div className='gridCell' onClick={() => dispatch(changeScreen('grid'))}>SetGrids DNL</div>
