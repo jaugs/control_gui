@@ -15,13 +15,21 @@
 }
 
 .cuiHeader {
-    height: 50px;
+    height: 25px;
     background-color: #555755;
     border-bottom: 1px solid #e0dede;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.cuiHeaderRow {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
 }
 
 .cuiSection {
@@ -32,15 +40,15 @@
     cursor: pointer;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     background-color: #A4A4A4;
-    color: white;
+    color: black;
     font-weight: 800;
     font-size: 26px;
     font-weight: 700;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     box-shadow: -2px -2px #e0dede, -2px 0 #e0dede, 0 -2px #e0dede, 
                 -4px -4px white, -4px 0 white, 0 -4px white, 2px 2px #818181, 
                 0 2px #818181, 2px 0 #818181, 2px -2px #e0dede, -2px 2px #818181, 
@@ -54,4 +62,9 @@
     -4px 0 black, 0 -4px black, 2px 2px #e0dede, 0 2px #e0dede, 2px 0 #e0dede,  
     2px -2px #818181, -2px 2px #e0dede, -4px 2px black, -4px 4px white, 
     4px 4px white, 4px 0 white, 0 4px white, 2px -4px black, 4px -4px white;
+}
+
+.masterContainer {
+    font-size: 18px;
+    color: black;
 }

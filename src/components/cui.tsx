@@ -3,12 +3,24 @@ import { useAppDispatch, useAppSelector } from '../app/hooks'
 import { changeScreen } from '../components/slices/mainSlice'
 import { newPopup, changeOpen, changeContent } from '../components/slices/popupSlice'
 import { toggleMap } from '../components/slices/mapSlice';
-import { toggleCui } from './slices/interfaceSlice';
+import { toggleCui, toggleMinimize, changeIntDragging } from './slices/interfaceSlice';
+import MasterMain from './cuiScreens/masterMain';
 
 const Cui: React.FC = () => {
 
   const popUpArr = useAppSelector((state) => state.popup.PopupArr)
   const dispatch = useAppDispatch()
+  const intState = useAppSelector((state) => state.interface)
+
+  const isMinimized = useAppSelector((state) => state.interface.isMinimized)
+  const minimizeCui = () => {
+    dispatch((toggleMinimize()))
+  }
+
+  const dragEnd = (event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault
+    dispatch(changeIntDragging())
+  }
 
   const getPopup = (word: string) => {
     let num = popUpArr.findIndex((item) => {return !item.isOpen})
@@ -24,19 +36,27 @@ const Cui: React.FC = () => {
   }
 
   return (
-    <div className="cuiWindow">
+    <div 
+      className="cuiWindow"
+      draggable
+      style={{position: 'absolute',
+              top: intState.coords.y,
+              left: intState.coords.x,
+              
+      }}
+      onDragStart={() => dispatch(changeIntDragging())}
+      onDragEnd={(event) => dragEnd(event)}>
 
-        <header className='cuiHeader'>
+        <header className={isMinimized ? 'miniHeader' : 'cuiHeader'}>
         <div className='cuiTitle'>COMMON USER INTERFACE</div>
-        <div className='cuiButton'>-</div>
+        <div className='cuiHeaderRow'>
+        <div className='cuiButton' onClick={() => minimizeCui()}>-</div>
         <div className='cuiButton' onClick={() => dispatch(toggleCui())}>&times;</div>
+        </div>
         </header>
 
         <section className='cuiSection'>
-            <div className='cuisubgrid'>
-                <div className='cuiCell' onClick={() => dispatch(toggleMap())}>Monitor Main</div>
-                <div className='cuiCell' onClick={() => dispatch(changeScreen('hydraulics'))}>Hydraulic Main</div>
-            </div>
+           <MasterMain />
         </section>
     </div>
   )
