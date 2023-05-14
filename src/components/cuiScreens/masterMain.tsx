@@ -21,6 +21,14 @@ const MasterMain: React.FC = () => {
     }
   } 
 
+  async function getData() {
+     const data = await fetch('http://localhost:3000/catalog/api/animals')
+     .then((response) => {
+        return response.json()
+     })
+     console.log(data)
+  }
+        
   return (
     <div className="masterContainer">
 
@@ -29,7 +37,7 @@ const MasterMain: React.FC = () => {
         </header>
         
         <section className='masterGrid'>
-        
+            <button className='getButton' onClick={getData}>GET</button>
             
         </section>
     </div>
