@@ -2,11 +2,21 @@ import '../../styles/cuiStyle.css'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import { changeScreen } from '../slices/mainSlice';
 import { changeOpen, changeContent, newPopup } from '../slices/popupSlice';
+import { useEffect, useState } from 'react';
 
 const MasterMain: React.FC = () => {
 
   const popUpArr = useAppSelector((state) => state.popup.PopupArr)
   const dispatch = useAppDispatch()
+
+
+  const [animalData, setanimalData] = useState([] as any[])
+
+  useEffect(() => {
+    fetch("http://localhost:3000/api/animals")
+    .then(res => res.json())
+    .then(data => setanimalData(data))
+  }, [])
 
   const getPopup = (word: string) => {
     let num = popUpArr.findIndex((item) => {return !item.isOpen})
@@ -22,11 +32,8 @@ const MasterMain: React.FC = () => {
   } 
 
   async function getData() {
-     const data = await fetch('http://localhost:3000/catalog/api/animals')
-     .then((response) => {
-        return response.json()
-     })
-     console.log(data)
+  
+     console.log(animalData)
   }
         
   return (
@@ -37,6 +44,14 @@ const MasterMain: React.FC = () => {
         </header>
         
         <section className='masterGrid'>
+           {animalData ? animalData.map((item) => {
+              return <div key={item._id} className='animalContainer'>
+                        <div className='animalItem' >{item.synth_date}</div>
+                        <div className='animalItem' >{item.current_version}</div>
+                      </div>
+           }
+
+           ) : null }
             <button className='getButton' onClick={getData}>GET</button>
             
         </section>
