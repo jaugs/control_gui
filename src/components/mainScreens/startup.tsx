@@ -4,11 +4,12 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import { changeScreen } from '../slices/mainSlice';
 import { newPopup, changeOpen, changeContent } from '../slices/popupSlice'
 import { toggleMap } from '../slices/mapSlice';
-import { toggleCui } from '../slices/interfaceSlice';
+import { changeSection, toggleCui } from '../slices/interfaceSlice';
 
 const Startup: React.FC = () => {
 
   const popUpArr = useAppSelector((state) => state.popup.PopupArr)
+  const cuiState = useAppSelector((state) => state.interface)
   const dispatch = useAppDispatch()
 
   const getPopup = (word: string) => {
@@ -21,6 +22,15 @@ const Startup: React.FC = () => {
     } else {
     dispatch(changeOpen(num))
     dispatch(changeContent({contents: word, index: num}))
+    }
+  }
+
+  const openCUI = (word: string) => {
+    if (cuiState.isOpen) {
+      dispatch(changeSection(word))
+    } else {
+      dispatch(toggleCui())
+      dispatch(changeSection(word))
     }
   }
 
@@ -44,7 +54,7 @@ const Startup: React.FC = () => {
                 <div className='gridCell'>Command Main</div>
                 <div className='gridCell' onClick={() => dispatch(changeScreen('electrical'))}>Electrical Main</div>
                 <div className='gridCell' onClick={() => dispatch(changeScreen('hydraulics'))}>Hydraulic Main</div>
-                <div className='gridCell' onClick={() => dispatch(toggleCui())}>Master Main</div>
+                <div className='gridCell' onClick={() => openCUI('MASTER')}>Master Main</div>
                 <div className='gridCell'>Zoolog Main</div>
 
                 <div className='gridCell' onClick={() => dispatch(changeScreen('grid'))}>SetGrids DNL</div>

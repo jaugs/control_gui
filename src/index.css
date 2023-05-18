@@ -30,3 +30,23 @@ body {
   src: local('Ac4372y'),
   url('./assets/Ac4372y.ttf');
 }
+
+@font-face {
+  font-family: cui1;
+  src: local('CaPropo-Regular'),
+  url('./assets/CaPropo-Regular.ttf');
+}
+
+@font-face {
+  font-family: cui2;
+  src: local('CaFont_Bold'),
+  url('./assets/CaFont_Bold.ttf');
+}
+
+@font-face {
+  font-family: cui3;
+  src: local('CaFont_SemiBold'),
+  url('./assets/CaFont_SemiBold.ttf');
+}
+
+

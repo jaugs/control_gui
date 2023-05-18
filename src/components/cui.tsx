@@ -48,15 +48,24 @@ const Cui: React.FC = () => {
       onDragEnd={(event) => dragEnd(event)}>
 
         <header className={isMinimized ? 'miniHeader' : 'cuiHeader'}>
-        <div className='cuiTitle'>COMMON USER INTERFACE</div>
-        <div className='cuiHeaderRow'>
-        <div className='cuiButton' onClick={() => minimizeCui()}>-</div>
-        <div className='cuiButton' onClick={() => dispatch(toggleCui())}>&times;</div>
+          <div className='cuiTitle'>COMMON USER INTERFACE: {intState.section}</div>
+          <div className='cuiHeaderRow'>
+            <button className='cuiButton' onClick={() => minimizeCui()}>-</button>
+            <button className='cuiButton' onClick={() => dispatch(toggleCui())}>&times;</button>
         </div>
         </header>
 
         <section className='cuiSection'>
-           <MasterMain />
+        {(() => {
+          switch(intState.section) {
+            case 'MASTER':
+              return <MasterMain />
+            case 'view':
+              return <MasterMain />
+            default:
+              return null
+          }
+        })()}   
         </section>
     </div>
   )

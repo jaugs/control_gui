@@ -6,6 +6,7 @@ interface InterfaceState {
     isMinimized: boolean,
     coords: {x: number, y: number},
     isDragging: boolean
+    section: string
     layers: [{
         name: string,
         isActive: boolean,
@@ -17,6 +18,7 @@ const initialState: InterfaceState = {
     isMinimized: false,
     coords: {x: 180, y: 270},
     isDragging: false,
+    section: '',
     layers: [{
         name: 'base',
         isActive: true,
@@ -40,12 +42,14 @@ export const interfaceSlice = createSlice({
          },
          changeIntCoords: (state, action: PayloadAction<{coords: {x: number, y: number}}>) => {
             state.coords = {x: action.payload.coords.x, y: action.payload.coords.y}
-         }
-
+         },
+         changeSection: (state, action: PayloadAction<string>) => {
+            state.section = action.payload
+         },
     }
 });
 
-export const { toggleCui, toggleMinimize, changeIntDragging, changeIntCoords } = interfaceSlice.actions
+export const { toggleCui, toggleMinimize, changeIntDragging, changeIntCoords, changeSection } = interfaceSlice.actions
 
 export const selectInterface = (state: RootState) => state.interface
 
