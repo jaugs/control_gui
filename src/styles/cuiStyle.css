@@ -130,9 +130,12 @@
 
 .cuiLink {
     font-family: cui2;
-    background-color: #A4A4A4;
-    padding: 0;
-    border: 1px solid #818181;
+    background-color: #e0dede;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 5px;
+    padding-left: 2px;
+    border: 2px solid #818181;
     font-weight: 800;
     width: 170px;
     height: 200px;
@@ -140,8 +143,15 @@
     flex-direction: column;
     justify-content: start;
     align-items: start;
-    margin: 0
-    
+    margin: 0;
+    cursor: pointer;
+}
+
+.cuiLink ul {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border: 2px solid #818181;
 }
 
 .listItem {
@@ -150,7 +160,96 @@
     font-family: cui1;
     list-style: none;
     border-top: 1px solid black;
-    width: 100%;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    width: 97%;
     text-align: left;
+    padding-left: 5px;
       
 }
+
+.zoologyGrid {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: start;
+    gap: 15px;
+    min-width: 99%;
+    border-top: 2px solid black;
+    padding: 5px;
+    padding-left: 5px;
+}
+
+.zoologySpecies {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: start;
+    gap: 15px;
+    background-color: #e0dede;
+    border: 2px solid black;
+    padding: 5px;
+    padding-left: 5px;
+    min-height: 400px;
+    width: 98%;
+}
+
+.animalContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-between;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    background-color: #555755;
+    color: white;
+    font-family: cui1;
+    list-style: none;
+    border: 1px solid black;
+    min-width: 420px;
+    text-align: left;
+    padding-left: 5px;
+    gap: 15px;
+}
+
+.animalLink {
+    border: 1px solid #e0dede;
+    background-color: #A4A4A4;
+    color: black;
+    padding-left: 5px;
+}
+
+.animalItemContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.zoologyLinkContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.zoologyLink {
+    font-family: cui2;
+    background-color: #e0dede;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 5px;
+    padding-left: 2px;
+    border: 2px solid black;
+    font-weight: 800;
+    width: 120px;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    margin: 0;
+    cursor: pointer;
+}
+

@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import { changeScreen } from '../slices/mainSlice';
 import { changeOpen, changeContent, newPopup } from '../slices/popupSlice';
 import { useEffect, useState } from 'react';
+import { changeSection } from '../slices/interfaceSlice';
 
 const MasterMain: React.FC = () => {
 
@@ -59,13 +60,18 @@ const MasterMain: React.FC = () => {
         
         <section className='masterGrid'>
            
-          <ul className='cuiLink'>Zoology Main
+          <div 
+            className='cuiLink'
+            onClick={() => dispatch(changeSection('ZOOLOGY'))}>Zoology Main
+          <ul>
             <li className='listItem'>Species</li>
             <li className='listItem'>Animals</li>
             <li className='listItem'>Feeding</li>
             <li className='listItem'>Health</li>
           </ul>
-          <ul className='cuiLink'>Maintenance Main
+          </div>
+          <div className='cuiLink'>Maintenance Main
+          <ul>
             <li className='listItem'>Vehicles</li>
             <li className='listItem'>Rides</li>
             <li className='listItem'>Plants</li>
@@ -73,21 +79,28 @@ const MasterMain: React.FC = () => {
             <li className='listItem'>Plants</li>
             <li className='listItem'>Paddocks</li>
           </ul>
-          <ul className='cuiLink'>Storage Main
+          </div>
+          <div className='cuiLink'>Storage Main
+          <ul>
             <li className='listItem'>Equiptment</li>
             <li className='listItem'>Feed/Livestock</li>
             <li className='listItem'>Lab</li>
           </ul>
-          <ul className='cuiLink'>Health Main
+          </div>
+          <div className='cuiLink'>Health Main
+          <ul>
             <li className='listItem'>Animals</li> 
             <li className='listItem'>Emergency</li> 
           </ul>
-          <ul className='cuiLink'>Resort Main
+          </div>
+          <div className='cuiLink'>Resort Main
+          <ul>
             <li className='listItem'>Bookings</li>
             <li className='listItem'>Cleaning</li> 
             <li className='listItem'>Dining</li> 
             <li className='listItem'>Pool</li> 
           </ul>
+          </div>
           
             
         </section>

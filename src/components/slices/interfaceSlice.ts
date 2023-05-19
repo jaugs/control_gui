@@ -5,8 +5,9 @@ interface InterfaceState {
     isOpen: boolean,
     isMinimized: boolean,
     coords: {x: number, y: number},
-    isDragging: boolean
-    section: string
+    isDragging: boolean,
+    isLoading: boolean,
+    section: string,
     layers: [{
         name: string,
         isActive: boolean,
@@ -18,6 +19,7 @@ const initialState: InterfaceState = {
     isMinimized: false,
     coords: {x: 180, y: 270},
     isDragging: false,
+    isLoading: false,
     section: '',
     layers: [{
         name: 'base',
@@ -34,6 +36,9 @@ export const interfaceSlice = createSlice({
         toggleCui: (state) => {
             state.isOpen = !state.isOpen
          },
+        toggleLoading: (state) => {
+            state.isLoading = !state.isLoading
+         },
          toggleMinimize: (state) => {
             state.isMinimized = !state.isMinimized
          },
@@ -49,7 +54,7 @@ export const interfaceSlice = createSlice({
     }
 });
 
-export const { toggleCui, toggleMinimize, changeIntDragging, changeIntCoords, changeSection } = interfaceSlice.actions
+export const { toggleCui, toggleMinimize, toggleLoading, changeIntDragging, changeIntCoords, changeSection } = interfaceSlice.actions
 
 export const selectInterface = (state: RootState) => state.interface
 

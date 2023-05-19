@@ -5,6 +5,7 @@ import { newPopup, changeOpen, changeContent } from '../components/slices/popupS
 import { toggleMap } from '../components/slices/mapSlice';
 import { toggleCui, toggleMinimize, changeIntDragging } from './slices/interfaceSlice';
 import MasterMain from './cuiScreens/masterMain';
+import ZoologyMain from './cuiScreens/zoologymain';
 
 const Cui: React.FC = () => {
 
@@ -48,7 +49,7 @@ const Cui: React.FC = () => {
       onDragEnd={(event) => dragEnd(event)}>
 
         <header className={isMinimized ? 'miniHeader' : 'cuiHeader'}>
-          <div className='cuiTitle'>COMMON USER INTERFACE: {intState.section}</div>
+          <div className='cuiTitle'>COMMON USER INTERFACE:{intState.section}</div>
           <div className='cuiHeaderRow'>
             <button className='cuiButton' onClick={() => minimizeCui()}>-</button>
             <button className='cuiButton' onClick={() => dispatch(toggleCui())}>&times;</button>
@@ -60,8 +61,8 @@ const Cui: React.FC = () => {
           switch(intState.section) {
             case 'MASTER':
               return <MasterMain />
-            case 'view':
-              return <MasterMain />
+            case 'ZOOLOGY':
+              return <ZoologyMain />
             default:
               return null
           }
