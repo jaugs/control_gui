@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import { changeScreen } from '../slices/mainSlice';
 import { changeOpen, changeContent, newPopup } from '../slices/popupSlice';
 import { useEffect, useState } from 'react';
-import { changeSection } from '../slices/interfaceSlice';
+import { changeID, changeSection } from '../slices/interfaceSlice';
 
 const ZoologyMain: React.FC = () => {
 
@@ -43,6 +43,11 @@ const ZoologyMain: React.FC = () => {
     .then(data => console.log(data))
   } 
  
+  const getAnimalInstance = (id:string) => {
+    dispatch(changeID(id))
+    dispatch(changeSection("ANIMAL LIST"))
+  
+  }
 
   
   return (
@@ -67,7 +72,7 @@ const ZoologyMain: React.FC = () => {
                                 <div className='animalItem'>{item.current_version}</div>
                                 <div className='animalItem'>{item.name}</div>
                             </div>
-                            <div className='animalLink'>Active Animals</div>
+                            <div className='animalLink' onClick={() => getAnimalInstance(item._id)}>Active Animals</div>
                          
                         </div>
             }) : null }

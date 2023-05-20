@@ -6,6 +6,7 @@ import { toggleMap } from '../components/slices/mapSlice';
 import { toggleCui, toggleMinimize, changeIntDragging } from './slices/interfaceSlice';
 import MasterMain from './cuiScreens/masterMain';
 import ZoologyMain from './cuiScreens/zoologymain';
+import AnimalList from './cuiScreens/animalListmain';
 
 const Cui: React.FC = () => {
 
@@ -63,6 +64,8 @@ const Cui: React.FC = () => {
               return <MasterMain />
             case 'ZOOLOGY':
               return <ZoologyMain />
+            case 'ANIMAL LIST':
+              return <AnimalList />
             default:
               return null
           }
