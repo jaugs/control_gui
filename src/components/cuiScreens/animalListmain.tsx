@@ -1,9 +1,9 @@
 import '../../styles/cuiStyle.css'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
-import { changeScreen } from '../slices/mainSlice';
 import { changeOpen, changeContent, newPopup } from '../slices/popupSlice';
 import { useEffect, useState, ChangeEvent, FormEvent, ComponentState } from 'react';
 import { changeSection } from '../slices/interfaceSlice';
+import { useGetAnimalInstanceQuery, useUpdateAnimalMutation  } from '../slices/apiSlice';
 
 
 const AnimalList: React.FC = () => {
@@ -12,39 +12,38 @@ const AnimalList: React.FC = () => {
     const dispatch = useAppDispatch()
     const interfaceData = useAppSelector((state) => state.interface)
 
-    const [animalData, setanimalData] = useState([] as any[])
     const [editForm, setEditForm] = useState(false)
     const [expandField, setExpandField] = useState(false)
     const [activeIndex, setActiveIndex] = useState('')
     const [editIndex, setEditIndex] = useState(0)
-    const [editFields, setEditFields] = useState([] as any[])
+    const [editFields, setEditFields] = useState({
+      animal: '',
+      imprint: '',
+      current_weight: '',
+      current_height: '',
+      death_date: '',
+    })
+    const { data, error, isLoading } = useGetAnimalInstanceQuery(interfaceData.id);
+    const [updatePost, { isLoading: isUpdating }] = useUpdateAnimalMutation()
 
-  useEffect(() => {
-    fetch(`http://localhost:3000/api/animalinstances/species/${interfaceData.id}`)
-    .then(res => res.json())
-    .then(data => setanimalData(data))
-  }, [])
 
-  const getPopup = (word: string) => {
-    let num = popUpArr.findIndex((item) => {return !item.isOpen})
-    if (popUpArr.length > 5 && num === -1 ) {
-      return
-    }
-    if (num === -1) {
-      dispatch(newPopup({isOpen: true, coords: {x:50, y:50}, isDragging: false, contents: word}))
-    } else {
-    dispatch(changeOpen(num))
-    dispatch(changeContent({contents: word, index: num}))
-    }
-  } 
 
   async function getData() {
      console.log(editFields)
+     console.log(data)
   }
 
   const toggleEditForm = (id: number) => {
+    setEditFields({
+      animal: data[id].animal._id,
+      imprint: data[id].imprint,
+      current_weight: data[id].current_weight,
+      current_height: data[id].current_height,
+      death_date: data[id].death_date,
+    })
     setEditForm(true)
     setEditIndex(id)
+    
   }
 
   const toggleExpand = (id: string) => {
@@ -52,20 +51,27 @@ const AnimalList: React.FC = () => {
     setExpandField(!expandField)
   }
 
+
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault()
-    setEditFields({ [event.target.name]: event.target.value } as ComponentState)
+    setEditFields({...editFields, [event.target.name]: event.target.value})
+
+    // setEditFields({state[event.target.name]: event.target.value } as ComponentState)
   }
   
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  async function handleSubmit (event: FormEvent<HTMLFormElement>)  {
     event.preventDefault()
-    const serializedData = JSON.stringify(editFields);
-    const fetchOptions = {
-        method: 'POST',
-        body: serializedData
-    };
-    fetch(`http://localhost:3000/api/animalinstance/${animalData[editIndex]._id}/update`, fetchOptions)
+    const serializedData = editFields;
+    console.log(serializedData)
+    try { 
+      await updatePost({id: activeIndex, ...serializedData}) 
+    }
+    catch {
+      error: console.log(error)
+    }
+    finally {
     setEditForm(false)
+    }
   }
 
   return (
@@ -82,19 +88,17 @@ const AnimalList: React.FC = () => {
         </header>
         
         <section className='animalListGrid'>
-           <div className='animalListTitle'>{animalData[0] ? animalData[0].animal.name : "Animal Not Found"}</div>
+           <div className='animalListTitle'></div>
             {editForm ? 
                 <form className='animalForm' name='animalInstanceForm' method='POST' onSubmit={(event) =>handleSubmit(event)}>
-
-
                     <label>Imprint:</label>
                     <input 
                         type='text' 
                         placeholder='Imprint...' 
                         name='imprint' 
                         required 
-                        value={editFields}
-                        onChange={handleChange} >
+                        value={editFields.imprint || ''}
+                        onChange={(event) => handleChange(event)} >
                     </input>
                     <label>Current Weight (in Kilograms):</label>
                     <input 
@@ -102,8 +106,8 @@ const AnimalList: React.FC = () => {
                         placeholder='Current Weight...' 
                         name='current_weight' 
                         required 
-                        value={animalData[editIndex].current_weight} 
-                        onChange={handleChange} >
+                        value={editFields.current_weight}
+                        onChange={(event) => handleChange(event)} >
                     </input>
                     <label>Current Height (in Meters):</label>
                     <input 
@@ -111,8 +115,8 @@ const AnimalList: React.FC = () => {
                         placeholder='Current Height...' 
                         name='current_height' 
                         required 
-                        value={animalData[editIndex].current_height} 
-                        onChange={handleChange} >
+                        value={editFields.current_height} 
+                        onChange={(event) => handleChange(event)} >
                     </input>
                     <label>Date of Death:</label>
                     <input 
@@ -120,16 +124,18 @@ const AnimalList: React.FC = () => {
                         placeholder='Date of Death...' 
                         name='death_date'  
                         value={undefined}
-                        onChange={handleChange} >
+                        onChange={(event) => handleChange(event)} >
                     </input>
                     <button type='submit'>SUBMIT</button>
                 </form> : null}
-            {animalData ? animalData.map((item, index) => {
+            {data ? data.map((item: any, index: number) => {
                 return <div key={item._id} className='animalListContainer'>
                                 <div className='animalImprintContainer'>
                                     <div className='animalImprintField'>{item.imprint}</div>
                                     <div>
-                                        <button className='animalImprintButton' onClick={() => toggleExpand(item._id)}>{activeIndex === item._id ? (expandField ? 'HIDE' : "EXPAND") : "EXPAND"}</button>
+                                        <button className='animalImprintButton' onClick={() => toggleExpand(item._id)}>
+                                          {activeIndex === item._id ? (expandField ? 'HIDE' : "EXPAND") : "EXPAND"}
+                                        </button>
                                         <button className='animalImprintButton' onClick={() => toggleEditForm(index)}>EDIT</button>
                                     </div>
                                 </div>

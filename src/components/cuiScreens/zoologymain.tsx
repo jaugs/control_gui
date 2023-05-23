@@ -4,20 +4,14 @@ import { changeScreen } from '../slices/mainSlice';
 import { changeOpen, changeContent, newPopup } from '../slices/popupSlice';
 import { useEffect, useState } from 'react';
 import { changeID, changeSection } from '../slices/interfaceSlice';
+import { useGetSpeciesListQuery } from '../slices/apiSlice';
 
 const ZoologyMain: React.FC = () => {
 
   const popUpArr = useAppSelector((state) => state.popup.PopupArr)
   const dispatch = useAppDispatch()
+  const { data, error, isLoading } = useGetSpeciesListQuery('')
 
-
-  const [animalData, setanimalData] = useState([] as any[])
-
-  useEffect(() => {
-    fetch("http://localhost:3000/api/animals")
-    .then(res => res.json())
-    .then(data => setanimalData(data))
-  }, [])
 
   const getPopup = (word: string) => {
     let num = popUpArr.findIndex((item) => {return !item.isOpen})
@@ -33,8 +27,7 @@ const ZoologyMain: React.FC = () => {
   } 
 
   async function getData() {
-  
-     console.log(animalData)
+     console.log(data)
   }
 
   const getSpecies = (id: string) => {
@@ -46,7 +39,6 @@ const ZoologyMain: React.FC = () => {
   const getAnimalInstance = (id:string) => {
     dispatch(changeID(id))
     dispatch(changeSection("ANIMAL LIST"))
-  
   }
 
   
@@ -66,16 +58,16 @@ const ZoologyMain: React.FC = () => {
         <section className='zoologyGrid'>
            
           <div className='zoologySpecies'>Species:
-            {animalData ? animalData.map((item) => {
+            {error ? ( <>Error: {error}</>) : isLoading ? (<>Loading...</>) : data ? (
+              data.map((item: any) => {
                 return <div key={item._id} className='animalContainer'>
                             <div className='animalItemContainer' onClick={() => getSpecies(item._id)}>
                                 <div className='animalItem'>{item.current_version}</div>
                                 <div className='animalItem'>{item.name}</div>
                             </div>
                             <div className='animalLink' onClick={() => getAnimalInstance(item._id)}>Active Animals</div>
-                         
                         </div>
-            }) : null }
+            }))  : null }
           </div>
           <div className='zoologyLinkContainer'>
             <div onClick={() => dispatch(changeSection("HEALTH"))} className='zoologyLink'>Health</div>

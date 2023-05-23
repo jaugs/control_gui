@@ -1,18 +1,22 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
 import { modalSlice } from '../components/slices/modalSlice'
 import { mainSlice } from '../components/slices/mainSlice'
 import  {popupSlice} from '../components/slices/popupSlice'
 import {mapSlice} from '../components/slices/mapSlice'
 import {interfaceSlice} from '../components/slices/interfaceSlice'
+import { controlApi } from '../components/slices/apiSlice'
 
 const store = configureStore({
   reducer: {
+    [controlApi.reducerPath]: controlApi.reducer,
     interface: interfaceSlice.reducer,
     modal: modalSlice.reducer,
     main: mainSlice.reducer,
     popup: popupSlice.reducer,
     map: mapSlice.reducer,
   },
+  middleware: (getDefaultMiddleware) => 
+    getDefaultMiddleware().concat(controlApi.middleware),
 })
 
 export default store
