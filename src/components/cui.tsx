@@ -7,6 +7,8 @@ import { toggleCui, toggleMinimize, changeIntDragging } from './slices/interface
 import MasterMain from './cuiScreens/masterMain';
 import ZoologyMain from './cuiScreens/zoologymain';
 import AnimalList from './cuiScreens/animalListmain';
+import MaintenanceMain from './cuiScreens/maintenanceMain';
+import VehiclesMain from './cuiScreens/vehiclesMain';
 
 const Cui: React.FC = () => {
 
@@ -66,8 +68,12 @@ const Cui: React.FC = () => {
               return <ZoologyMain />
             case 'ANIMAL LIST':
               return <AnimalList />
+            case 'MAINTENANCE':
+              return <MaintenanceMain />
+            case 'VEHICLES':
+              return <VehiclesMain />
             default:
-              return null
+              return <MasterMain />
           }
         })()}   
         </section>

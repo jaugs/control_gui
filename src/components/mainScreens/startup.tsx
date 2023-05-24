@@ -55,7 +55,7 @@ const Startup: React.FC = () => {
                 <div className='gridCell' onClick={() => dispatch(changeScreen('electrical'))}>Electrical Main</div>
                 <div className='gridCell' onClick={() => dispatch(changeScreen('hydraulics'))}>Hydraulic Main</div>
                 <div className='gridCell' onClick={() => openCUI('MASTER')}>Master Main</div>
-                <div className='gridCell'>Zoolog Main</div>
+                <div className='gridCell' onClick={() => openCUI('ZOOLOGY')}>Zoolog Main</div>
 
                 <div className='gridCell' onClick={() => dispatch(changeScreen('grid'))}>SetGrids DNL</div>
                 <div className='gridCell' onClick={() => dispatch(changeScreen('view'))}>View<br></br>VBB</div>

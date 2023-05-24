@@ -9,6 +9,7 @@ interface InterfaceState {
     isLoading: boolean,
     section: string,
     id: string,
+    isEditing: boolean,
     layers: [{
         name: string,
         isActive: boolean,
@@ -23,6 +24,7 @@ const initialState: InterfaceState = {
     isLoading: false,
     section: '',
     id: '',
+    isEditing: false,
     layers: [{
         name: 'base',
         isActive: true,
@@ -56,10 +58,13 @@ export const interfaceSlice = createSlice({
          changeID: (state, action: PayloadAction<string>) => {
             state.id = action.payload
          },
+         toggleIsEditing: (state) => {
+            state.isEditing = !state.isEditing
+         },
     }
 });
 
-export const { toggleCui, toggleMinimize, toggleLoading, changeIntDragging, changeIntCoords, changeSection, changeID } = interfaceSlice.actions
+export const { toggleCui, toggleMinimize, toggleLoading, toggleIsEditing, changeIntDragging, changeIntCoords, changeSection, changeID } = interfaceSlice.actions
 
 export const selectInterface = (state: RootState) => state.interface
 

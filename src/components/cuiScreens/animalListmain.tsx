@@ -2,7 +2,7 @@ import '../../styles/cuiStyle.css'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import { changeOpen, changeContent, newPopup } from '../slices/popupSlice';
 import { useEffect, useState, ChangeEvent, FormEvent, ComponentState } from 'react';
-import { changeSection } from '../slices/interfaceSlice';
+import { changeSection, toggleIsEditing } from '../slices/interfaceSlice';
 import { useGetAnimalInstanceQuery, useUpdateAnimalMutation  } from '../slices/apiSlice';
 
 
@@ -12,7 +12,6 @@ const AnimalList: React.FC = () => {
     const dispatch = useAppDispatch()
     const interfaceData = useAppSelector((state) => state.interface)
 
-    const [editForm, setEditForm] = useState(false)
     const [expandField, setExpandField] = useState(false)
     const [activeIndex, setActiveIndex] = useState('')
     const [editIndex, setEditIndex] = useState(0)
@@ -41,7 +40,7 @@ const AnimalList: React.FC = () => {
       current_height: data[id].current_height,
       death_date: data[id].death_date,
     })
-    setEditForm(true)
+    dispatch(toggleIsEditing());
     setEditIndex(id)
     
   }
@@ -70,7 +69,7 @@ const AnimalList: React.FC = () => {
       error: console.log(error)
     }
     finally {
-    setEditForm(false)
+      dispatch(toggleIsEditing());    
     }
   }
 
@@ -89,7 +88,7 @@ const AnimalList: React.FC = () => {
         
         <section className='animalListGrid'>
            <div className='animalListTitle'></div>
-            {editForm ? 
+            {interfaceData.isEditing ? 
                 <form className='animalForm' name='animalInstanceForm' method='POST' onSubmit={(event) =>handleSubmit(event)}>
                     <label>Imprint:</label>
                     <input 
