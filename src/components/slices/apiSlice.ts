@@ -18,7 +18,7 @@ export const controlApi = createApi({
     }),
     getAnimalInstanceList: builder.query({
       query: () => `animalinstances/`,
-  }),
+    }),
     addAnimal: builder.mutation({
       query: (body) => ({
         url: `animals`,
@@ -36,9 +36,16 @@ export const controlApi = createApi({
     getVehicleList: builder.query<any,void>({
       query: () => `garage`,
     }),
+    updateVehicle: builder.mutation({
+      query: ({id, ...patch}) => ({
+        url: `garage/${id}/update`,
+        method: 'POST',
+        body: patch,
+      })
+    })
   }),
 })
 
 // Export hooks for usage in function components, which are
 // auto-generated based on the defined endpoints
-export const { useGetAnimalBySpeciesQuery, useGetAnimalInstanceQuery, useGetAnimalInstanceListQuery, useGetSpeciesListQuery, useAddAnimalMutation, useUpdateAnimalMutation, useGetVehicleListQuery } = controlApi
+export const { useGetAnimalBySpeciesQuery, useGetAnimalInstanceQuery, useGetAnimalInstanceListQuery, useGetSpeciesListQuery, useAddAnimalMutation, useUpdateAnimalMutation, useUpdateVehicleMutation, useGetVehicleListQuery } = controlApi
