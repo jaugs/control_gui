@@ -1,0 +1,105 @@
+.vehicleContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px 0 10px;
+    color: black;
+    background-color: #e0dede;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    min-width: 95%;
+}
+
+.vehicleButton {
+    font-weight: 700;
+    border: 1px solid black;
+    background-color: #e0dede;
+    color: black;
+    height: 30px;
+    margin-left: 5px;
+    min-width: 80px;
+}
+
+.vehicleButton:active {
+    background-color: #555755;
+    color: white;
+}
+
+.vehicleHeader {
+    background-color: #555755;
+    display: flex;
+    flex-direction: row;
+    color: white;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px 0 10px;
+    min-width: 100%
+}
+
+.vehicleListField {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+}
+
+.vehiclelistItem {
+    width: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 20px;
+}
+
+.vehiclelistItem div{
+    width: 100px;
+}
+
+.vehicleForm {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    border: 1px solid black;
+    width: 95%;
+    padding: 0 10px 0 10px;
+}
+
+.radioLabel {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px
+}
+
+.radioLabel input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;  
+    padding: 2px;
+    background-clip:content-box;
+    border: 2px solid black;
+    border-radius: 0;
+    margin: 0;
+    margin-left: 10px;
+  
+}
+
+.radioLabel input:checked {
+    background-color: #555755;
+}

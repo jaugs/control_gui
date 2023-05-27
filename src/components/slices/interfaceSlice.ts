@@ -7,6 +7,7 @@ interface InterfaceState {
     coords: {x: number, y: number},
     isDragging: boolean,
     isLoading: boolean,
+    active_object_index: any,
     section: string,
     id: string,
     isEditing: boolean,
@@ -22,6 +23,7 @@ const initialState: InterfaceState = {
     coords: {x: 180, y: 270},
     isDragging: false,
     isLoading: false,
+    active_object_index: {},
     section: '',
     id: '',
     isEditing: false,
@@ -58,13 +60,19 @@ export const interfaceSlice = createSlice({
          changeID: (state, action: PayloadAction<string>) => {
             state.id = action.payload
          },
+         closeActiveObjectIndex: (state, action: PayloadAction<string>) => {
+            state.active_object_index = {...state.active_object_index, [action.payload]: false}
+         },
+         openActiveObjectIndex: (state, action: PayloadAction<string>) => {
+            state.active_object_index = {...state.active_object_index, [action.payload]: true}
+         },
          toggleIsEditing: (state) => {
             state.isEditing = !state.isEditing
          },
     }
 });
 
-export const { toggleCui, toggleMinimize, toggleLoading, toggleIsEditing, changeIntDragging, changeIntCoords, changeSection, changeID } = interfaceSlice.actions
+export const { toggleCui, toggleMinimize, toggleLoading, toggleIsEditing, changeIntDragging, changeIntCoords, changeSection, changeID, closeActiveObjectIndex, openActiveObjectIndex } = interfaceSlice.actions
 
 export const selectInterface = (state: RootState) => state.interface
 
