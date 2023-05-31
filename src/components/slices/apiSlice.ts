@@ -42,10 +42,17 @@ export const controlApi = createApi({
         method: 'POST',
         body: patch,
       })
-    })
+    }),
+    addVehicle: builder.mutation({
+      query: ({...data}) => ({
+        url: `garage/addVehicle`,
+        method: 'POST',
+        body: data,
+      })
+    }),
   }),
 })
 
 // Export hooks for usage in function components, which are
 // auto-generated based on the defined endpoints
-export const { useGetAnimalBySpeciesQuery, useGetAnimalInstanceQuery, useGetAnimalInstanceListQuery, useGetSpeciesListQuery, useAddAnimalMutation, useUpdateAnimalMutation, useUpdateVehicleMutation, useGetVehicleListQuery } = controlApi
+export const { useGetAnimalBySpeciesQuery, useGetAnimalInstanceQuery, useGetAnimalInstanceListQuery, useGetSpeciesListQuery, useAddAnimalMutation, useUpdateAnimalMutation, useUpdateVehicleMutation, useAddVehicleMutation, useGetVehicleListQuery } = controlApi

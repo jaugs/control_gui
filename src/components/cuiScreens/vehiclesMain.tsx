@@ -2,10 +2,11 @@ import '../../styles/vehiclesMain.css'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import { changeOpen, changeContent, newPopup } from '../slices/popupSlice';
 import { useEffect, useState, ChangeEvent, FormEvent, ComponentState } from 'react';
-import { changeSection, toggleIsEditing, closeActiveObjectIndex, openActiveObjectIndex, selectInterface } from '../slices/interfaceSlice';
+import { changeSection, toggleAddForm, closeActiveObjectIndex, openActiveObjectIndex, selectInterface } from '../slices/interfaceSlice';
 import { useGetVehicleListQuery, useUpdateVehicleMutation  } from '../slices/apiSlice';
 import VehicleAccordion from './vehicleAccordion';
 import VehicleForm from './changeVehicleForm';
+import NewVehicleForm from './newVehicleForm';
 
 
 const VehiclesMain: React.FC = () => {
@@ -36,22 +37,23 @@ const VehiclesMain: React.FC = () => {
 
         <header className='masterHeader'> 
           <button className='cuiHeaderButton'>FIND</button>
-          <button className='cuiHeaderButton' onClick={() => addVehicle()}>ORDER</button>
+          <button className='cuiHeaderButton' onClick={() => dispatch(toggleAddForm())}>ORDER</button>
           <button className='cuiHeaderButton'>MONITOR</button>
           <button className='cuiHeaderButton'>DELETE</button>
           <button className='cuiHeaderButton'>REPORT</button>
-          <button className='cuiHeaderButton'>OPTIONS</button>
+          <button className='cuiHeaderButton' onClick={() => addVehicle()}>OPTIONS</button>
           <button className='cuiHeaderButton' onClick={() => dispatch(changeSection('MAINTENANCE'))}>GO BACK</button>
         </header>
         
         <section className='vehicleGrid'>
-           
+        {interfaceData.addFormOpen?  <NewVehicleForm /> : null}
+       
        
 
         {isLoading ? <div>Loading...</div> : error ? <div>Error: 102</div> : data ? data.map((item: any, index: number) => {
          return <div key={item._id}>
           <VehicleAccordion title={item.make} subTitle={item.badge} content={item} />
-          <VehicleForm id={item._id} newForm={false} />
+          <VehicleForm id={item._id} />
          </div>
         }) : null }
 
@@ -62,49 +64,3 @@ const VehiclesMain: React.FC = () => {
 }
 
 export default VehiclesMain
-
-            // {isLoading ? <div>Loading...</div> : error ? <div>Error: 102</div> : data ? data.map((item: any, index: number) => {
-            //     return <div key={item._id} className='vehicleContainer'>
-            //                     <div className='vehicleHeader'>
-            //                         <div className='vehicleField'>{item.make}</div>
-            //                         <div className='vehicleField'>{item.badge}</div>
-            //                         <div>
-            //                             <button className='animalImprintButton' onClick={() => toggleExpand(item._id)}>
-            //                               {interfaceData.active_object_index.item_id ? "EXPAND" : "HIDE"}
-            //                             </button>
-            //                             <button className='animalImprintButton' onClick={() => toggleEditForm(index)}>EDIT</button>
-            //                         </div>
-            //                     </div>
-            //                     {interfaceData.active_object_index ? <div>weadifoasdjfasdiofjasdofasdfoasd</div> : <>ddf</>}
-
-            //                     <div className={interfaceData.active_object_index.item_id ? "vehicleListField" : "animalListFieldHidden"}>
-            //                         <div className='vehiclelistItem'>
-            //                             <div>STATUS: </div>
-            //                             {item.useStatus ? <div>IN USE</div> : <div>IN GARAGE</div>}
-            //                         </div>
-            //                         <div className='vehiclelistItem'>
-            //                             <div>ACTIVE: </div>
-            //                             {item.maintenanceStatus ? <div> FUNCTIONAL</div> : <div> IN MAINTENANCE</div>}
-            //                         </div>
-            //                         <div className='vehiclelistItem'>
-            //                             <div>MILAGE: </div>
-            //                             <div> {item.milage}</div>
-            //                         </div>
-            //                         <div className='vehiclelistItem'>
-            //                             <div>NEXT SERVICE:</div>
-            //                             <div>{item.next_service_formatted}</div>
-            //                         </div>
-            //                         <div className='vehiclelistItem'>
-            //                             <div>SERVICE HISTORY:</div>
-            //                             {item.service_history.map((item:any, NewIndexex:number) => {
-            //                                 return <div className='serviceHistoryContainer' key={NewIndexex}>
-            //                                             <div>{item.service_type}</div>
-            //                                             <div>{data[index].service_date_formatted[NewIndexex]}</div>
-            //                                             <div>{item.service_notes}</div>
-            //                                         </div>
-            //                             })}
-            //                         </div>
-            //                     </div>
-            //             </div>
-            // }) : <div>No Vehicles Found</div> }
-            

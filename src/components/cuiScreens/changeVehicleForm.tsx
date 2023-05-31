@@ -2,11 +2,11 @@ import '../../styles/vehiclesMain.css'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import { changeOpen, changeContent, newPopup } from '../slices/popupSlice';
 import { useEffect, useState, ChangeEvent, FormEvent, ComponentState } from 'react';
-import { changeSection, toggleIsEditing } from '../slices/interfaceSlice';
+import { changeSection, toggleAddForm } from '../slices/interfaceSlice';
 import { useGetVehicleListQuery, useUpdateVehicleMutation  } from '../slices/apiSlice';
 
 
-const VehicleForm = ({id, newForm} : {id: number, newForm: boolean}) => {
+const VehicleForm = ({id} : {id: number}) => {
 
   const formatDate = (userDate:any) => {
     userDate = new Date(userDate);
@@ -37,16 +37,6 @@ const VehicleForm = ({id, newForm} : {id: number, newForm: boolean}) => {
     milage: vehicle.vehicle.milage,
     service_history: vehicle.vehicle.service_history,
     next_service: formatDate(vehicle.vehicle.next_service_formatted),
-  });
-
-  const [newVehicle, setNewVehicle] = useState({
-    make: '',
-    badge: '',
-    useStatus: false,
-    maintenanceStatus: false,
-    milage: '',
-    service_history: '',
-    next_service: '',
   });
 
   const [newServiceWork, setNewServiceWork] = useState({
@@ -87,21 +77,13 @@ const handleRadioChange = (event: ChangeEvent<HTMLInputElement>) => {
 
 const handleServiceWorkChange = (event: ChangeEvent<HTMLInputElement>) => {
   event.preventDefault()
-  if (newForm) {
-    setNewVehicle({...newVehicle, [event.target.name]: event.target.value})
-  } else {
   setNewServiceWork({...newServiceWork, [event.target.name]: event.target.value})
-  }
 }
 
 const handleSubmitWork = (event: React.MouseEvent<HTMLButtonElement>) => {
   event.preventDefault()
   setEditFields({...editFields, service_history: [...editFields.service_history, newServiceWork]});  
   setAddServiceWorkToggle(false);
-}
-
-async function handleNewVehicleSubmit (event: FormEvent<HTMLFormElement>) {
-
 }
 
 async function handleSubmit (event: FormEvent<HTMLFormElement>)  {
@@ -121,130 +103,9 @@ async function handleSubmit (event: FormEvent<HTMLFormElement>)  {
   }
 }
 
-if (newForm) {
-  return <div className='newVehicleForm'>
-    <form name='addVehicle' method='POST' onSubmit={(event) => handleNewVehicleSubmit(event)}>
-      <label>VEHICLE MAKE:</label>
-        <input
-          className='radioInput' 
-          type='radio'
-          name='makeRadio'
-          value="Jeep"
-          onChange={(event) => handleChange(event)}>JEEP
-        </input>
-        <input
-          className='radioInput' 
-          type='radio'
-          name='makeRadio'
-          value="Land Cruiser"
-          onChange={(event) => handleChange(event)}>LAND CRUISER
-        </input>
-        <input
-          className='radioInput' 
-          type='radio'
-          name='makeRadio'
-          value="Utility"
-          onChange={(event) => handleChange(event)}>UTILITY TRUCK
-        </input>
 
-      <label>VEHICLE BADGE:</label>
-        <input
-          type='text'
-          name='badge'
-          value={newVehicle.badge}
-          onChange={(event) => handleChange(event)}>
-        </input>
-
-      <label className='radioLabel'>USE STATUS:
-        <label>IN USE</label>
-          <input 
-            className='radioInput' 
-            name='useStatus' 
-            type='radio' 
-            value='true' 
-            defaultChecked={editFields.useStatus} 
-            onChange={(event) => handleRadioChange(event)}>
-          </input>
-        <label>IN GARAGE</label>
-          <input 
-            className='radioInput' 
-            name='useStatus' 
-            type='radio' 
-            value='false' 
-            defaultChecked={!editFields.useStatus} 
-            onChange={(event) => handleRadioChange(event)}>
-          </input>
-      </label>
-
-      <label className='radioLabel'>OPERATIONAL STATUS:
-        <label>FUNCTIONAL</label>
-          <input 
-            className='radioInput' 
-            name='operationStatus' 
-            type='radio' 
-            value='true' 
-            defaultChecked={editFields.maintenanceStatus} 
-            onChange={(event) => handleRadioChange(event)}>
-          </input>
-        <label>IN MAINTENANCE</label>
-          <input 
-            className='radioInput' 
-            name='operationStatus' 
-            type='radio' 
-            value='false' 
-            defaultChecked={!editFields.maintenanceStatus} 
-            onChange={(event) => handleRadioChange(event)}>
-          </input>
-      </label>
-
-      <label>MILAGE:</label>
-      <input 
-          type='number' 
-          placeholder = '0'
-          name='milage'  
-          value={editFields.milage} 
-          onChange={(event) => handleChange(event)}>
-      </input>
-
-      <label>NEXT SERVICE:</label>
-      <input 
-          type='date' 
-          name='next_service'  
-          value={editFields.next_service} 
-          onChange={(event) => handleChange(event)}>
-      </input>
-
-      <label>ADD SERVICE WORK:</label>
-        <input
-          type='text'
-          placeholder='Service Type...'
-          name='service_type'
-          value={newServiceWork.service_type}
-          onChange={(event) => handleServiceWorkChange(event)}>
-        </input>
-
-        <input
-          type='date'
-          placeholder='Service Date...'
-          name='service_date'
-          value={newServiceWork.service_date}
-          onChange={(event) => handleServiceWorkChange(event)}>
-        </input>
-
-        <input
-          type='text'
-          placeholder='Service Notes...'
-          name='service_notes'
-          value={newServiceWork.service_notes}
-          onChange={(event) => handleServiceWorkChange(event)}>
-        </input>
-
-      <button type='submit'>SUBMIT</button>
-    </form>
-  </div>
-} 
-else {
-return <div className='VehicleForm'>
+return (
+  <div className='VehicleForm'>
  
   <button className='vehicleButton' onClick={openForm}>{isEditing ? "STOP EDITING" : "EDIT"}</button>
   {isEditing ? 
@@ -311,7 +172,7 @@ return <div className='VehicleForm'>
         <button type='submit'>SUBMIT</button>
     </form> : null }
     </div>
-}
+)
 }
 
 export default VehicleForm
