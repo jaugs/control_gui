@@ -5,6 +5,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const controlApi = createApi({
   reducerPath: 'controlApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/api/' }),
+  tagTypes: ['Garage'],
   endpoints: (builder) => ({
 
     getAnimalBySpecies: builder.query({
@@ -35,6 +36,7 @@ export const controlApi = createApi({
     }),
     getVehicleList: builder.query<any,void>({
       query: () => `garage`,
+      providesTags: ['Garage'],
     }),
     updateVehicle: builder.mutation({
       query: ({id, ...patch}) => ({
@@ -48,7 +50,8 @@ export const controlApi = createApi({
         url: `garage/addVehicle`,
         method: 'POST',
         body: data,
-      })
+      }),
+      invalidatesTags: ['Garage']
     }),
   }),
 })

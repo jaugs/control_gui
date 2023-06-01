@@ -5,9 +5,19 @@ import { useEffect, useState, ChangeEvent, FormEvent, ComponentState } from 'rea
 import { changeSection, toggleAddForm } from '../slices/interfaceSlice';
 import { useAddVehicleMutation, useGetVehicleListQuery, useUpdateVehicleMutation  } from '../slices/apiSlice';
 
+interface FormProps {
+  getBadges(make: string): string;
+}
 
-const NewVehicleForm = () => {
+const NewVehicleForm: React.FC<FormProps> = (props) => {
 
+  const [isSubmmited, setIsSubmitted] = useState(false)
+  useEffect(() => {
+    if (isSubmmited) {
+    postData()
+    }
+  }, [isSubmmited])
+  
     const formatDate = (userDate:any) => {
         userDate = new Date(userDate);
         let y = userDate.getFullYear().toString();
@@ -25,6 +35,7 @@ const NewVehicleForm = () => {
 
     const [newVehicle, setNewVehicle] = useState({
         make: '',
+        badge: '',
         useStatus: false,
         maintenanceStatus: false,
         milage: '',
@@ -54,9 +65,14 @@ const NewVehicleForm = () => {
         }
     }
 
-    async function handleNewVehicleSubmit (event: FormEvent<HTMLFormElement>) {
-        event.preventDefault();
-        console.log(newVehicle)
+    function getBadge () {
+      let number = props.getBadges(newVehicle.make)
+      console.log(number)
+      setNewVehicle((prevState) => ({...prevState, badge: number}))
+      console.log(newVehicle)
+    }
+
+    async function postData () {
         try { 
             await addVehicle({...newVehicle}).then(res => {console.log(res)})
             }
@@ -64,17 +80,22 @@ const NewVehicleForm = () => {
                 error: console.log(Error)
             }
             finally {
+                setIsSubmitted(false)
                 dispatch(toggleAddForm())
             }
     }
 
-async function getbadges () {
-    fetch('http://localhost:3000/api/garage/badge').then( res => {console.log(res.json())})
-}
+    const handleNewVehicleSubmit = (event: FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      getBadge()
+      setIsSubmitted(true)
+     // vehicle.refetch()
+    }
+
+
 
   return (
   <div className='newVehicleForm'>
-    <button onClick={getbadges}>dddd</button>
     <form name='addVehicle' method='POST' onSubmit={(event) => handleNewVehicleSubmit(event)}>
       <label>VEHICLE MAKE:
         <label>JEEP</label>
