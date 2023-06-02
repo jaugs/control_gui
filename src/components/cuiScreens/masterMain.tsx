@@ -13,12 +13,6 @@ const MasterMain: React.FC = () => {
 
   const [animalData, setanimalData] = useState([] as any[])
 
-  // useEffect(() => {
-  //   fetch("http://localhost:3000/api/animals")
-  //   .then(res => res.json())
-  //   .then(data => setanimalData(data))
-  // }, [])
-
   const getPopup = (word: string) => {
     let num = popUpArr.findIndex((item) => {return !item.isOpen})
     if (popUpArr.length > 5 && num === -1 ) {
@@ -36,14 +30,7 @@ const MasterMain: React.FC = () => {
   
      console.log(animalData)
   }
-        
-//   {animalData ? animalData.map((item) => {
-//     return <div key={item._id} className='animalContainer'>
-//               <div className='animalItem' >{item.synth_date}</div>
-//               <div className='animalItem' >{item.current_version}</div>
-//             </div>
-//  }) : null }
-
+      
   
   return (
     <div className="masterContainer">
@@ -85,7 +72,7 @@ const MasterMain: React.FC = () => {
           <div className='cuiLink'>Storage Main
           <ul>
             <li className='listItem'>Equiptment</li>
-            <li className='listItem'>Feed/Livestock</li>
+            <li className='listItem'>Feed/Stock</li>
             <li className='listItem'>Lab</li>
           </ul>
           </div>

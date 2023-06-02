@@ -105,9 +105,9 @@ async function handleSubmit (event: FormEvent<HTMLFormElement>)  {
 
 
 return (
-  <div className='VehicleForm'>
+  <div>
  
-  <button className='vehicleButton' onClick={openForm}>{isEditing ? "STOP EDITING" : "EDIT"}</button>
+  <button className='cuiDropDownLink' onClick={openForm}>{isEditing ? "STOP EDITING" : "EDIT"}</button>
   {isEditing ? 
     <form className='vehicleForm' name='vehicleForm' method='POST' onSubmit={(event) =>handleSubmit(event)}>
         <label className='radioLabel'>USE STATUS:

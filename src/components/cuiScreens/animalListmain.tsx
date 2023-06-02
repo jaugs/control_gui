@@ -127,15 +127,16 @@ const AnimalList: React.FC = () => {
                     </input>
                     <button type='submit'>SUBMIT</button>
                 </form> : null}
+            <div className='cuiDropDownContainer'>
             {data ? data.map((item: any, index: number) => {
-                return <div key={item._id} className='animalListContainer'>
-                                <div className='animalImprintContainer'>
+                return <div key={item._id} className='cuiDropDownListContainer'>
+                                <div className='cuiDropDownListContainer'>
                                     <div className='animalImprintField'>{item.imprint}</div>
                                     <div>
-                                        <button className='animalImprintButton' onClick={() => toggleExpand(item._id)}>
+                                        <button className='cuiDropDownLink' onClick={() => toggleExpand(item._id)}>
                                           {activeIndex === item._id ? (expandField ? 'HIDE' : "EXPAND") : "EXPAND"}
                                         </button>
-                                        <button className='animalImprintButton' onClick={() => toggleEditForm(index)}>EDIT</button>
+                                        <button className='cuiDropDownLink' onClick={() => toggleEditForm(index)}>EDIT</button>
                                     </div>
                                 </div>
                                 <div className={activeIndex === item._id ? (expandField ? 'animalListField' : "animalListFieldHidden") : "animalListFieldHidden"}>
@@ -162,6 +163,7 @@ const AnimalList: React.FC = () => {
                                 </div>
                         </div>
             }) : null }
+            </div>
             
        
         </section>

@@ -96,13 +96,14 @@ const VehiclesMain: React.FC = () => {
         {interfaceData.addFormOpen?  <NewVehicleForm getBadges={getBadges}/> : null}
        
        
-
+        <div className='cuiDropDownContainer'>
         {isLoading ? <div>Loading...</div> : error ? <div>Error: 102</div> : data ? data.map((item: any, index: number) => {
-         return <div key={item._id}>
+         return <div key={item._id} className='cuiDropDownListContainer'>
           <VehicleAccordion title={item.make} subTitle={item.badge} content={item} />
-          <VehicleForm id={item._id} />
+          
          </div>
         }) : null }
+        </div>
 
         </section>
         

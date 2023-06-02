@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import VehicleForm from './changeVehicleForm';
 
 interface AccordionProps {
     title: String,
@@ -15,14 +16,14 @@ const getData = () => {
     console.log(content)
 }
   return (
-    <div className="accordion-item">
-        <button onClick={getData}>dfdf</button>
-      <div className="accordion-title">
-        <div>{title}</div>
-        <div>{subTitle}</div>
-        <button onClick={() => setIsActive(!isActive)}>{isActive ? 'HIDE' : 'EXPAND'}</button>
+    <div className="cuiDropDownAccordian">
+      <div className='cuiDropDownTitle'>{subTitle}</div>
+      <div className='cuiDropDownTitle'>{title}</div>
+      <div className='cuiDropDownButtonRow'>
+      <button className='cuiDropDownLink' onClick={() => setIsActive(!isActive)}>{isActive ? 'HIDE' : 'EXPAND'}</button>
+      <VehicleForm id={content._id} />
       </div>
-      {isActive && <div className="accordion-content">
+      {isActive && <div className="cuiDropDownContent">
             <div>
                 <p>USE STATUS:</p>
                 <p>{content.useStatus ? "IN USE" : "NOT IN USE"}</p>

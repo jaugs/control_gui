@@ -57,22 +57,42 @@ const ZoologyMain: React.FC = () => {
         
         <section className='zoologyGrid'>
            
-          <div className='zoologySpecies'>Species:
+          <div className='cuiDropDownContainer'>Species:
             {error ? ( <>Error: {error}</>) : isLoading ? (<>Loading...</>) : data ? (
               data.map((item: any) => {
-                return <div key={item._id} className='animalContainer'>
-                            <div className='animalItemContainer' onClick={() => getSpecies(item._id)}>
-                                <div className='animalItem'>{item.current_version}</div>
-                                <div className='animalItem'>{item.name}</div>
+                return <div key={item._id} className='cuiDropDownListContainer'>
+                            <div className='cuiDropDownTitleContainer' onClick={() => getSpecies(item._id)}>
+                                <div className='cuiDropDownTitle'>{item.current_version}</div>
+                                <div className='cuiDropDownTitle'>{item.name}</div>
                             </div>
-                            <div className='animalLink' onClick={() => getAnimalInstance(item._id)}>Active Animals</div>
+                            <button className='cuiDropDownLink' onClick={() => getAnimalInstance(item._id)}>Active Animals</button>
                         </div>
             }))  : null }
           </div>
           <div className='zoologyLinkContainer'>
-            <div onClick={() => dispatch(changeSection("HEALTH"))} className='zoologyLink'>Health</div>
-            <div className='zoologyLink'>Feeding</div>
-            <div className='zoologyLink'>All Animals</div>
+            <div 
+              onClick={() => dispatch(changeSection("HEALTH"))} 
+              className='cuiLink'>Health
+              <ul>
+                <li className='listItem'>Records</li>
+                <li className='listItem'>Safety</li>
+                <li className='listItem'>Research</li>
+              </ul>
+            </div>
+            <div className='cuiLink'>Feeding
+              <ul>
+                <li className='listItem'>Schedules</li>
+                <li className='listItem'>Inventory</li>
+                <li className='listItem'>Deliveries</li>
+              </ul>
+            </div>
+            <div className='cuiLink'>All Animals
+              <ul>
+                <li className='listItem'>Count</li>
+                <li className='listItem'>Paddocks</li>
+                <li className='listItem'>Hatchery</li>
+              </ul>  
+            </div>
           </div>
             
         </section>
