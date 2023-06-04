@@ -9,6 +9,7 @@ import ZoologyMain from './cuiScreens/zoologymain';
 import AnimalList from './cuiScreens/animalListmain';
 import MaintenanceMain from './cuiScreens/maintenanceMain';
 import VehiclesMain from './cuiScreens/vehiclesMain';
+import StorageMain from './cuiScreens/storage/storageMain';
 
 const Cui: React.FC = () => {
 
@@ -72,6 +73,8 @@ const Cui: React.FC = () => {
               return <MaintenanceMain />
             case 'VEHICLES':
               return <VehiclesMain />
+            case 'STORAGE':
+              return <StorageMain />
             default:
               return <MasterMain />
           }
