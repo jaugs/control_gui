@@ -1,9 +1,8 @@
-import '../../styles/vehiclesMain.css'
-import { useAppDispatch, useAppSelector } from '../../app/hooks'
-import { changeOpen, changeContent, newPopup } from '../slices/popupSlice';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks'
+import { changeOpen, changeContent, newPopup } from '../../slices/popupSlice';
 import { useEffect, useState, ChangeEvent, FormEvent, ComponentState } from 'react';
-import { changeSection, toggleAddForm } from '../slices/interfaceSlice';
-import { useAddVehicleMutation } from '../slices/apiSlice';
+import { changeSection, toggleAddForm } from '../../slices/interfaceSlice';
+import { useAddVehicleMutation } from '../../slices/apiSlice';
 
 interface FormProps {
   getBadges(make: string): string;
@@ -19,16 +18,6 @@ const NewVehicleForm: React.FC<FormProps> = (props) => {
     }
   }, [isSubmmited])
   
-  const formatDate = (userDate:any) => {
-      userDate = new Date(userDate);
-      let y = userDate.getFullYear().toString();
-      let m = userDate.getMonth() + 1;
-      m= (('0' + m.toString()).slice(-2))
-      let d =(('0' + userDate.getDate().toString()).slice(-2));
-      let result = `${y}-${m}-${d}`
-      return result
-  }
-  
   const popUpArr = useAppSelector((state) => state.popup.PopupArr)
   const dispatch = useAppDispatch()
   const interfaceData = useAppSelector((state) => state.interface)
@@ -40,7 +29,6 @@ const NewVehicleForm: React.FC<FormProps> = (props) => {
       useStatus: false,
       maintenanceStatus: false,
       milage: '',
-      service_history: [{service_type: '', service_date: '', service_notes: ''},],
       next_service: '',
   });
 
@@ -56,11 +44,11 @@ const NewVehicleForm: React.FC<FormProps> = (props) => {
   const handleRadioChange = (event: ChangeEvent<HTMLInputElement>) => {
       let bool = event.target.value
       if (bool === 'true') {
-          setNewVehicle({...newVehicle, maintenanceStatus: true})
+          setNewVehicle({...newVehicle, [event.target.name]: true})
           return
       }
       else if (bool === 'false') {
-          setNewVehicle({...newVehicle, maintenanceStatus: false})
+          setNewVehicle({...newVehicle, [event.target.name]: false})
           return
       }
   }
@@ -92,7 +80,7 @@ const NewVehicleForm: React.FC<FormProps> = (props) => {
   return (
   <div className='newVehicleForm'>
     <form className='vehicleForm' name='addVehicle' method='POST' onSubmit={(event) => handleNewVehicleSubmit(event)}>
-      <div className='cuiFormTitle'>ADD NEW VEHICLE</div>
+      <label className='cuiFormTitle'>ADD NEW VEHICLE</label>
       <div className='cuiFormSection' id='vehicleMakeForm'>
         <label className='cuiLabel'>VEHICLE MAKE:</label>
         <div className='cuiFormSubSection'>

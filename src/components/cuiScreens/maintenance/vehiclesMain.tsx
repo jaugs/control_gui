@@ -1,8 +1,8 @@
-import '../../styles/vehiclesMain.css'
-import { useAppDispatch, useAppSelector } from '../../app/hooks'
-import { changeOpen, changeContent, newPopup } from '../slices/popupSlice';
-import { changeSection, toggleAddForm, closeActiveObjectIndex, openActiveObjectIndex, selectInterface } from '../slices/interfaceSlice';
-import { useGetVehicleListQuery, useUpdateVehicleMutation  } from '../slices/apiSlice';
+import '../../../styles/vehiclesMain.css'
+import { useAppDispatch, useAppSelector } from '../../../app/hooks'
+import { changeOpen, changeContent, newPopup } from '../../slices/popupSlice';
+import { changeSection, toggleAddForm, closeActiveObjectIndex, openActiveObjectIndex, selectInterface } from '../../slices/interfaceSlice';
+import { useGetVehicleListQuery, useUpdateVehicleMutation  } from '../../slices/apiSlice';
 import VehicleAccordion from './vehicleAccordion';
 import NewVehicleForm from './newVehicleForm';
 

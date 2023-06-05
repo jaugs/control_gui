@@ -1,22 +1,12 @@
-import '../../styles/vehiclesMain.css'
-import { useAppDispatch, useAppSelector } from '../../app/hooks'
-import { changeOpen, changeContent, newPopup } from '../slices/popupSlice';
+import '../../../styles/vehiclesMain.css'
+import { useAppDispatch, useAppSelector } from '../../../app/hooks'
+import { changeOpen, changeContent, newPopup } from '../../slices/popupSlice';
 import { useEffect, useState, ChangeEvent, FormEvent, ComponentState } from 'react';
-import { useGetVehicleListQuery, useUpdateVehicleMutation  } from '../slices/apiSlice';
-
+import { useGetVehicleListQuery, useUpdateVehicleMutation  } from '../../slices/apiSlice';
+import { formatDate } from '../getDate';
 
 const VehicleForm = ({id} : {id: number}) => {
 
-  const formatDate = (userDate:any) => {
-    userDate = new Date(userDate);
-    let y = userDate.getFullYear().toString();
-    let m = userDate.getMonth() + 1;
-    m= (('0' + m.toString()).slice(-2))
-    let d =(('0' + userDate.getDate().toString()).slice(-2));
-    let result = `${y}-${m}-${d}`
-    return result
-  }
-  
   const popUpArr = useAppSelector((state) => state.popup.PopupArr)
   const dispatch = useAppDispatch()
   const interfaceData = useAppSelector((state) => state.interface)
@@ -57,11 +47,11 @@ const VehicleForm = ({id} : {id: number}) => {
   const handleRadioChange = (event: ChangeEvent<HTMLInputElement>) => {
     let bool = event.target.value
     if (bool === 'true') {
-      setEditFields({...editFields, maintenanceStatus: true})
+      setEditFields({...editFields, [event.target.name]: true})
       return
     }
     else if (bool === 'false') {
-      setEditFields({...editFields, maintenanceStatus: false})
+      setEditFields({...editFields, [event.target.name]: false})
       return
     }
   }

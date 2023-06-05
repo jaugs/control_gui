@@ -251,6 +251,10 @@
     min-width: 90px;
 }
 
+.cuiDropDownButton:active {
+    background-color: #818181;
+}
+
 .cuiDropDownButtonContainer {
     grid-column-start: 1;
     grid-column-end: 3;
@@ -413,7 +417,7 @@
     align-items: start;
     gap: 25px;
     min-width: 97%;
-    height: 490px;
+    max-height: 490px;
     border-top: 2px solid black;
     padding: 5px;
     padding-top: 10px;

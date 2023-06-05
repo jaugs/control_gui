@@ -5,7 +5,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const controlApi = createApi({
   reducerPath: 'controlApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/api/' }),
-  tagTypes: ['Garage'],
+  tagTypes: ['Garage', 'Rides'],
   endpoints: (builder) => ({
 
     getAnimalBySpecies: builder.query({
@@ -53,10 +53,29 @@ export const controlApi = createApi({
       }),
       invalidatesTags: ['Garage']
     }),
+    getRideList: builder.query<any,void>({
+      query: () => 'rides',
+      providesTags: ['Rides'],
+    }),
+    updateRides: builder.mutation({
+      query: ({id, ...patch}) => ({
+        url: `rides/${id}/update`,
+        method: 'POST',
+        body: patch,
+      }),
+    }),
+    addRides: builder.mutation({
+      query: ({...data}) => ({
+        url: `rides/addRide`,
+        method: 'POST',
+        body: data,
+      }),
+      invalidatesTags: ['Rides']
+    }),
   }),
 })
 
 // Export hooks for usage in function components, which are
 // auto-generated based on the defined endpoints
 export const { useGetAnimalBySpeciesQuery, useGetAnimalInstanceQuery, useGetAnimalInstanceListQuery, useGetSpeciesListQuery, 
-              useAddAnimalMutation, useUpdateAnimalMutation, useUpdateVehicleMutation, useAddVehicleMutation, useGetVehicleListQuery } = controlApi
+              useAddAnimalMutation, useUpdateAnimalMutation, useUpdateVehicleMutation, useAddVehicleMutation, useGetVehicleListQuery, useGetRideListQuery, useUpdateRidesMutation, useAddRidesMutation } = controlApi
