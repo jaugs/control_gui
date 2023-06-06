@@ -68,8 +68,7 @@ const NewRideForm = () => {
   <div className='newVehicleForm'>
     <form className='vehicleForm' name='vehicleForm' method='POST' onSubmit={(event) =>handleSubmit(event)}>
       <div className="cuiFormSection">
-      <div className='cuiFormSubSection'>
-        <label>NAME:
+        <label>NAME:</label>
             <input
               required
               type='text'
@@ -78,8 +77,17 @@ const NewRideForm = () => {
               value={newRide.name}
               onChange={(event) => handleChange(event)}>
             </input>
-          </label>
       </div>
+      <div className="cuiFormSection">
+        <label className='cuiLabel'>OPENING DATE:</label>
+        <input 
+            type='date' 
+            name='opening_date'  
+            value={newRide.opening_date} 
+            onChange={(event) => handleChange(event)}>
+        </input>
+      </div>
+      <div className="cuiFormSection">
         <label className='cuiLabel'>OPERATIONAL STATUS:</label>
         <div className="cuiFormSubSection">
           <label className='cuiSubLabel'>OPERATIONAL
@@ -103,15 +111,6 @@ const NewRideForm = () => {
             </input>
           </label>
         </div>
-      </div>
-      <div className="cuiFormSection">
-        <label className='cuiLabel'>OPENING DAtE:</label>
-        <input 
-            type='date' 
-            name='opening_date'  
-            value={newRide.opening_date} 
-            onChange={(event) => handleChange(event)}>
-        </input>
       </div>
       <div className='cuiDropDownButtonContainer'>
         <button className='cuiDropDownButton' type='submit'>SUBMIT</button>

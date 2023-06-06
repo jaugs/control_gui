@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import RideUpdateForm from './rideUpdateForm';
+import '../../../styles/vehiclesMain.css'
 
 interface AccordionProps {
     title: String,

@@ -7,7 +7,7 @@ import VehicleAccordion from '../maintenance/vehicleAccordion';
 import NewVehicleForm from '../maintenance/newVehicleForm';
 
 
-const StorageMain: React.FC = () => {
+const InventoryMain: React.FC = () => {
 
   const dispatch = useAppDispatch()
   const popUpArr = useAppSelector((state) => state.popup.PopupArr)
@@ -80,4 +80,4 @@ const StorageMain: React.FC = () => {
   )
 }
 
-export default StorageMain
+export default InventoryMain

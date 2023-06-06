@@ -5,7 +5,6 @@ import { useGetRideListQuery } from '../../slices/apiSlice';
 import NewRideForm from './ridesNewForm';
 import RidesAccordion from './rideAccordion';
 
-
 const RidesMain: React.FC = () => {
 
   const dispatch = useAppDispatch()
