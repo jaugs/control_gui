@@ -5,7 +5,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const controlApi = createApi({
   reducerPath: 'controlApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/api/' }),
-  tagTypes: ['Garage', 'Rides'],
+  tagTypes: ['Garage', 'Rides', 'Inventory'],
   endpoints: (builder) => ({
 
     getAnimalBySpecies: builder.query({
@@ -72,10 +72,20 @@ export const controlApi = createApi({
       }),
       invalidatesTags: ['Rides']
     }),
+    getInventoryList: builder.query({
+      query: (category) => `inventory/category/${category}`,
+      providesTags: ['Inventory'],
+    }),
+    getEquipmentList: builder.query<any,void>({
+      query: () => 'inventory/equipment',
+      providesTags: ['Inventory'],
+    }),
+
   }),
 })
 
 // Export hooks for usage in function components, which are
 // auto-generated based on the defined endpoints
 export const { useGetAnimalBySpeciesQuery, useGetAnimalInstanceQuery, useGetAnimalInstanceListQuery, useGetSpeciesListQuery, 
-              useAddAnimalMutation, useUpdateAnimalMutation, useUpdateVehicleMutation, useAddVehicleMutation, useGetVehicleListQuery, useGetRideListQuery, useUpdateRidesMutation, useAddRidesMutation } = controlApi
+              useAddAnimalMutation, useUpdateAnimalMutation, useUpdateVehicleMutation, useAddVehicleMutation, 
+              useGetVehicleListQuery, useGetRideListQuery, useUpdateRidesMutation, useAddRidesMutation, useGetInventoryListQuery, useGetEquipmentListQuery } = controlApi

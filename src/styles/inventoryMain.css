@@ -1,0 +1,12 @@
+
+.ItemTags {
+    display: flex;
+    font-size: 12px;
+    align-self: center;
+}
+
+.tagMap {
+    display: flex;
+    justify-content: flex-end;
+    gap: 4px;
+}

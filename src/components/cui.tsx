@@ -11,6 +11,7 @@ import MaintenanceMain from './cuiScreens/maintenanceMain';
 import VehiclesMain from './cuiScreens/maintenance/vehiclesMain';
 import RidesMain from './cuiScreens/maintenance/ridesMain';
 import InventoryMain from './cuiScreens/inventory/inventoryMain';
+import EquiptmentMain from './cuiScreens/inventory/equiptmentMain';
 
 const Cui: React.FC = () => {
 
@@ -78,6 +79,8 @@ const Cui: React.FC = () => {
               return <InventoryMain />
             case 'RIDES':
               return <RidesMain />
+            case 'EQUIPTMENT':
+              return <EquiptmentMain />
             default:
               return <MasterMain />
           }

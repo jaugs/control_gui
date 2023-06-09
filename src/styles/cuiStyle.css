@@ -273,6 +273,7 @@
 }
 
 .cuiDropDownTitle {
+    width: 300px;
     padding-left:5px;
 }
 
@@ -305,12 +306,13 @@
     margin-left: 5px;
     margin-right: 5px;
     border-bottom: 1px solid black;
+    gap: 5px;
 }
 
 .cuiDropDownContentDiv p{
     display: flex;
     flex-direction: row;
-    
+    text-align: end;
     justify-content: baseline;
     margin: 0;
     padding: 0;
@@ -409,7 +411,7 @@
     gap:200px;
 }
 
-.maintenanceGrid, .vehicleGrid, .storageGrid {
+.maintenanceGrid, .vehicleGrid, .storageGrid, .inventoryGrid {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

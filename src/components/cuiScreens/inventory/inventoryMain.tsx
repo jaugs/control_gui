@@ -2,7 +2,7 @@ import '../../../styles/cuiStyle.css'
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { changeOpen, changeContent, newPopup } from '../../slices/popupSlice';
 import { changeSection, toggleAddForm, closeActiveObjectIndex, openActiveObjectIndex, selectInterface } from '../../slices/interfaceSlice';
-import { useGetVehicleListQuery, useUpdateVehicleMutation  } from '../../slices/apiSlice';
+import { useGetInventoryListQuery } from '../../slices/apiSlice';
 import VehicleAccordion from '../maintenance/vehicleAccordion';
 import NewVehicleForm from '../maintenance/newVehicleForm';
 
@@ -13,7 +13,7 @@ const InventoryMain: React.FC = () => {
   const popUpArr = useAppSelector((state) => state.popup.PopupArr)
   const interfaceData = useAppSelector((state) => state.interface)
   
-  const { data, error, isLoading } = useGetVehicleListQuery()
+  const { data, error, isLoading } = useGetInventoryListQuery('office_supplies')
 
   
   const addVehicle = () => {
@@ -32,7 +32,7 @@ const InventoryMain: React.FC = () => {
           <button className='cuiHeaderButton'>MONITOR</button>
           <button className='cuiHeaderButton'>DELETE</button>
           <button className='cuiHeaderButton'>REPORT</button>
-          <button className='cuiHeaderButton'>OPTIONS</button>
+          <button className='cuiHeaderButton' onClick={() => addVehicle()}>OPTIONS</button>
           <button className='cuiHeaderButton' onClick={() => dispatch(changeSection('MASTER'))}>GO BACK</button>
         </header>
         
