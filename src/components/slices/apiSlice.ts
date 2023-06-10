@@ -76,6 +76,22 @@ export const controlApi = createApi({
       query: (category) => `inventory/category/${category}`,
       providesTags: ['Inventory'],
     }),
+    updateInventory: builder.mutation({
+      query: ({id, ...patch}) => ({
+        url: `inventory/${id}/update`,
+        method: 'POST',
+        body: patch,
+      }),
+      invalidatesTags: ['Inventory']
+    }),
+    addInventoryItem: builder.mutation({
+      query: ({id, ...patch}) => ({
+        url: `inventory/addItem`,
+        method: 'POST',
+        body: patch,
+      }),
+      invalidatesTags: ['Inventory']
+    }),
     getEquipmentList: builder.query<any,void>({
       query: () => 'inventory/equipment',
       providesTags: ['Inventory'],
@@ -88,4 +104,5 @@ export const controlApi = createApi({
 // auto-generated based on the defined endpoints
 export const { useGetAnimalBySpeciesQuery, useGetAnimalInstanceQuery, useGetAnimalInstanceListQuery, useGetSpeciesListQuery, 
               useAddAnimalMutation, useUpdateAnimalMutation, useUpdateVehicleMutation, useAddVehicleMutation, 
-              useGetVehicleListQuery, useGetRideListQuery, useUpdateRidesMutation, useAddRidesMutation, useGetInventoryListQuery, useGetEquipmentListQuery } = controlApi
+              useGetVehicleListQuery, useGetRideListQuery, useUpdateRidesMutation, useAddRidesMutation, useGetInventoryListQuery, 
+              useUpdateInventoryMutation, useGetEquipmentListQuery, useAddInventoryItemMutation } = controlApi

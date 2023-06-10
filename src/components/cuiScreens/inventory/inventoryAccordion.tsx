@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 //import RideUpdateForm from './rideUpdateForm';
 import '../../../styles/inventoryMain.css'
+import InventoryEditForm from './inventoryEditForm';
 
 interface AccordionProps {
-    title: String,
-    category: String,
     content: any,
 }
 
-const InventoryAccordion: React.FC<AccordionProps> = ({title, category, content}) => {
+const InventoryAccordion: React.FC<AccordionProps> = ({content}) => {
 
   const [isEditing, setIsEditing] = useState(false);
 
@@ -24,14 +23,14 @@ const getData = () => {
   return (
     <div className="cuiDropDownAccordian">
         <div className='cuiDropDownListContainer'>
-            <div className='cuiDropDownTitle'>{title}</div>
-            <div className='cuiDropDownTitle'>{category}</div>
+            <div className='cuiDropDownTitle'>{content.name}</div>
+            <div className='cuiDropDownTitle'>{content.category}</div>
             <div className='cuiDropDownButtonRow'>
             <button className='cuiDropDownLink' onClick={() => setIsActive(!isActive)}>{isActive ? 'HIDE' : 'EXPAND'}</button>
             <button className='cuiDropDownLink' onClick={openForm}>{isEditing ? "GO BACK" : "EDIT"}</button>
             </div>
         </div>
-        {/* {isEditing ? <RideUpdateForm id={content._id} /> : null} */}
+        {isEditing ? <InventoryEditForm content={content} setIsEditing={setIsEditing}/>: null}
         {isActive && <div className="cuiDropDownContent">
             <div className='cuiDropDownContentDiv'>
                 <p>Sub-Category:</p>
@@ -68,8 +67,8 @@ const getData = () => {
             <div className='cuiDropDownContentDiv'>
                 <p>Tags:</p>
                 <div className='tagMap'>
-                {content.tags.map((item:any) => {
-                    return<p className='ItemTags'>[{item}]</p>
+                {content.tags.map((item:any, index: number) => {
+                    return<p key={index} className='ItemTags'>[{item}]</p>
                 })}
                 </div>
             </div>

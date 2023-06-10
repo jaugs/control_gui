@@ -2,8 +2,9 @@ import { useAppDispatch, useAppSelector } from '../../../app/hooks'
 import { changeOpen, changeContent, newPopup } from '../../slices/popupSlice';
 import { changeSection, toggleAddForm, closeActiveObjectIndex, openActiveObjectIndex, selectInterface } from '../../slices/interfaceSlice';
 import { useGetEquipmentListQuery, useGetInventoryListQuery, useGetVehicleListQuery, useUpdateVehicleMutation  } from '../../slices/apiSlice';
-//import NewVehicleForm from './newVehicleForm';
 import InventoryAccordion from './inventoryAccordion';
+import InventoryTabs from './inventoryTabs';
+import NewInventoryForm from './inventoryNewForm';
 
 const EquiptmentMain: React.FC = () => {
 
@@ -20,20 +21,11 @@ const EquiptmentMain: React.FC = () => {
   
   return (
     <div className="masterContainer">
-      <header className='masterHeader'> 
-        <button className='cuiHeaderButton'>FIND</button>
-        <button className='cuiHeaderButton' onClick={() => dispatch(toggleAddForm())}>ORDER</button>
-        <button className='cuiHeaderButton'>MONITOR</button>
-        <button className='cuiHeaderButton'>DELETE</button>
-        <button className='cuiHeaderButton'>REPORT</button>
-        <button className='cuiHeaderButton' onClick={() => addVehicle()}>OPTIONS</button>
-        <button className='cuiHeaderButton' onClick={() => dispatch(changeSection('STORAGE'))}>GO BACK</button>
-      </header>
+      <InventoryTabs />
       <section className='inventoryGrid'>
-        {/* {interfaceData.addFormOpen?  <NewVehicleForm getBadges={getBadges}/> : null}
-       */}
+        {interfaceData.addFormOpen?  <NewInventoryForm /> : null}
         {isLoading ? <div>Loading...</div> : error ? <div>Error: 102</div> : data ? data.map((item: any, index: number) => {
-          return <InventoryAccordion key={item._id} content={item} category={item.category} title={item.name}/>
+          return <InventoryAccordion key={item._id} content={item} />
         }) : null }
       </section>
     </div>

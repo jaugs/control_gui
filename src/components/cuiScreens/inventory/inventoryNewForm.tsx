@@ -1,63 +1,95 @@
 import { useAppDispatch, useAppSelector } from '../../../app/hooks'
-import '../../../styles/vehiclesMain.css'
 import { changeOpen, changeContent, newPopup } from '../../slices/popupSlice';
-import { useState, ChangeEvent, FormEvent } from 'react';
-import { useUpdateInventoryMutation,  } from '../../slices/apiSlice';
-import { formatDate } from '../getDate';
+import { useEffect, useState, ChangeEvent, FormEvent, ComponentState } from 'react';
+import { changeSection, toggleAddForm } from '../../slices/interfaceSlice';
+import { useAddInventoryItemMutation } from '../../slices/apiSlice';
 
-interface EditFormProps {
-  content: any,
-  setIsEditing: React.Dispatch<React.SetStateAction<boolean>>
-}
-const InventoryEditForm: React.FC<EditFormProps> = ({content, setIsEditing}) => {
 
+const NewInventoryForm = () => {
+
+  const [isSubmmited, setIsSubmitted] = useState(false)
+
+  useEffect(() => {
+    if (isSubmmited) {
+    postData()
+    }
+  }, [isSubmmited])
+  
+  
   const popUpArr = useAppSelector((state) => state.popup.PopupArr)
   const dispatch = useAppDispatch()
   const interfaceData = useAppSelector((state) => state.interface)
-  const [updateItem, response] = useUpdateInventoryMutation();
+  const [addItem, {isLoading: isUpdating}] = useAddInventoryItemMutation();
 
-  const [editFields, setEditFields] = useState({
-    category: content.category,
-    sub_category: content.sub_category,
-    quantity: content.quantity,
-    price: content.price,
-    description: content.description,
-    isAvailable: content.isAvailable,
-    supplier: content.supplier,
-    lotSize: content.lotSize,
-    lastOrdered: formatDate(content.lastOrdered_formatted),
-    tags: content.tags
+  const [newItem, setNewItem] = useState({
+      name: '',
+      category: '',
+      sub_category: '',
+      price: 0,
+      description: '',
+      isAvailable: false,
+      supplier: '',
+      lotSize: 0,
+      quantity: 0,
+      tags: []
   });
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    event.preventDefault()
-    setEditFields({...editFields, [event.target.name]: event.target.value})
+      event.preventDefault()
+      setNewItem({...newItem, [event.target.name]: event.target.value})
   }
 
   const handleRadioChange = (event: ChangeEvent<HTMLInputElement>) => {
-    let bool = event.target.value
-    if (bool === 'true') {
-      setEditFields({...editFields, [event.target.name]: true})
-      return
-    }
-    else if (bool === 'false') {
-      setEditFields({...editFields, [event.target.name]: false})
-      return
-    }
+      let bool = event.target.value
+      if (bool === 'true') {
+        setNewItem({...newItem, [event.target.name]: true})
+          return
+      }
+      else if (bool === 'false') {
+        setNewItem({...newItem, [event.target.name]: false})
+          return
+      }
   }
 
-  async function handleSubmit (event: FormEvent<HTMLFormElement>)  {
-    event.preventDefault()
-    const serializedData = editFields;
-    updateItem({id: content._id, ...serializedData}).unwrap().then((result) => {
-      console.log(result);
-      setIsEditing(false);
+  async function postData () {
+    addItem({...newItem}).unwrap().then((result) => {
+        console.log(result)
+         setIsSubmitted(false)
+        dispatch(toggleAddForm())
     })
+
+    //   try { 
+    //       await addItem({...newItem}).then(res => {
+    //         console.log(res)})
+    //       }
+    //       catch {
+    //           error: console.log(Error)
+    //       }
+    //       finally {
+    //           setIsSubmitted(false)
+    //           dispatch(toggleAddForm())
+    //       }
   }
 
-return (
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsSubmitted(true)
+  }
+
+  return (
   <div>
-    <form className='inventoryForm' name='inventoryForm' method='POST' onSubmit={(event) =>handleSubmit(event)}>
+    <form className='newInventoryForm' name='newInventoryForm' method='POST' onSubmit={(event) =>handleSubmit(event)}>
+        <div className="cuiFormSection">
+        <label className='cuiLabel'>NAME:</label>
+        <input 
+            required
+            type='text' 
+            name='name'  
+            placeholder='Name...'
+            value={newItem.name} 
+            onChange={(event) => handleChange(event)}>
+        </input>
+      </div>
       <div className="cuiFormSection">
         <label>CATEGORY:</label>
             <input
@@ -65,7 +97,7 @@ return (
               type='text'
               placeholder='Category...'
               name='category'
-              value={editFields.category}
+              value={newItem.category}
               onChange={(event) => handleChange(event)}>
             </input>
       </div>
@@ -73,8 +105,9 @@ return (
         <label className='cuiLabel'>SUB-CATEGORY:</label>
         <input 
             type='text' 
-            name='sub_category'  
-            value={editFields.sub_category} 
+            name='sub_category' 
+            placeholder='Sub-Category...' 
+            value={newItem.sub_category} 
             onChange={(event) => handleChange(event)}>
         </input>
       </div>
@@ -83,7 +116,8 @@ return (
         <input 
             type='text' 
             name='description'  
-            value={editFields.description} 
+            placeholder='Description...'
+            value={newItem.description} 
             onChange={(event) => handleChange(event)}>
         </input>
       </div>
@@ -92,16 +126,19 @@ return (
         <input 
             type='text' 
             name='supplier'  
-            value={editFields.supplier} 
+            placeholder='Supplier...'
+            value={newItem.supplier} 
             onChange={(event) => handleChange(event)}>
         </input>
       </div>
       <div className="cuiFormSection">
         <label className='cuiLabel'>LOT SIZE:</label>
-        <input 
+        <input
+            required
             type='number' 
-            name='lotSize'  
-            value={editFields.lotSize} 
+            name='lotSize'
+            placeholder='Lot Size...'
+            value={newItem.lotSize} 
             onChange={(event) => handleChange(event)}>
         </input>
       </div>
@@ -109,8 +146,9 @@ return (
         <label className='cuiLabel'>PRICE:</label>
         <input 
             type='number' 
-            name='price'  
-            value={editFields.price} 
+            name='price'
+            placeholder='Price...'
+            value={newItem.price} 
             onChange={(event) => handleChange(event)}>
         </input>
       </div>
@@ -123,7 +161,7 @@ return (
               name='isAvailable' 
               type='radio' 
               value='true' 
-              defaultChecked={editFields.isAvailable} 
+              defaultChecked={newItem.isAvailable} 
               onChange={(event) => handleRadioChange(event)}>
             </input>
           </label>
@@ -133,7 +171,7 @@ return (
               name='isAvailable' 
               type='radio' 
               value='false' 
-              defaultChecked={!editFields.isAvailable} 
+              defaultChecked={!newItem.isAvailable} 
               onChange={(event) => handleRadioChange(event)}>
             </input>
           </label>
@@ -144,7 +182,6 @@ return (
       </div>
     </form>
   </div>
-)
+  )
 }
-
-export default InventoryEditForm
+export default NewInventoryForm

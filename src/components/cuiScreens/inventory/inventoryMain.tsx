@@ -5,6 +5,7 @@ import { changeSection, toggleAddForm, closeActiveObjectIndex, openActiveObjectI
 import { useGetInventoryListQuery } from '../../slices/apiSlice';
 import VehicleAccordion from '../maintenance/vehicleAccordion';
 import NewVehicleForm from '../maintenance/newVehicleForm';
+import InventoryTabs from './inventoryTabs';
 
 
 const InventoryMain: React.FC = () => {
@@ -26,15 +27,7 @@ const InventoryMain: React.FC = () => {
   return (
     <div className="masterContainer">
 
-        <header className='masterHeader'> 
-          <button className='cuiHeaderButton'>FIND</button>
-          <button className='cuiHeaderButton'>ORDER</button>
-          <button className='cuiHeaderButton'>MONITOR</button>
-          <button className='cuiHeaderButton'>DELETE</button>
-          <button className='cuiHeaderButton'>REPORT</button>
-          <button className='cuiHeaderButton' onClick={() => addVehicle()}>OPTIONS</button>
-          <button className='cuiHeaderButton' onClick={() => dispatch(changeSection('MASTER'))}>GO BACK</button>
-        </header>
+        <InventoryTabs />
         
         <section className='storageGrid'>
            
