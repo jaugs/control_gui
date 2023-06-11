@@ -19,21 +19,24 @@ const InventoryTabs: React.FC = () => {
   
   const goBack = () => {
     let currentScreen = interfaceData.section;
-    if (currentScreen === 'STORAGE') {
+    if (currentScreen === 'INVENTORY') {
         dispatch(changeSection('MASTER'))
-    } else if (currentScreen === 'EQUIPMENT' || 'FEED') {
-        dispatch(changeSection('STORAGE'))
+    } else if (currentScreen == 'EQUIPMENT' || 'FEED' || 'LAB INVENTORY' || 'RESORT INVENTORY') {
+        dispatch(changeSection('INVENTORY'))
     }
   }
 
+  const findItems = () => {
+    dispatch(changeSection('FIND'))
+  }
 
   
   return (
     <header className='masterHeader'> 
-        <button className='cuiHeaderButton'>FIND</button>
-        <button className='cuiHeaderButton' onClick={() => dispatch(toggleAddForm())}>ORDER</button>
+        <button className='cuiHeaderButton' onClick={() => findItems()}>FIND</button>
+        <button className='cuiHeaderButton'>ORDER</button>
         <button className='cuiHeaderButton'>MONITOR</button>
-        <button className='cuiHeaderButton'>DELETE</button>
+        <button className='cuiHeaderButton' onClick={() => dispatch(toggleAddForm())}>CREATE</button>
         <button className='cuiHeaderButton'>REPORT</button>
         <button className='cuiHeaderButton'>OPTIONS</button>
         <button className='cuiHeaderButton' onClick={() => goBack()}>GO BACK</button>

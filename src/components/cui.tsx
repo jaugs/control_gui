@@ -12,10 +12,12 @@ import VehiclesMain from './cuiScreens/maintenance/vehiclesMain';
 import RidesMain from './cuiScreens/maintenance/ridesMain';
 import InventoryMain from './cuiScreens/inventory/inventoryMain';
 import EquiptmentMain from './cuiScreens/inventory/equiptmentMain';
+import LabInventoryMain from './cuiScreens/inventory/labInventoryMain';
+import FeedMain from './cuiScreens/inventory/feedMain';
+import ResortInventoryMain from './cuiScreens/inventory/resortInventoryMain';
 
 const Cui: React.FC = () => {
 
-  const popUpArr = useAppSelector((state) => state.popup.PopupArr)
   const dispatch = useAppDispatch()
   const intState = useAppSelector((state) => state.interface)
 
@@ -27,19 +29,6 @@ const Cui: React.FC = () => {
   const dragEnd = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault
     dispatch(changeIntDragging())
-  }
-
-  const getPopup = (word: string) => {
-    let num = popUpArr.findIndex((item) => {return !item.isOpen})
-    if (popUpArr.length > 5 && num === -1 ) {
-      return
-    }
-    if (num === -1) {
-      dispatch(newPopup({isOpen: true, coords: {x:50, y:50}, isDragging: false, contents: word}))
-    } else {
-    dispatch(changeOpen(num))
-    dispatch(changeContent({contents: word, index: num}))
-    }
   }
 
   return (
@@ -75,12 +64,18 @@ const Cui: React.FC = () => {
               return <MaintenanceMain />
             case 'VEHICLES':
               return <VehiclesMain />
-            case 'STORAGE':
+            case 'INVENTORY':
               return <InventoryMain />
             case 'RIDES':
               return <RidesMain />
             case 'EQUIPTMENT':
               return <EquiptmentMain />
+            case 'LAB INVENTORY':
+              return <LabInventoryMain />
+            case 'RESORT INVENTORY':
+              return <ResortInventoryMain />
+            case 'FEED':
+              return <FeedMain />
             default:
               return <MasterMain />
           }

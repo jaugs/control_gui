@@ -96,6 +96,18 @@ export const controlApi = createApi({
       query: () => 'inventory/equipment',
       providesTags: ['Inventory'],
     }),
+    getFeedList: builder.query<any,void>({
+      query: () => 'inventory/feed',
+      providesTags: ['Inventory'],
+    }),
+    getLabList: builder.query<any,void>({
+      query: () => 'inventory/lab',
+      providesTags: ['Inventory'],
+    }),
+    getResortList: builder.query<any,void>({
+      query: () => 'inventory/resort',
+      providesTags: ['Inventory'],
+    }),
 
   }),
 })
@@ -105,4 +117,4 @@ export const controlApi = createApi({
 export const { useGetAnimalBySpeciesQuery, useGetAnimalInstanceQuery, useGetAnimalInstanceListQuery, useGetSpeciesListQuery, 
               useAddAnimalMutation, useUpdateAnimalMutation, useUpdateVehicleMutation, useAddVehicleMutation, 
               useGetVehicleListQuery, useGetRideListQuery, useUpdateRidesMutation, useAddRidesMutation, useGetInventoryListQuery, 
-              useUpdateInventoryMutation, useGetEquipmentListQuery, useAddInventoryItemMutation } = controlApi
+              useUpdateInventoryMutation, useGetEquipmentListQuery, useAddInventoryItemMutation, useGetFeedListQuery, useGetLabListQuery, useGetResortListQuery } = controlApi

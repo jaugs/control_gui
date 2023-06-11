@@ -1,4 +1,3 @@
-import '../../../styles/vehiclesMain.css'
 import { useAppDispatch, useAppSelector } from '../../../app/hooks'
 import { changeOpen, changeContent, newPopup } from '../../slices/popupSlice';
 import { changeSection, toggleAddForm, closeActiveObjectIndex, openActiveObjectIndex, selectInterface } from '../../slices/interfaceSlice';

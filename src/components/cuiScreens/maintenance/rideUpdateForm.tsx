@@ -1,5 +1,4 @@
 import { useAppDispatch, useAppSelector } from '../../../app/hooks'
-import '../../../styles/vehiclesMain.css'
 import { changeOpen, changeContent, newPopup } from '../../slices/popupSlice';
 import { useState, ChangeEvent, FormEvent } from 'react';
 import { useGetRideListQuery, useUpdateRidesMutation  } from '../../slices/apiSlice';

@@ -1,14 +1,14 @@
 import { useAppDispatch, useAppSelector } from '../../../app/hooks'
-import { useGetEquipmentListQuery } from '../../slices/apiSlice';
+import { useGetFeedListQuery } from '../../slices/apiSlice';
 import InventoryAccordion from './inventoryAccordion';
 import InventoryTabs from './inventoryTabs';
 import NewInventoryForm from './inventoryNewForm';
 
-const EquiptmentMain: React.FC = () => {
+const FeedMain: React.FC = () => {
 
   const dispatch = useAppDispatch()
   const interfaceData = useAppSelector((state) => state.interface)
-  const { data, error, isLoading } = useGetEquipmentListQuery();
+  const { data, error, isLoading } = useGetFeedListQuery();
 
   return (
     <div className="masterContainer">
@@ -23,4 +23,4 @@ const EquiptmentMain: React.FC = () => {
   )
 }
 
-export default EquiptmentMain
+export default FeedMain

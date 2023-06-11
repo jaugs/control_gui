@@ -3,7 +3,7 @@ import { changeOpen, changeContent, newPopup } from '../../slices/popupSlice';
 import { useEffect, useState, ChangeEvent, FormEvent, ComponentState } from 'react';
 import { changeSection, toggleAddForm } from '../../slices/interfaceSlice';
 import { useAddInventoryItemMutation } from '../../slices/apiSlice';
-
+import '../../../styles/inventoryMain.css'
 
 const NewInventoryForm = () => {
 
@@ -20,7 +20,7 @@ const NewInventoryForm = () => {
   const dispatch = useAppDispatch()
   const interfaceData = useAppSelector((state) => state.interface)
   const [addItem, {isLoading: isUpdating}] = useAddInventoryItemMutation();
-
+  const [newTags, setTags] = useState(['', '', ''])
   const [newItem, setNewItem] = useState({
       name: '',
       category: '',
@@ -31,8 +31,16 @@ const NewInventoryForm = () => {
       supplier: '',
       lotSize: 0,
       quantity: 0,
-      tags: []
+      tags: ['']
   });
+
+  const handleTagChange = (event: ChangeEvent<HTMLInputElement>, index: number) => {
+    event.preventDefault()
+    let temp = newTags.map((item:any) => item)
+    temp[index] = event.target.value
+    setTags(() => temp)
+    setNewItem({...newItem, tags: newTags})
+  }
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
       event.preventDefault()
@@ -58,17 +66,6 @@ const NewInventoryForm = () => {
         dispatch(toggleAddForm())
     })
 
-    //   try { 
-    //       await addItem({...newItem}).then(res => {
-    //         console.log(res)})
-    //       }
-    //       catch {
-    //           error: console.log(Error)
-    //       }
-    //       finally {
-    //           setIsSubmitted(false)
-    //           dispatch(toggleAddForm())
-    //       }
   }
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -91,6 +88,16 @@ const NewInventoryForm = () => {
         </input>
       </div>
       <div className="cuiFormSection">
+        <label className='cuiLabel'>DESCRIPTION:</label>
+        <input 
+            type='text' 
+            name='description'  
+            placeholder='Description...'
+            value={newItem.description} 
+            onChange={(event) => handleChange(event)}>
+        </input>
+      </div>
+      <div className="cuiFormSection">
         <label>CATEGORY:</label>
             <input
               required
@@ -102,6 +109,16 @@ const NewInventoryForm = () => {
             </input>
       </div>
       <div className="cuiFormSection">
+        <label className='cuiLabel'>SUPPLIER:</label>
+        <input 
+            type='text' 
+            name='supplier'  
+            placeholder='Supplier...'
+            value={newItem.supplier} 
+            onChange={(event) => handleChange(event)}>
+        </input>
+      </div>
+      <div className="cuiFormSection">
         <label className='cuiLabel'>SUB-CATEGORY:</label>
         <input 
             type='text' 
@@ -111,23 +128,14 @@ const NewInventoryForm = () => {
             onChange={(event) => handleChange(event)}>
         </input>
       </div>
+      
       <div className="cuiFormSection">
-        <label className='cuiLabel'>DESCRIPTION:</label>
+        <label className='cuiLabel'>PRICE:</label>
         <input 
-            type='text' 
-            name='description'  
-            placeholder='Description...'
-            value={newItem.description} 
-            onChange={(event) => handleChange(event)}>
-        </input>
-      </div>
-      <div className="cuiFormSection">
-        <label className='cuiLabel'>SUPPLIER:</label>
-        <input 
-            type='text' 
-            name='supplier'  
-            placeholder='Supplier...'
-            value={newItem.supplier} 
+            type='number' 
+            name='price'
+            placeholder='Price...'
+            value={newItem.price} 
             onChange={(event) => handleChange(event)}>
         </input>
       </div>
@@ -143,14 +151,33 @@ const NewInventoryForm = () => {
         </input>
       </div>
       <div className="cuiFormSection">
-        <label className='cuiLabel'>PRICE:</label>
-        <input 
-            type='number' 
-            name='price'
-            placeholder='Price...'
-            value={newItem.price} 
-            onChange={(event) => handleChange(event)}>
+        <label className='cuiLabel'>TAGS:</label>
+        <div className='tagContainer'>
+        <input
+            className='tagInput'
+            type='text' 
+            name='tag1'
+            placeholder='Tag..'
+            defaultValue={newTags[0]} 
+            onBlur={(event) => handleTagChange(event, 0)}>
         </input>
+        <input
+            className='tagInput'
+            type='text' 
+            name='tag2'
+            placeholder='Tag..'
+            defaultValue={newTags[1]} 
+            onBlur={(event) => handleTagChange(event, 1)}>
+        </input>
+        <input
+            className='tagInput'
+            type='text' 
+            name='tag3'
+            placeholder='Tag..'
+            defaultValue={newTags[2]} 
+            onBlur={(event) => handleTagChange(event, 2)}>
+        </input>
+        </div>
       </div>
       <div className="cuiFormSection">
         <label className='cuiLabel'>AVAILABILITY:</label>
@@ -177,6 +204,8 @@ const NewInventoryForm = () => {
           </label>
         </div>
       </div>
+      
+
       <div className='cuiDropDownButtonContainer'>
         <button className='cuiDropDownButton' type='submit'>SUBMIT</button>
       </div>

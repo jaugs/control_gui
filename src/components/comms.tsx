@@ -8,9 +8,6 @@ interface CommWindowProps  {
 
 const CommWindow: React.FC<CommWindowProps> = () => {
 
-
-
-
 return (
     <div className='comWindow'>
         <div className='comProfile'>

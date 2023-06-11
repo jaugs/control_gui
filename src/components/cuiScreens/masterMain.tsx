@@ -71,7 +71,7 @@ const MasterMain: React.FC = () => {
           </div>
           <div 
             className='cuiLink'
-            onClick={() => dispatch(changeSection('STORAGE'))}>Storage Main
+            onClick={() => dispatch(changeSection('INVENTORY'))}>Inventory Main
           <ul>
             <li className='listItem'>Equiptment</li>
             <li className='listItem'>Feed/Stock</li>

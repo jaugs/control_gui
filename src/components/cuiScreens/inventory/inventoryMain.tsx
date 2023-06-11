@@ -52,7 +52,7 @@ const InventoryMain: React.FC = () => {
             </div>
             <div 
               className='cuiLink'
-              onClick={() => dispatch(changeSection('LAB'))}>Lab
+              onClick={() => dispatch(changeSection('LAB INVENTORY'))}>Lab
                 <ul>
                     <li className='listItem'>Hardware</li>
                     <li className='listItem'>Chemicals</li>
@@ -61,7 +61,7 @@ const InventoryMain: React.FC = () => {
             </div>
             <div 
               className='cuiLink'
-              onClick={() => dispatch(changeSection('RESORT'))}>Resort
+              onClick={() => dispatch(changeSection('RESORT INVENTORY'))}>Resort
                 <ul>
                   <li className='listItem'>Kitchen</li>
                   <li className='listItem'>Rooms</li>
