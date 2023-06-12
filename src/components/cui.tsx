@@ -15,6 +15,7 @@ import EquiptmentMain from './cuiScreens/inventory/equiptmentMain';
 import LabInventoryMain from './cuiScreens/inventory/labInventoryMain';
 import FeedMain from './cuiScreens/inventory/feedMain';
 import ResortInventoryMain from './cuiScreens/inventory/resortInventoryMain';
+import FindItems from './cuiScreens/inventory/findItems';
 
 const Cui: React.FC = () => {
 
@@ -76,6 +77,8 @@ const Cui: React.FC = () => {
               return <ResortInventoryMain />
             case 'FEED':
               return <FeedMain />
+            case 'FIND':
+              return <FindItems />
             default:
               return <MasterMain />
           }

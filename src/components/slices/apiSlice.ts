@@ -76,6 +76,9 @@ export const controlApi = createApi({
       query: (category) => `inventory/category/${category}`,
       providesTags: ['Inventory'],
     }),
+    findItem: builder.query({
+      query: (search) => `inventory/find/${search}`,
+    }),
     updateInventory: builder.mutation({
       query: ({id, ...patch}) => ({
         url: `inventory/${id}/update`,
@@ -117,4 +120,4 @@ export const controlApi = createApi({
 export const { useGetAnimalBySpeciesQuery, useGetAnimalInstanceQuery, useGetAnimalInstanceListQuery, useGetSpeciesListQuery, 
               useAddAnimalMutation, useUpdateAnimalMutation, useUpdateVehicleMutation, useAddVehicleMutation, 
               useGetVehicleListQuery, useGetRideListQuery, useUpdateRidesMutation, useAddRidesMutation, useGetInventoryListQuery, 
-              useUpdateInventoryMutation, useGetEquipmentListQuery, useAddInventoryItemMutation, useGetFeedListQuery, useGetLabListQuery, useGetResortListQuery } = controlApi
+              useUpdateInventoryMutation, useGetEquipmentListQuery, useAddInventoryItemMutation, useGetFeedListQuery, useGetLabListQuery, useFindItemQuery, useGetResortListQuery } = controlApi

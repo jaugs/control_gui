@@ -26,14 +26,10 @@ const InventoryTabs: React.FC = () => {
     }
   }
 
-  const findItems = () => {
-    dispatch(changeSection('FIND'))
-  }
-
   
   return (
     <header className='masterHeader'> 
-        <button className='cuiHeaderButton' onClick={() => findItems()}>FIND</button>
+        <button className='cuiHeaderButton' onClick={() => dispatch(changeSection('FIND'))}>FIND</button>
         <button className='cuiHeaderButton'>ORDER</button>
         <button className='cuiHeaderButton'>MONITOR</button>
         <button className='cuiHeaderButton' onClick={() => dispatch(toggleAddForm())}>CREATE</button>

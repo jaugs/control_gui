@@ -86,8 +86,8 @@ const MasterMain: React.FC = () => {
           </div>
           <div className='cuiLink'>Resort Main
           <ul>
-            <li className='listItem'>Bookings</li>
-            <li className='listItem'>Cleaning</li> 
+            <li className='listItem'>Cleaning</li>
+            <li className='listItem'>Bookings</li> 
             <li className='listItem'>Dining</li> 
             <li className='listItem'>Pool</li> 
           </ul>
