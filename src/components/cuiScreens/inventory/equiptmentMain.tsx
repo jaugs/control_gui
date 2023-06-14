@@ -3,6 +3,7 @@ import { useGetEquipmentListQuery } from '../../slices/apiSlice';
 import InventoryAccordion from './inventoryAccordion';
 import InventoryTabs from './inventoryTabs';
 import NewInventoryForm from './inventoryNewForm';
+import OrderInventoryForm from './orderInventoryForm';
 
 const EquiptmentMain: React.FC = () => {
 
@@ -14,7 +15,8 @@ const EquiptmentMain: React.FC = () => {
     <div className="masterContainer">
       <InventoryTabs />
       <section className='inventoryGrid'>
-        {interfaceData.addFormOpen?  <NewInventoryForm /> : null}
+        {interfaceData.addFormOpen ?  <NewInventoryForm /> : null}
+        {interfaceData.orderFormOpen ? <OrderInventoryForm /> : null}
         {isLoading ? <div>Loading...</div> : error ? <div>Error: 102</div> : data ? data.map((item: any, index: number) => {
           return <InventoryAccordion key={item._id} content={item} />
         }) : null }

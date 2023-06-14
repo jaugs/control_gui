@@ -2,7 +2,7 @@
 import '../../../styles/cuiStyle.css'
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { changeOpen, changeContent, newPopup } from '../../slices/popupSlice';
-import { changeSection, toggleAddForm, closeActiveObjectIndex, openActiveObjectIndex, selectInterface } from '../../slices/interfaceSlice';
+import { changeSection, toggleAddForm, toggleOrderForm } from '../../slices/interfaceSlice';
 import { useGetInventoryListQuery } from '../../slices/apiSlice';
 import VehicleAccordion from '../maintenance/vehicleAccordion';
 import NewVehicleForm from '../maintenance/newVehicleForm';
@@ -30,7 +30,7 @@ const InventoryTabs: React.FC = () => {
   return (
     <header className='masterHeader'> 
         <button className='cuiHeaderButton' onClick={() => dispatch(changeSection('FIND'))}>FIND</button>
-        <button className='cuiHeaderButton'>ORDER</button>
+        <button className='cuiHeaderButton' onClick={() => dispatch(toggleOrderForm())}>ORDER</button>
         <button className='cuiHeaderButton'>MONITOR</button>
         <button className='cuiHeaderButton' onClick={() => dispatch(toggleAddForm())}>CREATE</button>
         <button className='cuiHeaderButton'>REPORT</button>

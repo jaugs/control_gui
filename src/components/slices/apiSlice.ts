@@ -120,4 +120,4 @@ export const controlApi = createApi({
 export const { useGetAnimalBySpeciesQuery, useGetAnimalInstanceQuery, useGetAnimalInstanceListQuery, useGetSpeciesListQuery, 
               useAddAnimalMutation, useUpdateAnimalMutation, useUpdateVehicleMutation, useAddVehicleMutation, 
               useGetVehicleListQuery, useGetRideListQuery, useUpdateRidesMutation, useAddRidesMutation, useGetInventoryListQuery, 
-              useUpdateInventoryMutation, useGetEquipmentListQuery, useAddInventoryItemMutation, useGetFeedListQuery, useGetLabListQuery, useFindItemQuery, useGetResortListQuery } = controlApi
+              useUpdateInventoryMutation, useGetEquipmentListQuery, useAddInventoryItemMutation, useGetFeedListQuery, useGetLabListQuery, useLazyFindItemQuery, useGetResortListQuery } = controlApi

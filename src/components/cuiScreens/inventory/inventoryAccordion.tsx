@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 //import RideUpdateForm from './rideUpdateForm';
 import '../../../styles/inventoryMain.css'
 import InventoryEditForm from './inventoryEditForm';
+import { addToActiveInventory, toggleOrderForm } from '../../slices/interfaceSlice';
+import { useAppDispatch } from '../../../app/hooks';
 
 interface AccordionProps {
     content: any,
 }
 
 const InventoryAccordion: React.FC<AccordionProps> = ({content}) => {
-
+const dispatch = useAppDispatch()
   const [isEditing, setIsEditing] = useState(false);
 
   const [isActive, setIsActive] = useState(false);
@@ -20,6 +22,12 @@ const InventoryAccordion: React.FC<AccordionProps> = ({content}) => {
 const getData = () => {
     console.log(content)
 }
+
+const handleCheckboxChange = () => {
+    dispatch(addToActiveInventory(content))
+    //dispatch(toggleOrderForm())
+}
+
   return (
     <div className="cuiDropDownAccordian">
         <div className='cuiDropDownListContainer'>
@@ -28,6 +36,11 @@ const getData = () => {
             <div className='cuiDropDownButtonRow'>
             <button className='cuiDropDownLink' onClick={() => setIsActive(!isActive)}>{isActive ? 'HIDE' : 'EXPAND'}</button>
             <button className='cuiDropDownLink' onClick={openForm}>{isEditing ? "GO BACK" : "EDIT"}</button>
+            <input
+                type='checkbox'
+                name='selected'
+                onChange={handleCheckboxChange}>
+            </input>
             </div>
         </div>
         {isEditing ? <InventoryEditForm content={content} setIsEditing={setIsEditing}/>: null}

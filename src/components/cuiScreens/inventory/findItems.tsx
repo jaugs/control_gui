@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from '../../../app/hooks'
-import { useFindItemQuery } from '../../slices/apiSlice';
+import { useLazyFindItemQuery } from '../../slices/apiSlice';
 import InventoryAccordion from './inventoryAccordion';
 import InventoryTabs from './inventoryTabs';
 import NewInventoryForm from './inventoryNewForm';
@@ -11,7 +11,7 @@ const FindItems: React.FC = () => {
   const interfaceData = useAppSelector((state) => state.interface)
   
   const [findQuery, setFindQuery] = useState('')
-  const { data, error, isLoading } = useFindItemQuery('Park')
+  const [ trigger, result, lastPromiseInfo ] = useLazyFindItemQuery()
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault()
@@ -22,6 +22,7 @@ const [isSubmmited, setIsSubmitted] = useState(false)
   useEffect(() => {
     if (isSubmmited) {
     postData()
+    setIsSubmitted(false)
     }
   }, [isSubmmited])
   
@@ -31,17 +32,18 @@ const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
   }
 
   async function postData () {
-    console.log(data)
-
+    trigger(findQuery)
   }
+  
   return (
     <div className="masterContainer">
       <InventoryTabs />
       <section className='inventoryGrid'>
         <div className='findFormContainer'>
-            <form className='newInventoryForm' name='findItemForm' method='POST' onSubmit={(event) =>handleSubmit(event)}>
-                <label className='cuiLabel'>Find: </label>
+            <form className='findInventoryForm' name='findItemForm' method='POST' onSubmit={(event) =>handleSubmit(event)}>
+                <label className='cuiLabel'>Find:
                 <input
+                    className='findInput'
                     required
                     value={findQuery}
                     type='text'
@@ -49,15 +51,18 @@ const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
                     onChange={(event) => handleChange(event)}
                     >
                 </input>
+                </label>
                 <div className='cuiDropDownButtonContainer'>
                     <button className='cuiDropDownButton' type='submit'>SUBMIT</button>
                 </div>
             </form>
         </div>
         {interfaceData.addFormOpen?  <NewInventoryForm /> : null}
-        {/* {isLoading ? <div>Loading...</div> : error ? <div>Error: 102</div> : data ? data.map((item: any, index: number) => {
+        {(result.status === 'uninitialized') ? null : (result.isLoading) ? <div>Loading...</div> : 
+        result.isError ? <div>Error...</div> : (result.data.length === 0) ? <div>Could not Find any Items</div> : 
+        result.data.map((item: any, index: number) => {
           return <InventoryAccordion key={item._id} content={item} />
-        }) : null } */}
+        })}
       </section>
     </div>
   )

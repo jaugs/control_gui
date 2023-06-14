@@ -8,10 +8,12 @@ interface InterfaceState {
     isDragging: boolean,
     isLoading: boolean,
     active_object_index: any,
+    active_inventory: Array<object>,
     section: string,
     id: string,
     isEditing: boolean,
     addFormOpen: boolean,
+    orderFormOpen: boolean,
     layers: [{
         name: string,
         isActive: boolean,
@@ -25,10 +27,12 @@ const initialState: InterfaceState = {
     isDragging: false,
     isLoading: false,
     active_object_index: {},
+    active_inventory: [],
     section: '',
     id: '',
     isEditing: false,
     addFormOpen: false,
+    orderFormOpen: false,
     layers: [{
         name: 'base',
         isActive: true,
@@ -68,8 +72,14 @@ export const interfaceSlice = createSlice({
          openActiveObjectIndex: (state, action: PayloadAction<string>) => {
             state.active_object_index = {...state.active_object_index, [action.payload]: true}
          },
+         addToActiveInventory: (state, action: PayloadAction<object>) => {
+            state.active_inventory = [...state.active_inventory, action.payload]
+         },
          toggleAddForm: (state) => {
             state.addFormOpen = !state.addFormOpen
+         },
+         toggleOrderForm: (state) => {
+            state.orderFormOpen = !state.orderFormOpen
          },
          toggleIsEditing: (state) => {
             state.isEditing = !state.isEditing
@@ -77,7 +87,9 @@ export const interfaceSlice = createSlice({
     }
 });
 
-export const { toggleCui, toggleMinimize, toggleLoading, toggleAddForm, toggleIsEditing, changeIntDragging, changeIntCoords, changeSection, changeID, closeActiveObjectIndex, openActiveObjectIndex } = interfaceSlice.actions
+export const { toggleCui, toggleMinimize, toggleLoading, addToActiveInventory, toggleAddForm, 
+               toggleOrderForm, toggleIsEditing, changeIntDragging, changeIntCoords, changeSection, 
+               changeID, closeActiveObjectIndex, openActiveObjectIndex } = interfaceSlice.actions
 
 export const selectInterface = (state: RootState) => state.interface
 
