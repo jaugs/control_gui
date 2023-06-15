@@ -76,6 +76,7 @@ const NewInventoryForm = () => {
   return (
   <div>
     <form className='newInventoryForm' name='newInventoryForm' method='POST' onSubmit={(event) =>handleSubmit(event)}>
+    <label className='cuiFormTitle'>ADD NEW INVENTORY ITEM</label>
         <div className="cuiFormSection">
         <label className='cuiLabel'>NAME:</label>
         <input 

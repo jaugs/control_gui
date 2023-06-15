@@ -75,6 +75,11 @@ export const interfaceSlice = createSlice({
          addToActiveInventory: (state, action: PayloadAction<object>) => {
             state.active_inventory = [...state.active_inventory, action.payload]
          },
+         removeActiveInventory: (state, action: PayloadAction<string>) => {
+            const removedName = action.payload;
+            state.active_inventory = state.active_inventory.filter((item: any) => item.name !== removedName);
+            
+         },
          toggleAddForm: (state) => {
             state.addFormOpen = !state.addFormOpen
          },
@@ -89,7 +94,7 @@ export const interfaceSlice = createSlice({
 
 export const { toggleCui, toggleMinimize, toggleLoading, addToActiveInventory, toggleAddForm, 
                toggleOrderForm, toggleIsEditing, changeIntDragging, changeIntCoords, changeSection, 
-               changeID, closeActiveObjectIndex, openActiveObjectIndex } = interfaceSlice.actions
+               changeID, closeActiveObjectIndex, openActiveObjectIndex, removeActiveInventory } = interfaceSlice.actions
 
 export const selectInterface = (state: RootState) => state.interface
 

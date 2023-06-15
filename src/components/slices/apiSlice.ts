@@ -95,6 +95,14 @@ export const controlApi = createApi({
       }),
       invalidatesTags: ['Inventory']
     }),
+    addInventoryOrder: builder.mutation({
+      query: ({...patch}) => ({
+        url: `inventory/orderItem`,
+        method: 'POST',
+        body: patch,
+      }),
+      
+    }),
     getEquipmentList: builder.query<any,void>({
       query: () => 'inventory/equipment',
       providesTags: ['Inventory'],
@@ -120,4 +128,5 @@ export const controlApi = createApi({
 export const { useGetAnimalBySpeciesQuery, useGetAnimalInstanceQuery, useGetAnimalInstanceListQuery, useGetSpeciesListQuery, 
               useAddAnimalMutation, useUpdateAnimalMutation, useUpdateVehicleMutation, useAddVehicleMutation, 
               useGetVehicleListQuery, useGetRideListQuery, useUpdateRidesMutation, useAddRidesMutation, useGetInventoryListQuery, 
-              useUpdateInventoryMutation, useGetEquipmentListQuery, useAddInventoryItemMutation, useGetFeedListQuery, useGetLabListQuery, useLazyFindItemQuery, useGetResortListQuery } = controlApi
+              useUpdateInventoryMutation, useGetEquipmentListQuery, useAddInventoryItemMutation, useGetFeedListQuery, useGetLabListQuery, 
+              useAddInventoryOrderMutation, useLazyFindItemQuery, useGetResortListQuery } = controlApi

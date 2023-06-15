@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 //import RideUpdateForm from './rideUpdateForm';
 import '../../../styles/inventoryMain.css'
 import InventoryEditForm from './inventoryEditForm';
-import { addToActiveInventory, toggleOrderForm } from '../../slices/interfaceSlice';
-import { useAppDispatch } from '../../../app/hooks';
+import { addToActiveInventory, removeActiveInventory, toggleOrderForm } from '../../slices/interfaceSlice';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 
 interface AccordionProps {
     content: any,
@@ -12,8 +12,9 @@ interface AccordionProps {
 const InventoryAccordion: React.FC<AccordionProps> = ({content}) => {
 const dispatch = useAppDispatch()
   const [isEditing, setIsEditing] = useState(false);
-
+  const [selected, setSelected] = useState(null);
   const [isActive, setIsActive] = useState(false);
+  const interfaceData = useAppSelector((state) => state.interface)
 
   const openForm = () => {
     setIsEditing(!isEditing)
@@ -23,10 +24,20 @@ const getData = () => {
     console.log(content)
 }
 
-const handleCheckboxChange = () => {
-    dispatch(addToActiveInventory(content))
+const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { value, checked } = event.target
+    if (checked) {
+        if (interfaceData.active_inventory.some((item: any) => item._id === content.id)) {
+            return
+        } else {
+            dispatch(addToActiveInventory(content))
+        }
+    } else {
+        dispatch(removeActiveInventory(content.name))    
+    }
+    }
+    
     //dispatch(toggleOrderForm())
-}
 
   return (
     <div className="cuiDropDownAccordian">
@@ -38,8 +49,8 @@ const handleCheckboxChange = () => {
             <button className='cuiDropDownLink' onClick={openForm}>{isEditing ? "GO BACK" : "EDIT"}</button>
             <input
                 type='checkbox'
-                name='selected'
-                onChange={handleCheckboxChange}>
+                value={content._id}
+                onChange={(event) => handleCheckboxChange(event)}>
             </input>
             </div>
         </div>

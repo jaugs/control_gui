@@ -466,7 +466,7 @@
     width: 100%;
 }
 
-.vehicleForm, .newInventoryForm, .inventoryForm {
+.vehicleForm, .newInventoryForm, .inventoryForm, .orderInventoryForm {
     background-color: #e0dede;
     color: black;
     display: grid;
