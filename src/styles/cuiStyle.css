@@ -101,7 +101,7 @@
     margin-bottom: 1px;
 }
 
-.cuiHeaderButton {
+.cuiHeaderButton, .cuiActiveHeaderButton {
     border: none;
     cursor: pointer;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -123,7 +123,7 @@
     box-shadow: -1px -1px 1px black;
 }
 
-.cuiHeaderButton:active {
+.cuiHeaderButton:active, .cuiActiveHeaderButton {
     background-color: #e0dede;
     box-shadow: -1px -1px 1px black inset;
 }
@@ -318,6 +318,13 @@
     padding: 0;
 }
 
+.cuiDropDownContentHistory {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
 .cuiFormTitle {
     grid-column-start: 1;
     grid-column-end: 3;
@@ -473,8 +480,12 @@
     grid-template-columns: 3fr 2fr;
     gap: 10px;
     border: 1px solid black;
-    max-width: 100%;
+    max-width: 690px;
     font-size: 16px;
+}
+
+.orderInventoryForm {
+    min-width: 690px;
 }
 
 .findFormContainer {

@@ -61,9 +61,18 @@ const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
           onSubmit={(event) =>handleSubmit(event)}>
             <label className='cuiFormTitle'>ORDER INVENTORY: {content.name}</label>
            
-              <div className='cuiLabel'>Order Lot Size: {content.lotSize}</div>
-              <div className='cuiLabel'>Current Balance: {content.quantity}</div>
-              <div className='cuiLabel'>Last Ordered: {content.lastOrdered_formatted}</div>
+              <div className='cuiFormSection'>
+                <div className='cuiLabel'>Order Lot Size:</div>
+                <div className='cuiLabel'>{content.lotSize}</div>
+              </div>
+              <div className='cuiFormSection'>
+                <div className='cuiLabel'>Last Ordered:</div>
+                <div className='cuiLabel'>{content.lastOrdered_formatted}</div>
+              </div>
+              <div className='cuiFormSection'>
+                <div className='cuiLabel'>Current Balance:</div>
+                <div className='cuiLabel'>{content.quantity}</div>
+              </div>
               <div className="cuiFormSection">
               <label className='cuiLabel'>Order Date:</label>
               <input 

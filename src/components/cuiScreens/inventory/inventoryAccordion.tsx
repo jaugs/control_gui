@@ -37,7 +37,6 @@ const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
     }
     }
     
-    //dispatch(toggleOrderForm())
 
   return (
     <div className="cuiDropDownAccordian">
@@ -50,6 +49,7 @@ const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
             <input
                 type='checkbox'
                 value={content._id}
+                checked={interfaceData.active_inventory.some((item: any) => item._id === content.id)}
                 onChange={(event) => handleCheckboxChange(event)}>
             </input>
             </div>
@@ -88,6 +88,22 @@ const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
                 <p>Last Ordered:</p>
                 <p>{content.lastOrdered_formatted}</p>
             </div>
+            {content.orderHistory.length > 0 ?
+                <div className='cuiDropDownContentDiv'>
+                <p>Order History:</p>
+                <div>
+                {content.orderHistory.map((item: any, index: any) => {
+                    return (
+                    <div key={index} className='cuiDropDownContentHistory'>
+                        <p>Date:</p>
+                        <p>{content.orderHistory_formatted[index]}</p>
+                        <p>Quantity:</p>
+                        <p>{item.quantity}</p>
+                    </div>)
+                })}
+                </div>
+                </div>: null}
+                 
             <div className='cuiDropDownContentDiv'>
                 <p>Tags:</p>
                 <div className='tagMap'>
