@@ -209,7 +209,7 @@
     border: 1px solid black;
     min-width: 390px;
     text-align: left;
-    gap: 10px;
+    gap: 5px;
     width: 100%;
 
 }
@@ -269,12 +269,12 @@
 .cuiDropDownButtonRow {
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 7px;
 }
 
 .cuiDropDownTitle {
     width: 300px;
-    padding-left:5px;
+    padding-left:10px;
 }
 
 .cuiDropDownAccordian {
@@ -282,7 +282,7 @@
     flex-direction: column;
     align-items: baseline;
     justify-content: space-between;
-    width: 690px;
+    width: 745px;
 }
 
 .cuiDropDownContent {
@@ -480,12 +480,12 @@
     grid-template-columns: 3fr 2fr;
     gap: 10px;
     border: 1px solid black;
-    max-width: 690px;
+    max-width: 745px;
     font-size: 16px;
 }
 
 .orderInventoryForm {
-    min-width: 690px;
+    min-width: 745px
 }
 
 .findFormContainer {
@@ -556,9 +556,43 @@
     background-color: white;
 }
 
-.cuiSubLabel input:checked {
+.cuiSubLabel input:checked  {
     background-color: #555755;
 }
+
+.checkInput {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    cursor: pointer;
+    font-family: cui3;
+    font-size: 18px;
+    border: 1px solid #e0dede;
+    background-color: #A4A4A4;
+    color: black;
+}
+
+.checkInput::before {
+    content: "SELECT";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 26px;
+    width: 70px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+.checkInput:checked::before {
+    content: "REMOVE";
+    background-color: #818181;
+  }
 
 .serviceWork {
     grid-column-start: 1;

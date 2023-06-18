@@ -26,10 +26,16 @@ const InventoryTabs: React.FC = () => {
     }
   }
   
+  const order = () => {
+    if (interfaceData.active_inventory.length > 0) {
+      dispatch(toggleOrderForm())
+    }
+  }
+  
   return (
     <header className='masterHeader'> 
         <button className='cuiHeaderButton' onClick={() => dispatch(changeSection('FIND'))}>FIND</button>
-        <button className={interfaceData.orderFormOpen ? 'cuiActiveHeaderButton' : 'cuiHeaderButton'} onClick={() => dispatch(toggleOrderForm())}>ORDER</button>
+        <button className={interfaceData.orderFormOpen ? 'cuiActiveHeaderButton' : 'cuiHeaderButton'} onClick={() => order()}>ORDER</button>
         <button className='cuiHeaderButton'>MONITOR</button>
         <button className='cuiHeaderButton' onClick={() => dispatch(toggleAddForm())}>CREATE</button>
         <button className='cuiHeaderButton'>REPORT</button>

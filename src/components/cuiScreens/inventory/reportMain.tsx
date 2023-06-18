@@ -9,7 +9,7 @@ interface AccordionProps {
     content: any,
 }
 
-const InventoryAccordion: React.FC<AccordionProps> = ({content}) => {
+const ReportingAccordion: React.FC<AccordionProps> = ({content}) => {
 const dispatch = useAppDispatch()
   const [isEditing, setIsEditing] = useState(false);
   const [selected, setSelected] = useState(null);
@@ -122,4 +122,4 @@ const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
   );
 };
 
-export default InventoryAccordion;
+export default ReportingAccordion;
