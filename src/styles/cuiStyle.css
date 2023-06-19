@@ -28,11 +28,33 @@
     padding-right: 5px;
 }
 
+.cuiHeaderTitle {
+    display: flex;
+    flex-direction: row;
+    gap: 10px
+}
+
 .cuiHeaderRow {
     display: flex;
     flex-direction: row;
     gap: 10px;
 }
+
+.cuiLogoContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000099;
+    border: 1px solid black;
+    cursor: pointer;
+    
+}
+
+.cuiLogo {
+    width: 24px;
+    margin-left: -5px;
+    background-color: white;
+  }
 
 .cuiSection {
     border-top: 1px solid black;

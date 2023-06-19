@@ -1,6 +1,6 @@
 import '../styles/cuiStyle.css'
+import logo from '../assets/logo2.svg'
 import { useAppDispatch, useAppSelector } from '../app/hooks'
-import { changeScreen } from '../components/slices/mainSlice'
 import { newPopup, changeOpen, changeContent } from '../components/slices/popupSlice'
 import { toggleMap } from '../components/slices/mapSlice';
 import { toggleCui, toggleMinimize, changeIntDragging } from './slices/interfaceSlice';
@@ -16,6 +16,8 @@ import LabInventoryMain from './cuiScreens/inventory/labInventoryMain';
 import FeedMain from './cuiScreens/inventory/feedMain';
 import ResortInventoryMain from './cuiScreens/inventory/resortInventoryMain';
 import FindItems from './cuiScreens/inventory/findItems';
+import ReportMain from './cuiScreens/inventory/reportMain';
+
 
 const Cui: React.FC = () => {
 
@@ -45,7 +47,12 @@ const Cui: React.FC = () => {
       onDragEnd={(event) => dragEnd(event)}>
 
         <header className={isMinimized ? 'miniHeader' : 'cuiHeader'}>
+          <div className='cuiHeaderTitle'>
+          <div className='cuiLogoContainer'>
+            <img className='cuiLogo' src={logo}></img>
+          </div>
           <div className='cuiTitle'>COMMON USER INTERFACE:{intState.section}</div>
+          </div>
           <div className='cuiHeaderRow'>
             <button className='cuiButton' onClick={() => minimizeCui()}>-</button>
             <button className='cuiButton' onClick={() => dispatch(toggleCui())}>&times;</button>
@@ -79,6 +86,8 @@ const Cui: React.FC = () => {
               return <FeedMain />
             case 'FIND':
               return <FindItems />
+            case 'REPORT':
+              return <ReportMain />
             default:
               return <MasterMain />
           }

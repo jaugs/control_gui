@@ -1,0 +1,9 @@
+.cuiReportContainer {
+    display: flex;
+    font-size: 18px;
+}
+
+.cuiDropDownContentDiv {
+    color: black;
+    background-color: blue;
+}
