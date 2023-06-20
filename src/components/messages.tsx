@@ -281,6 +281,14 @@ const Messages: React.FC<MessageProps> = ({contents}) => {
                             <div className="messageItem">Authenticate Identity or Return To Main Screen (err: 403b)</div>
                         </div>
                     </div>
+        case 'PRINT':
+            return <div className="messageContainer">
+                        <div className='messageHeader'>COMMON USER INTERFACE ERROR:</div>
+                        <div className="messageContent">
+                            <div className="messageItem">ERROR: PRINTER NOT FOUND</div>
+                            <div className="messageItem">PRINTER MODULE NOT DETECTED (err: 203a)</div>
+                        </div>
+                    </div>
         default:
                 return <div>Error: Contents not Found.</div>
         }}

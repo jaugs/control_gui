@@ -22,20 +22,21 @@ const ReportingAccordion: React.FC<AccordionProps> = ({content}) => {
   }
 
   return (
-    <div className="cuiReportContainer">
-        <div className='cuiDropDownContentDiv'>{content.category}</div>
-        <div className='cuiDropDownContentDiv'>{content.sub_category}</div>
-        <div className='cuiDropDownContentDiv'>{content.quantity}</div>
-        <div className='cuiDropDownContentDiv'>{content.price}</div>
-        <div className='cuiDropDownContentDiv'>{content.isAvailable ? "In Stock" : "Not Available"}</div>
-        <div className='cuiDropDownContentDiv'>{content.supplier}</div>
-        <div className='cuiDropDownContentDiv'>{content.lotSize}</div>
-        <div className='cuiDropDownContentDiv'>{content.lastOrdered_formatted}</div>
+    <div className="cuiReportItemContainer">
+        <div className='cuiReportDiv'>{content.name}</div>
+        <div className='cuiReportDiv'>{content.category}</div>
+        <div className='cuiReportDiv'>{content.sub_category}</div>
+        <div className='cuiReportDiv'>{content.quantity}</div>
+        <div className='cuiReportDiv'>{content.price}</div>
+        <div className='cuiReportDiv'>{content.isAvailable ? "In Stock" : "Not Available"}</div>
+        <div className='cuiReportDiv'>{content.supplier}</div>
+        <div className='cuiReportDiv'>{content.lotSize}</div>
+        <div className='cuiReportDiv'>{content.lastOrdered_formatted}</div>
         {content.orderHistory.length > 0 ?
-            <div className='cuiDropDownContentDiv'>
+            <div className='cuiReportHistoryContainer'>
                 {content.orderHistory.map((item: any, index: any) => {
                     return (
-                    <div key={index} className='cuiDropDownContentHistory'>
+                    <div key={index} className='cuiReportHistorydiv'>
                         <p>Date:</p>
                         <p>{content.orderHistory_formatted[index]}</p>
                         <p>Quantity:</p>
@@ -43,7 +44,9 @@ const ReportingAccordion: React.FC<AccordionProps> = ({content}) => {
                     </div>)
                 })}
             </div>
-        : null}
+        : <div className='cuiReportHistoryContainer'>
+                <div className='cuiReportHistorydiv'>No Order History Found</div>
+            </div>}
 
         
     </div>

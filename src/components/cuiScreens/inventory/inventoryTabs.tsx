@@ -21,18 +21,29 @@ const InventoryTabs: React.FC = () => {
     let currentScreen = interfaceData.section;
     if (currentScreen === 'INVENTORY') {
         dispatch(changeSection('MASTER'))
+    } else if (currentScreen === 'REPORT') {
+      dispatch(toggleReportForm())
+      dispatch(changeSection('INVENTORY'))
     } else if (currentScreen == 'EQUIPMENT' || 'FEED' || 'LAB INVENTORY' || 'RESORT INVENTORY') {
         dispatch(changeSection('INVENTORY'))
-    }
+    } 
   }
   
   const order = () => {
+    if (interfaceData.section == 'REPORT') {
+      return
+    }
     if (interfaceData.active_inventory.length > 0) {
       dispatch(toggleOrderForm())
     }
   }
 
   const openReport = () => {
+    if (interfaceData.section == 'REPORT') {
+      dispatch(toggleReportForm())
+      dispatch(changeSection('INVENTORY'))
+      return
+    }
     if (interfaceData.active_inventory.length > 0) {
       dispatch(toggleReportForm())
       dispatch(changeSection('REPORT'))

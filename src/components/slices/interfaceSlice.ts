@@ -15,6 +15,7 @@ interface InterfaceState {
     addFormOpen: boolean,
     orderFormOpen: boolean,
     reportOpen: boolean
+    reportEditFields: boolean,
     layers: [{
         name: string,
         isActive: boolean,
@@ -35,6 +36,7 @@ const initialState: InterfaceState = {
     addFormOpen: false,
     orderFormOpen: false,
     reportOpen: false,
+    reportEditFields: false,
     layers: [{
         name: 'base',
         isActive: true,
@@ -91,6 +93,9 @@ export const interfaceSlice = createSlice({
          toggleReportForm: (state) => {
             state.reportOpen = !state.reportOpen
          },
+         toggleReportEdit: (state) => {
+            state.reportEditFields = !state.reportEditFields
+         },
          toggleIsEditing: (state) => {
             state.isEditing = !state.isEditing
          },
@@ -99,7 +104,7 @@ export const interfaceSlice = createSlice({
 
 export const { toggleCui, toggleMinimize, toggleLoading, addToActiveInventory, toggleAddForm, 
                toggleOrderForm, toggleIsEditing, changeIntDragging, changeIntCoords, changeSection, 
-               changeID, closeActiveObjectIndex, openActiveObjectIndex, removeActiveInventory, toggleReportForm } = interfaceSlice.actions
+               changeID, closeActiveObjectIndex, openActiveObjectIndex, removeActiveInventory, toggleReportForm, toggleReportEdit } = interfaceSlice.actions
 
 export const selectInterface = (state: RootState) => state.interface
 
