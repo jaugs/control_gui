@@ -3,15 +3,27 @@
     flex-direction: row;
     gap: 5px;
     flex-wrap: wrap;
-    padding: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
     max-height: 490px;
-    overflow: scroll;
+    
 }
 
 .cuiReportContainer {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     font-size: 15px;
+    overflow-y: scroll;
+}
+
+.cuiReportTitle {
+    width: 96%;
+    font-family: cui3;
+    border-bottom: 1px solid black;
+    background-color: #555755;
+    color: white;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .cuiColumnHeader {
@@ -31,7 +43,7 @@
     justify-content: flex-start;
     align-items: flex-start;
     font-size: 15px;
-    max-width: 205px;
+    max-width: 200px;
     flex-wrap: wrap;
     padding-bottom: 10px;
 }
@@ -50,6 +62,10 @@
     border-top: 1px solid black;
 }
 
+#cuiReportNameDiv {
+    min-height: 50px;
+}
+
 .cuiReportHistoryContainer {
     display: flex;
     flex-direction: column;
@@ -64,7 +80,7 @@
     align-items: flex-start;
     justify-content: flex-start;
     gap: 2px;
-    width: 205px;
+    width: 200px;
     height: 50px;
     flex-wrap: wrap;
     border: 1px solid black;
@@ -86,13 +102,21 @@
     flex-direction: column;
     gap: 10px;
     border: 1px solid black;
-    width: 600px;
+    width: 700px;
     font-size: 16px;
     justify-content: center;
     align-items: center;
-    padding: 5px;
+    padding-bottom: 10px;
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.cuiReportOptionsTitle {
+    width: 100%;
+    font-family: cui3;
+    border-bottom: 1px solid black;
+    background-color: #555755;
+    color: white;
 }
 
 .cuiReportOptions {
@@ -103,7 +127,7 @@
     gap: 15px;
 }
 
-.cuiReportOptionsButton {
+.cuiReportOptionsButton, .cuiReportEditButton {
     cursor: pointer;
     font-family: cui3;
     margin: 0;
@@ -120,7 +144,97 @@
     min-width: 90px;
 }
 
-.cuiReportOptionsButton:active {
+.cuiReportOptionsButton:active, .cuiReportEditButton:active {
     background-color: #818181;
 }
 
+.cuiReportEditFieldsContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 680px;
+    gap: 5px;
+}
+
+.cuiReportLabel {
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    width: 120px;
+    padding: 2px;
+    padding-bottom: 4px;
+    background-color: white;
+}
+
+.cuiConnoteLabel {
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    width: 300px;
+    min-height: 110px;
+    padding: 2px;
+    padding-bottom: 4px;
+    background-color: white;
+    margin-top: 10px;
+    gap: 5px;
+}
+
+.reportNotesContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border: 1px solid black;
+    min-width: 98%;
+    gap: 10px;
+}
+
+.cuiConnoteLabel input {
+    background-color: #e0dede;
+}
+
+.cuiConnoteLabel textarea {
+    background-color: #e0dede;
+}
+
+.reportCheckInput {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    cursor: pointer;
+    font-family: cui3;
+    font-size: 18px;
+    border: 1px solid black;
+    background-color: #A4A4A4;
+    color: black;
+}
+
+.reportCheckInput::before {
+    content: "REMOVE";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 26px;
+    width: 70px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+.reportCheckInput:checked::before {
+    content: "SELECT";
+    background-color: #818181;
+  }
