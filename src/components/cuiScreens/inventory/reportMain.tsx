@@ -49,6 +49,11 @@ const ReportMain = () => {
       orderHistory: true,
     })
 
+
+  const handleClear = (item: string) => {
+    dispatch(removeActiveInventory(item))
+  }
+
   return (
   <div className='masterContainer'>
     <InventoryTabs />
@@ -66,7 +71,9 @@ const ReportMain = () => {
       {interfaceData.clearFields ? 
         <div className='clearFieldsContainer'>
           {interfaceData.active_inventory.map((item: any, index: number) => {
-           return <div key={index} className='clearFieldsItem'>{item.name}</div>
+           return <div key={index} className='cuiReportClear'>{item.name}
+                    <button onClick={() => handleClear(item.name)} className='cuiReportEditButton'>REMOVE</button>
+                  </div>
           })}
         </div> 
       : null}

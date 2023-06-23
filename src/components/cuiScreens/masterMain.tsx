@@ -84,7 +84,9 @@ const MasterMain: React.FC = () => {
             <li className='listItem'>Emergency</li> 
           </ul>
           </div>
-          <div className='cuiLink'>Resort Main
+          <div 
+            className='cuiLink'
+            onClick={() => dispatch(changeSection('RESORT'))}>Resort Main
           <ul>
             <li className='listItem'>Cleaning</li>
             <li className='listItem'>Bookings</li> 

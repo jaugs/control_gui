@@ -72,6 +72,9 @@ export const controlApi = createApi({
       }),
       invalidatesTags: ['Rides']
     }),
+    getResortData: builder.query<any,void>({
+      query: () => 'resort'
+    }),
     getInventoryList: builder.query({
       query: (category) => `inventory/category/${category}`,
       providesTags: ['Inventory'],
@@ -129,4 +132,4 @@ export const { useGetAnimalBySpeciesQuery, useGetAnimalInstanceQuery, useGetAnim
               useAddAnimalMutation, useUpdateAnimalMutation, useUpdateVehicleMutation, useAddVehicleMutation, 
               useGetVehicleListQuery, useGetRideListQuery, useUpdateRidesMutation, useAddRidesMutation, useGetInventoryListQuery, 
               useUpdateInventoryMutation, useGetEquipmentListQuery, useAddInventoryItemMutation, useGetFeedListQuery, useGetLabListQuery, 
-              useAddInventoryOrderMutation, useLazyFindItemQuery, useGetResortListQuery } = controlApi
+              useAddInventoryOrderMutation, useLazyFindItemQuery, useGetResortListQuery, useGetResortDataQuery } = controlApi
