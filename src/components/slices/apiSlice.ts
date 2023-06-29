@@ -5,7 +5,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const controlApi = createApi({
   reducerPath: 'controlApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/api/' }),
-  tagTypes: ['Garage', 'Rides', 'Inventory'],
+  tagTypes: ['Garage', 'Rides', 'Inventory', 'Equipment', 'Lab', 'Feed', 'Resort'],
   endpoints: (builder) => ({
 
     getAnimalBySpecies: builder.query({
@@ -108,21 +108,32 @@ export const controlApi = createApi({
     }),
     getEquipmentList: builder.query<any,void>({
       query: () => 'inventory/equipment',
-      providesTags: ['Inventory'],
+      providesTags: ['Equipment'],
     }),
     getFeedList: builder.query<any,void>({
       query: () => 'inventory/feed',
-      providesTags: ['Inventory'],
+      providesTags: ['Feed'],
     }),
     getLabList: builder.query<any,void>({
       query: () => 'inventory/lab',
-      providesTags: ['Inventory'],
+      providesTags: ['Lab'],
     }),
     getResortList: builder.query<any,void>({
       query: () => 'inventory/resort',
-      providesTags: ['Inventory'],
+      providesTags: ['Resort'],
     }),
-
+    getResortCleaningList: builder.query<any,void>({
+      query: () => 'resort/rooms',
+      providesTags: ['Resort'],
+    }),
+    addResortCleaning: builder.mutation({
+      query: ({...patch}) => ({
+        url: `resort/cleaning/update`,
+        method: 'POST',
+        body: patch,
+      }),
+      invalidatesTags: ['Resort']
+    }),
   }),
 })
 
@@ -132,4 +143,4 @@ export const { useGetAnimalBySpeciesQuery, useGetAnimalInstanceQuery, useGetAnim
               useAddAnimalMutation, useUpdateAnimalMutation, useUpdateVehicleMutation, useAddVehicleMutation, 
               useGetVehicleListQuery, useGetRideListQuery, useUpdateRidesMutation, useAddRidesMutation, useGetInventoryListQuery, 
               useUpdateInventoryMutation, useGetEquipmentListQuery, useAddInventoryItemMutation, useGetFeedListQuery, useGetLabListQuery, 
-              useAddInventoryOrderMutation, useLazyFindItemQuery, useGetResortListQuery, useGetResortDataQuery } = controlApi
+              useAddInventoryOrderMutation, useGetResortListQuery, useLazyFindItemQuery, useGetResortCleaningListQuery, useGetResortDataQuery, useAddResortCleaningMutation } = controlApi

@@ -5,11 +5,13 @@ import { changeOpen, changeContent, newPopup } from '../../slices/popupSlice';
 import { useEffect, useState } from 'react';
 import { changeID, changeSection } from '../../slices/interfaceSlice';
 import ResortTabs from './resortTabs';
+import { useGetResortListQuery } from '../../slices/apiSlice';
 
 const ResortMain: React.FC = () => {
 
   const popUpArr = useAppSelector((state) => state.popup.PopupArr)
   const dispatch = useAppDispatch()
+  const {data, error, isLoading } = useGetResortListQuery()
 
 
   return (

@@ -1,0 +1,132 @@
+.cleaningSectionBody {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 5px;
+    height: 550px;
+    overflow-y: scroll;
+}
+
+.resortGrid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    font-family: cui3;
+    font-size: 16px;
+    width: 745px;
+    min-height: 450px;
+    background-color: #e0dede;
+    border: 1px solid black;
+}
+
+.resortTitle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 745px;
+    font-family: cui3;
+    border: 1px solid black;
+    background-color: #555755;
+    color: white;
+}
+
+.resortTitleText {
+    margin-left: 10px;
+}
+
+.resortToggleButton {
+    cursor: pointer;
+    font-family: cui3;
+    margin: 0;
+    padding: 0;
+    font-size: 17px;
+    border: 1px solid black;
+    background-color: #A4A4A4;
+    color: black;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    min-height: 20px;
+    min-width: 60px;
+}
+
+.roomItemContainer, .roomItemContainerVacant {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border: 1px solid black;
+    align-self: start;
+    width: 140px;
+}
+
+.roomItemContainer {
+    border: 1px solid red;
+}
+
+.roomItemFields {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 5px;
+    align-self: start;
+    width: 140px;
+}
+
+.roomItem {
+    margin-left: 3px;    
+}
+
+.roomUpdateButton {
+    align-self: center;
+    cursor: pointer;
+    font-family: cui3;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    border: 1px solid black;
+    background-color: #A4A4A4;
+    color: black;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    min-height: 20px;
+    min-width: 60px;
+    margin-bottom: 5px;
+}
+
+.roomCleaningEditForm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border-top: 1px solid black;
+    padding-top: 5px;
+    gap: 5px;
+    margin-bottom: 5px;
+    
+}
+
+.cleaningFormTitle {
+    width: 100%;
+    font-size: 15px;
+    font-family: cui3;
+    border-bottom: 1px solid black;
+    background-color: #555755;
+    color: white;
+}
+
+.cleaningInventorySection {
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+    background-color: #e0dede;
+}
