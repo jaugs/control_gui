@@ -1,7 +1,6 @@
 import '../styles/cuiStyle.css'
 import logo from '../assets/logo2.svg'
 import { useAppDispatch, useAppSelector } from '../app/hooks'
-import { newPopup, changeOpen, changeContent } from '../components/slices/popupSlice'
 import { toggleMap } from '../components/slices/mapSlice';
 import { toggleCui, toggleMinimize, changeIntDragging } from './slices/interfaceSlice';
 import MasterMain from './cuiScreens/masterMain';
@@ -19,6 +18,9 @@ import FindItems from './cuiScreens/inventory/findItems';
 import ReportMain from './cuiScreens/inventory/reportMain';
 import ResortMain from './cuiScreens/resort/resortMain';
 import CleaningMain from './cuiScreens/resort/cleaningMain';
+import DiningMain from './cuiScreens/resort/diningMain';
+import PoolMain from './cuiScreens/resort/poolMain';
+import BookingMain from './cuiScreens/resort/bookingMain';
 
 
 const Cui: React.FC = () => {
@@ -94,6 +96,12 @@ const Cui: React.FC = () => {
               return <ResortMain />
             case 'CLEANING':
               return <CleaningMain />
+            case 'DINING':
+              return <DiningMain />
+            case 'POOL':
+              return <PoolMain />
+            case 'BOOKING':
+              return <BookingMain />
             default:
               return <MasterMain />
           }

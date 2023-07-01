@@ -5,6 +5,8 @@ import ResortTabs from './resortTabs';
 import RoomCleanItem from './roomCleanItem';
 import { useState } from 'react';
 import InventoryAccordion from '../inventory/inventoryAccordion';
+import NewInventoryForm from '../inventory/inventoryNewForm';
+import OrderInventoryForm from '../inventory/orderInventoryForm';
 
 const CleaningMain: React.FC = () => {
 
@@ -44,6 +46,8 @@ const CleaningMain: React.FC = () => {
                         <button onClick={toggleINVCollapse} className='resortToggleButton'>{cleanInventoryCollapsible ? 'EXPAND' : 'HIDE'}</button>
                 </div>
                     {cleanInventoryCollapsible ? null : <section className='resortCleaningInventory'>
+                    {interfaceData.addFormOpen ?  <NewInventoryForm /> : null}
+                    {interfaceData.orderFormOpen ? interfaceData.active_inventory.length > 0 ? <OrderInventoryForm /> : null : null}
                     {isCleaningLoading ? <div>Loading...</div> : cleaningError ? <div>Error: 103</div> : cleaningInv ? cleaningInv.map((item: any, index: number) => {
                         return <InventoryAccordion content={item} key={index} />
                     }) : null}

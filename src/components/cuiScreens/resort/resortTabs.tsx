@@ -35,6 +35,9 @@ const ResortTabs: React.FC = () => {
     }
     if (interfaceData.active_inventory.length > 0) {
       dispatch(toggleOrderForm())
+    } 
+    if (interfaceData.active_inventory.length < 1 && interfaceData.orderFormOpen) {
+      dispatch(toggleOrderForm())
     }
   }
 

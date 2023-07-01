@@ -34,7 +34,7 @@ const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
         }
     } else {
         dispatch(removeActiveInventory(content.name))
-        if (interfaceData.active_inventory.length < 2) {
+        if (interfaceData.active_inventory.length < 2 && interfaceData.orderFormOpen) {
             dispatch(toggleOrderForm())
         }
     }
