@@ -20,6 +20,7 @@ interface InterfaceState {
     connoteFields: boolean,
     clearFields: boolean,
     roomEdit: boolean,
+    activeRoomEdit: object,
     layers: [{
         name: string,
         isActive: boolean,
@@ -45,6 +46,7 @@ const initialState: InterfaceState = {
     connoteFields: false,
     clearFields: false,
     roomEdit: false,
+    activeRoomEdit: {},
     layers: [{
         name: 'base',
         isActive: true,
@@ -90,7 +92,6 @@ export const interfaceSlice = createSlice({
          removeActiveInventory: (state, action: PayloadAction<string>) => {
             const removedName = action.payload;
             state.active_inventory = state.active_inventory.filter((item: any) => item.name !== removedName);
-            
          },
          toggleAddForm: (state) => {
             state.addFormOpen = !state.addFormOpen
@@ -119,13 +120,21 @@ export const interfaceSlice = createSlice({
          toggleRoomEdit: (state) => {
             state.roomEdit = !state.roomEdit
          },
+         addActiveRoom: (state, action: PayloadAction<object>) => {
+            state.activeRoomEdit = [action.payload]
+         },
+         removeActiveRoom: (state) => {
+            state.activeRoomEdit = {};
+         },
+
     }
 });
 
 export const { toggleCui, toggleMinimize, toggleLoading, addToActiveInventory, toggleAddForm, 
                toggleOrderForm, toggleIsEditing, changeIntDragging, changeIntCoords, changeSection, 
                changeID, closeActiveObjectIndex, openActiveObjectIndex, removeActiveInventory, toggleReportForm, 
-               toggleConnoteFields, toggleReportEdit, toggleReportOptions, toggleClearFields, toggleRoomEdit } = interfaceSlice.actions
+               toggleConnoteFields, toggleReportEdit, toggleReportOptions, toggleClearFields, toggleRoomEdit, 
+               addActiveRoom, removeActiveRoom } = interfaceSlice.actions
 
 export const selectInterface = (state: RootState) => state.interface
 

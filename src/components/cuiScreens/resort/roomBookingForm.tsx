@@ -2,14 +2,24 @@ import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import '../../../styles/inventoryMain.css'
 import { toggleRoomEdit } from '../../slices/interfaceSlice';
 import { useAppDispatch } from '../../../app/hooks';
-import { useAddResortCleaningMutation } from '../../slices/apiSlice';
+import { useAddResortCheckInMutation } from '../../slices/apiSlice';
 
 interface OrderProps {
-    content: any,
-    setIsEditing: React.Dispatch<React.SetStateAction<boolean>>
+    content: {
+        _id: String,
+        roomNumer: Number,
+        guestName: String,
+        checkInDate: Date,
+        checkOutDate: Date,
+        status: String,
+        createdAt: Date,
+        lastCleanedDate: Date,
+        checkIn_formatted: String,
+        checkOut_formatted: String,
+    },
 }
 
-const RoomBookingForm: React.FC<OrderProps> = ({content, setIsEditing}) => {
+const RoomBookingForm: React.FC<OrderProps> = ({content}) => {
 
     const [isSubmmited, setIsSubmitted] = useState(false)
 
@@ -19,21 +29,32 @@ const RoomBookingForm: React.FC<OrderProps> = ({content, setIsEditing}) => {
         }
     }, [isSubmmited])
   
-    const [updateCleaning, {isLoading: isUpdating}] = useAddResortCleaningMutation()
+    const [updateBooking, {isLoading: isUpdating}] = useAddResortCheckInMutation()
 
     const dispatch = useAppDispatch()
-    const [newCleanDate, setNewCleanDate] = useState('')
+    const [newCheckinDate, setNewCheckinDate] = useState('')
+    const [newCheckoutDate, setNewCheckoutDate] = useState('')
+    const [newName, setNewName] = useState('')
 
-    const handleDateChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const handleCheckinChange = (event: ChangeEvent<HTMLInputElement>) => {
         event.preventDefault()
-        setNewCleanDate(event.target.value)
+        setNewCheckinDate(event.target.value)
+    }
+
+    const handleCheckoutChange = (event: ChangeEvent<HTMLInputElement>) => {
+        event.preventDefault()
+        setNewCheckoutDate(event.target.value)
+    }
+
+    const handleNameChange = (event: ChangeEvent<HTMLInputElement>) => {
+        event.preventDefault()
+        setNewName(event.target.value)
     }
 
     async function postData () {
-        console.log(content._id)
-        updateCleaning({id: content._id, lastCleanedDate: newCleanDate }).unwrap().then((result) => {
+        updateBooking({id: content._id, checkInDate: newCheckinDate, checkOutDate: newCheckoutDate, guestName: newName}).unwrap().then((result) => {
             console.log(result)
-            setIsEditing(false)
+            //setIsEditing(false);
             setIsSubmitted(false)
         })
     }
@@ -43,13 +64,20 @@ const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     setIsSubmitted(true)
   }
 
+const getData = () => {
+    console.log(content)
+}
+
   return (
     <div className='bookingFormContainer'>
-        <label className='cleaningFormTitle'>UPDATE BOOKING</label>
+        <div className='bookingFormTitle'>
+        <label className='bookingFormItem'>UPDATE BOOKING</label>
+        <button onClick={getData} className='roomUpdateButton'>HIDE</button>
+        </div>
         <div className='bookingFormStatus'>
-            <div className='bookingFormItem'>{content.guestName == 'Vacant' ? "Open" : content.guestName}</div>
-            <div className='bookingFormItem'>{content.checkInDate ? content.checkIn_formatted : null}</div>
-            <div className='bookingFormItem'>{content.checkOutDate ? content.checkOut_formatted : null}</div>
+            <div className='bookingFormItem'>{content.guestName == 'Vacant' ? "Open" : `ss${content.guestName}`}</div>
+            <div className='bookingFormItem'>{content.checkInDate ? content.checkIn_formatted : 'dd'}</div>
+            <div className='bookingFormItem'>{content.checkOutDate ? content.checkOut_formatted : ''}</div>
         </div>
         <form
             className='roomBookingForm' 
@@ -60,27 +88,27 @@ const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
                 <input 
                     required
                     type='date' 
-                    name='lastCleaned'  
-                    value={newCleanDate} 
-                    onChange={(event) => handleDateChange(event)}>
+                    name='checkin'  
+                    value={newCheckinDate} 
+                    onChange={(event) => handleCheckinChange(event)}>
                 </input>
             </label>
             <label className='cuiLabel'>Check Out Date:
                 <input 
                     required
                     type='date' 
-                    name='lastCleaned'  
-                    value={newCleanDate} 
-                    onChange={(event) => handleDateChange(event)}>
+                    name='checkout'  
+                    value={newCheckoutDate} 
+                    onChange={(event) => handleCheckoutChange(event)}>
                 </input>
             </label>
             <label className='cuiLabel'>Guest Name:
                 <input 
                     required
                     type='text' 
-                    name='lastCleaned'  
-                    value={newCleanDate} 
-                    onChange={(event) => handleDateChange(event)}>
+                    name='name'  
+                    value={newName} 
+                    onChange={(event) => handleNameChange(event)}>
                 </input>
             </label>
             <div className='cuiDropDownButtonContainer'>

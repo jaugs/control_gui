@@ -134,6 +134,14 @@ export const controlApi = createApi({
       }),
       invalidatesTags: ['Resort']
     }),
+    addResortCheckIn: builder.mutation({
+      query: ({...patch}) => ({
+        url: `resort/booking/update`,
+        method: 'POST',
+        body: patch,
+      }),
+      invalidatesTags: ['Resort']
+    }),
   }),
 })
 
@@ -143,4 +151,5 @@ export const { useGetAnimalBySpeciesQuery, useGetAnimalInstanceQuery, useGetAnim
               useAddAnimalMutation, useUpdateAnimalMutation, useUpdateVehicleMutation, useAddVehicleMutation, 
               useGetVehicleListQuery, useGetRideListQuery, useUpdateRidesMutation, useAddRidesMutation, useGetInventoryListQuery, 
               useUpdateInventoryMutation, useGetEquipmentListQuery, useAddInventoryItemMutation, useGetFeedListQuery, useGetLabListQuery, 
-              useAddInventoryOrderMutation, useGetResortListQuery, useLazyFindItemQuery, useGetResortCleaningListQuery, useGetResortDataQuery, useAddResortCleaningMutation } = controlApi
+              useAddInventoryOrderMutation, useGetResortListQuery, useLazyFindItemQuery, useGetResortCleaningListQuery, 
+              useGetResortDataQuery, useAddResortCleaningMutation, useAddResortCheckInMutation } = controlApi

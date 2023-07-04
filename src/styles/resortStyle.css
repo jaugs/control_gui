@@ -5,8 +5,14 @@
     justify-content: flex-start;
     align-items: flex-start;
     gap: 5px;
-    height: 550px;
+    height: 560px;
+    width: 780px;
     overflow-y: scroll;
+}
+
+.cleaningReportSection {
+    min-height: 450px;
+    width: 750px;
 }
 
 .resortGrid {
@@ -17,10 +23,9 @@
     align-items: center;
     font-family: cui3;
     font-size: 16px;
-    width: 745px;
-    min-height: 450px;
     background-color: #e0dede;
     border: 1px solid black;
+    width: 750px;
 }
 
 .resortTitle {
@@ -28,7 +33,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    min-width: 745px;
+    width: 750px;
     font-family: cui3;
     border: 1px solid black;
     background-color: #555755;
@@ -63,7 +68,9 @@
     align-items: flex-start;
     border: 1px solid black;
     align-self: start;
-    width: 140px;
+    width: 120px;
+    height: 120px;
+    background-color: white;
 }
 
 .roomItemContainer {
@@ -76,16 +83,18 @@
     justify-content: flex-start;
     align-items: flex-start;
     gap: 5px;
-    align-self: start;
-    width: 140px;
+    width: 100%;
+    height: 100%;
 }
 
 .roomItem {
     margin-left: 3px;    
+    min-height: 25px;
 }
 
 .roomUpdateButton {
     align-self: center;
+    justify-self: center;
     cursor: pointer;
     font-family: cui3;
     margin: 0;
@@ -101,6 +110,19 @@
     min-height: 20px;
     min-width: 60px;
     margin-bottom: 5px;
+}
+
+.bookingFormContainer {
+    border: 1px solid black;
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border-top: 1px solid black;
+    margin-top: 5px;
+    gap: 5px;
+    width: 750px;
 }
 
 .roomCleaningEditForm {
