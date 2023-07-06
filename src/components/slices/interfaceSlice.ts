@@ -9,6 +9,7 @@ interface InterfaceState {
     isLoading: boolean,
     active_object_index: any,
     active_inventory: Array<object>,
+    active_animals: Array<object>,
     section: string,
     id: string,
     isEditing: boolean,
@@ -19,8 +20,6 @@ interface InterfaceState {
     reportOptions: boolean,
     connoteFields: boolean,
     clearFields: boolean,
-    roomEdit: boolean,
-    activeRoomEdit: object,
     layers: [{
         name: string,
         isActive: boolean,
@@ -35,6 +34,7 @@ const initialState: InterfaceState = {
     isLoading: false,
     active_object_index: {},
     active_inventory: [],
+    active_animals: [],
     section: '',
     id: '',
     isEditing: false,
@@ -45,8 +45,6 @@ const initialState: InterfaceState = {
     reportOptions: false,
     connoteFields: false,
     clearFields: false,
-    roomEdit: false,
-    activeRoomEdit: {},
     layers: [{
         name: 'base',
         isActive: true,
@@ -93,6 +91,13 @@ export const interfaceSlice = createSlice({
             const removedName = action.payload;
             state.active_inventory = state.active_inventory.filter((item: any) => item.name !== removedName);
          },
+         addToActiveAnimals: (state, action: PayloadAction<object>) => {
+            state.active_animals = [...state.active_animals, action.payload]
+         },
+         removeActiveAnimals: (state, action: PayloadAction<string>) => {
+            const removedName = action.payload;
+            state.active_animals = state.active_animals.filter((item: any) => item.name !== removedName);
+         },
          toggleAddForm: (state) => {
             state.addFormOpen = !state.addFormOpen
          },
@@ -117,15 +122,6 @@ export const interfaceSlice = createSlice({
          toggleClearFields: (state) => {
             state.clearFields = !state.clearFields
          },
-         toggleRoomEdit: (state) => {
-            state.roomEdit = !state.roomEdit
-         },
-         addActiveRoom: (state, action: PayloadAction<object>) => {
-            state.activeRoomEdit = [action.payload]
-         },
-         removeActiveRoom: (state) => {
-            state.activeRoomEdit = {};
-         },
 
     }
 });
@@ -133,8 +129,7 @@ export const interfaceSlice = createSlice({
 export const { toggleCui, toggleMinimize, toggleLoading, addToActiveInventory, toggleAddForm, 
                toggleOrderForm, toggleIsEditing, changeIntDragging, changeIntCoords, changeSection, 
                changeID, closeActiveObjectIndex, openActiveObjectIndex, removeActiveInventory, toggleReportForm, 
-               toggleConnoteFields, toggleReportEdit, toggleReportOptions, toggleClearFields, toggleRoomEdit, 
-               addActiveRoom, removeActiveRoom } = interfaceSlice.actions
+               toggleConnoteFields, toggleReportEdit, toggleReportOptions, toggleClearFields, addToActiveAnimals, removeActiveAnimals } = interfaceSlice.actions
 
 export const selectInterface = (state: RootState) => state.interface
 

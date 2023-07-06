@@ -1,9 +1,9 @@
-import '../../styles/cuiStyle.css'
-import { useAppDispatch, useAppSelector } from '../../app/hooks'
-import { changeScreen } from '../slices/mainSlice';
-import { changeOpen, changeContent, newPopup } from '../slices/popupSlice';
+import '../../../styles/cuiStyle.css'
+import { useAppDispatch, useAppSelector } from '../../../app/hooks'
+import { changeScreen } from '../../slices/mainSlice';
+import { changeOpen, changeContent, newPopup } from '../../slices/popupSlice';
 import { useEffect, useState } from 'react';
-import { changeID, changeSection } from '../slices/interfaceSlice';
+import { changeID, changeSection } from '../../slices/interfaceSlice';
 
 const MaintenanceMain: React.FC = () => {
 

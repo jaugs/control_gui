@@ -1,9 +1,9 @@
-import '../../styles/cuiStyle.css'
-import { useAppDispatch, useAppSelector } from '../../app/hooks'
-import { changeOpen, changeContent, newPopup } from '../slices/popupSlice';
+import '../../../styles/cuiStyle.css'
+import { useAppDispatch, useAppSelector } from '../../../app/hooks'
+import { changeOpen, changeContent, newPopup } from '../../slices/popupSlice';
 import { useEffect, useState, ChangeEvent, FormEvent, ComponentState } from 'react';
-import { changeSection, toggleIsEditing } from '../slices/interfaceSlice';
-import { useGetAnimalInstanceQuery, useUpdateAnimalMutation  } from '../slices/apiSlice';
+import { changeSection, toggleIsEditing } from '../../slices/interfaceSlice';
+import { useGetAnimalInstanceQuery, useUpdateAnimalMutation  } from '../../slices/apiSlice';
 
 
 const AnimalList: React.FC = () => {

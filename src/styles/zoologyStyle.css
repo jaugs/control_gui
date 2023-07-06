@@ -1,0 +1,86 @@
+.zoologyGrid {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 5px;
+    width: 100%;
+    max-height: 490px;
+    overflow-y: scroll;
+}
+
+
+.animalListGrid {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 15px;
+    min-width: 99%;
+    border-top: 2px solid black;
+    padding: 5px;
+    padding-left: 5px;
+}
+
+.animalListTitle {
+    font-family: cui2;
+    font-size: 20px;
+    width: 99%;   
+}
+
+.animalListContainer {
+    background-color: #e0dede;
+    min-width: 95%;
+    margin-left: 10px;
+}
+
+.animalImprintContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px 0 10px;
+    color: white;
+    background-color: #555755;
+    
+}
+
+.animalImprintContainer div {
+    gap: 10px;
+}
+
+.animalImprintButton {
+    font-weight: 700;
+    border: 1px solid black;
+    background-color: #e0dede;
+    color: black;
+    height: 30px;
+    margin-left: 5px;
+    min-width: 80px;
+}
+
+.animalImprintButton:active {
+    background-color: #555755;
+    color: white;
+}
+
+.animalListField {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.animalListFieldHidden {
+    display: none;
+}
+
+.animallistItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap:200px;
+}

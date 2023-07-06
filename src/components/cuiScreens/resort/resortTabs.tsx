@@ -1,13 +1,7 @@
 
 import '../../../styles/cuiStyle.css'
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { changeOpen, changeContent, newPopup } from '../../slices/popupSlice';
 import { changeSection, toggleAddForm, toggleOrderForm, toggleReportForm, toggleReportOptions } from '../../slices/interfaceSlice';
-import { useGetInventoryListQuery } from '../../slices/apiSlice';
-import VehicleAccordion from '../maintenance/vehicleAccordion';
-import NewVehicleForm from '../maintenance/newVehicleForm';
-import { useEffect } from 'react';
-
 
 const ResortTabs: React.FC = () => {
 
@@ -15,7 +9,6 @@ const ResortTabs: React.FC = () => {
   const popUpArr = useAppSelector((state) => state.popup.PopupArr)
   const interfaceData = useAppSelector((state) => state.interface)
   
-  //const { data, error, isLoading } = useGetInventoryListQuery('office_supplies')
 
   const goBack = () => {
     let currentScreen = interfaceData.section;

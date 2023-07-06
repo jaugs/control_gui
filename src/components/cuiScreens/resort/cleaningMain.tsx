@@ -15,7 +15,6 @@ const CleaningMain: React.FC = () => {
     const [cleanReportCollapsible, setCleanReportCollapsible] = useState(false);
     const [cleanInventoryCollapsible, setCleanInventoryCollapsible] = useState(false);
 
-    const dispatch = useAppDispatch()
     const interfaceData = useAppSelector((state) => state.interface)
 
     const toggleCollapse = () => {

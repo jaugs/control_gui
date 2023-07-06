@@ -1,10 +1,9 @@
 import '../../../styles/cuiStyle.css'
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { changeSection, toggleAddForm, toggleOrderForm, toggleReportForm, toggleReportOptions } from '../../slices/interfaceSlice';
-import { useGetInventoryListQuery } from '../../slices/apiSlice';
 
 
-const InventoryTabs: React.FC = () => {
+const ZoologyTabs: React.FC = () => {
 
   const dispatch = useAppDispatch()
   const popUpArr = useAppSelector((state) => state.popup.PopupArr)
@@ -12,13 +11,13 @@ const InventoryTabs: React.FC = () => {
   
   const goBack = () => {
     let currentScreen = interfaceData.section;
-    if (currentScreen === 'INVENTORY') {
+    if (currentScreen === 'ZOOLOGY') {
         dispatch(changeSection('MASTER'))
     } else if (currentScreen === 'REPORT') {
       dispatch(toggleReportForm())
-      dispatch(changeSection('INVENTORY'))
+      dispatch(changeSection('ZOOLOGY'))
     } else if (currentScreen == 'EQUIPMENT' || 'FEED' || 'LAB INVENTORY' || 'RESORT INVENTORY') {
-        dispatch(changeSection('INVENTORY'))
+        dispatch(changeSection('ZOOLOGY'))
     } 
   }
   
@@ -65,4 +64,4 @@ const InventoryTabs: React.FC = () => {
   )
 }
 
-export default InventoryTabs
+export default ZoologyTabs

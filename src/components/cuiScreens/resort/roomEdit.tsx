@@ -1,7 +1,5 @@
 import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import '../../../styles/inventoryMain.css'
-import { toggleRoomEdit } from '../../slices/interfaceSlice';
-import { useAppDispatch } from '../../../app/hooks';
 import { useAddResortCleaningMutation } from '../../slices/apiSlice';
 
 interface OrderProps {
@@ -21,7 +19,6 @@ const RoomCleaningForm: React.FC<OrderProps> = ({content, setIsEditing}) => {
   
     const [updateCleaning, {isLoading: isUpdating}] = useAddResortCleaningMutation()
 
-    const dispatch = useAppDispatch()
     const [newCleanDate, setNewCleanDate] = useState('')
 
     const handleDateChange = (event: ChangeEvent<HTMLInputElement>) => {

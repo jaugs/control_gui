@@ -4,9 +4,9 @@ import { useAppDispatch, useAppSelector } from '../app/hooks'
 import { toggleMap } from '../components/slices/mapSlice';
 import { toggleCui, toggleMinimize, changeIntDragging } from './slices/interfaceSlice';
 import MasterMain from './cuiScreens/masterMain';
-import ZoologyMain from './cuiScreens/zoologymain';
-import AnimalList from './cuiScreens/animalListmain';
-import MaintenanceMain from './cuiScreens/maintenanceMain';
+import ZoologyMain from './cuiScreens/zoology/zoologymain';
+import AnimalList from './cuiScreens/zoology/animalListmain';
+import MaintenanceMain from './cuiScreens/maintenance/maintenanceMain';
 import VehiclesMain from './cuiScreens/maintenance/vehiclesMain';
 import RidesMain from './cuiScreens/maintenance/ridesMain';
 import InventoryMain from './cuiScreens/inventory/inventoryMain';
